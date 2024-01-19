@@ -1,6 +1,7 @@
 export function ChatMessage() {
     // should contain:
-    // message author
+
+    // message author username and profile image.
     // message text
     // sent when (few minutes ago, a day ago)
     // date when hovering on it. Does that require state?
