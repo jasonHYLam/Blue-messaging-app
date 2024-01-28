@@ -6,7 +6,7 @@ export function SignupPage() {
             <h1>Signup</h1>
             <form action="">
             </form>
-            <Link>Got an account? Login</Link>
+            <Link to={'/login'}>Got an account? Login</Link>
         </>
     )
 }
