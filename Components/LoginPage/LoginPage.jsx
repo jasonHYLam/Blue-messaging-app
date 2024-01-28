@@ -2,17 +2,27 @@ import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
 
 export function LoginPage() {
-        // LoginFormComponent
-        // SignupFormComponent
-
-        // State for both
-
         // State for submitted
+        const {
+            register,
+            handleSubmit,
+            formState: {errors},
+        } = useForm();
+
+        function onSubmit(data) {
+
+        }
 
     return (
         <>
             <h1>Login</h1>
             <form action="">
+                <label htmlFor="username">Username</label>
+                <input type="text" id="username" {...register("username", {required: true})} />
+                
+                <label htmlFor="password">Password</label>
+                <input type="password" id="password" {...register("password", {required: true})} />
+                
             </form>
             <Link>New here? Signup</Link>
         </>
