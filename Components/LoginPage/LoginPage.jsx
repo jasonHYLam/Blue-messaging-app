@@ -9,9 +9,31 @@ export function LoginPage() {
             formState: {errors},
         } = useForm();
 
-        function onSubmit(data) {
+        async function onSubmit(data) {
             console.log('checking data')
             console.log(data)
+
+            try {
+                const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/login`, {
+                    method: "POST",
+                    mode: "cors",
+                    // not sure if withCredentials is required
+                    withCredentials: "true",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type" : "application/json",
+                        "Access-Control-Allow-Credentials": true,
+                    },
+                    body: JSON.stringify(data)
+                })
+
+                if (!response.ok) {
+                    console.log('bad repsonse. really bad in fact.')
+                }
+
+            } catch(err) {
+
+            }
 
         }
 
