@@ -28,7 +28,7 @@ export function LoginPage() {
                 <input type="submit" />
                 
             </form>
-            <Link>New here? Signup</Link>
+            <Link to={'/signup'}>New here? Signup</Link>
         </>
 
 
