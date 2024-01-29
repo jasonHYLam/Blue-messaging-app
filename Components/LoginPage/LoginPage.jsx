@@ -1,41 +1,51 @@
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export function LoginPage() {
-        // State for submitted
-        const {
-            register,
-            handleSubmit,
-            formState: {errors},
-        } = useForm();
+    
+    const navigate = useNavigate();
 
-        async function onSubmit(data) {
-            console.log('checking data')
-            console.log(data)
+    // State for submitted
+    const {
+        register,
+        handleSubmit,
+        formState: {errors},
+    } = useForm();
 
-            try {
-                const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/login`, {
-                    method: "POST",
-                    mode: "cors",
-                    // not sure if withCredentials is required
-                    withCredentials: "true",
-                    credentials: "include",
-                    headers: {
-                        "Content-Type" : "application/json",
-                        "Access-Control-Allow-Credentials": true,
-                    },
-                    body: JSON.stringify(data)
-                })
+    async function onSubmit(data) {
+        console.log('checking data')
+        console.log(data)
 
-                if (!response.ok) {
-                    console.log('bad repsonse. really bad in fact.')
-                }
+        try {
+            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/login`, {
+                method: "POST",
+                mode: "cors",
+                // not sure if withCredentials is required
+                withCredentials: "true",
+                credentials: "include",
+                headers: {
+                    "Content-Type" : "application/json",
+                    "Access-Control-Allow-Credentials": true,
+                },
+                body: JSON.stringify(data)
+            })
 
-            } catch(err) {
+            console.log('checking response')
+            console.log(response)
 
+            if (!response.ok) {
+                console.log('bad repsonse. really bad in fact.')
+                return
             }
 
+            navigate('/home');
+
+
+        } catch(err) {
+
         }
+
+    }
 
     return (
         <>
