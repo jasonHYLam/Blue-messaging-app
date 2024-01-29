@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom"
 
 export function LoginPage() {
+
+    // State for submitted
+    const [backendErrors, setBackendErrors ] = useState(null)
     
     const navigate = useNavigate();
 
-    // State for submitted
     const {
         register,
         handleSubmit,
@@ -34,7 +37,7 @@ export function LoginPage() {
             console.log(response)
 
             if (!response.ok) {
-                console.log('bad repsonse. really bad in fact.')
+                setBackendErrors("Incorrect username/password")
                 return
             }
 
@@ -53,9 +56,12 @@ export function LoginPage() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" {...register("username", {required: true})} />
+                { errors.username && errors.username.type === "required" && <span>Please provide username</span> }
                 
                 <label htmlFor="password">Password</label>
                 <input type="password" id="password" {...register("password", {required: true})} />
+                { errors.password && errors.password.type === "required" && <span>Please provide password</span> }
+                {backendErrors ? <p>{backendErrors}</p> : null}
 
                 <input type="submit" />
                 
