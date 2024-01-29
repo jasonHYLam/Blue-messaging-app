@@ -7,6 +7,7 @@ export function HomePage() {
     // Will need to add an "Add friend" component and "users online" button.
     return (
         <>
+        <p>It's me, the home page</p>
         </>
     )
 }

@@ -1,9 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 
-import { LoginPage } from '../Components/LoginPage/LoginPage'
-import { SignupPage } from '../Components/SignupPage/SignupPage'
+import { LoginPage } from '../Components/LoginPage/LoginPage';
+import { SignupPage } from '../Components/SignupPage/SignupPage';
+import { HomePage } from '../Components/HomePage/HomePage';
 // import './index.css'
 
 const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       {
         path: '/home',
         // login-signup
+        element: < HomePage />,
       },
       {
         path: '/home/chats/chatId',
