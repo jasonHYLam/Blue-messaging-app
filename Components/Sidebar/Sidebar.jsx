@@ -8,6 +8,7 @@ export function Sidebar() {
     // perhaps the chat should also have a field for the number of members.
     return (
         <>
+        <p>It's me, the sidebar</p>
         </>
     )
 }
