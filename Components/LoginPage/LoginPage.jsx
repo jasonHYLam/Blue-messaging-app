@@ -37,7 +37,8 @@ export function LoginPage() {
             console.log('checking response')
             console.log(response)
 
-            if (!response.ok) {
+            // if (!response.ok) {
+            if (response.status === 401) {
                 setBackendErrors("Incorrect username/password")
                 return
             }
