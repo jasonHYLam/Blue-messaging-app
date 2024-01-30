@@ -1,11 +1,17 @@
+import { useEffect } from 'react';
 import styles from './Sidebar.module.css';
 
 export function Sidebar() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_all_chats`)
-            const data = response.json();
+            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_all_chats`, {
+                // mode: "cors",
+                // not sure if withCredentials is required
+                // withCredentials: "true",
+                credentials: "include",
+            })
+            const data = await response.json();
             console.log('checking data')
             console.log(data)
         }
