@@ -24,17 +24,24 @@ const router = createBrowserRouter([
         element: < SignupPage />
       },
       {
-        path: '/home',
+        path: 'home',
         // login-signup
         element: < HomePage />,
-      },
-      {
-        path: '/home/chats/chatId',
-        // login-signup
-      },
-      {
-        path: '/home/userProfile/:userId',
-        // login-signup
+        children: [
+          {
+            path: 'chats/:chatId',
+
+          },
+          {
+            path: 'user_profile/:userId',
+
+          },
+          {
+            path: 'add_friend',
+
+          },
+
+        ]
       },
     ]
 
