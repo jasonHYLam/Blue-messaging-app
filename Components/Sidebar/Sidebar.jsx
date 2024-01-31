@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import styles from './Sidebar.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 
 export function Sidebar() {
 
@@ -15,8 +15,6 @@ export function Sidebar() {
                 credentials: "include",
             })
 
-            console.log('checking response')
-            console.log(response)
             if (response.status === 401) navigate('/login');
 
             const data = await response.json();
@@ -34,6 +32,9 @@ export function Sidebar() {
     return (
         <>
         <p>It's me, the sidebar</p>
+
+        < Outlet />
+        
         </>
     )
 }
