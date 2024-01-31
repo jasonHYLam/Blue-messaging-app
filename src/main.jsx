@@ -30,6 +30,10 @@ const router = createBrowserRouter([
         element: < HomePage />,
         children: [
           {
+            index: true,
+            element: < Navigate replace={true} to={`add_friend`} />
+          },
+          {
             path: 'chats/:chatId',
 
           },
