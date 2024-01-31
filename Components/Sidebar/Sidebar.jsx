@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import styles from './Sidebar.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export function Sidebar() {
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -11,6 +14,11 @@ export function Sidebar() {
                 // withCredentials: "true",
                 credentials: "include",
             })
+
+            console.log('checking response')
+            console.log(response)
+            if (response.status === 401) navigate('/login');
+
             const data = await response.json();
             console.log('checking data')
             console.log(data)

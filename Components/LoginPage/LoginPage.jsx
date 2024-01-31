@@ -16,8 +16,8 @@ export function LoginPage() {
     } = useForm();
 
     async function onSubmit(data) {
-        console.log('checking data')
-        console.log(data)
+        // console.log('checking data')
+        // console.log(data)
 
         try {
             const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/login`, {
@@ -34,10 +34,9 @@ export function LoginPage() {
                 body: JSON.stringify(data)
             })
 
-            console.log('checking response')
-            console.log(response)
+            // console.log('checking response')
+            // console.log(response)
 
-            // if (!response.ok) {
             if (response.status === 401) {
                 setBackendErrors("Incorrect username/password")
                 return
