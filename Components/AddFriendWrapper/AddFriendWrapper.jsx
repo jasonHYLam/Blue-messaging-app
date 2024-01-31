@@ -11,7 +11,7 @@ export function AddFriendWrapper() {
         console.log('checking data for searching friend')
         console.log(data)
 
-        const response = await fetch(``, {
+        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/user_profile/search`, {
             method: "POST",
             mode: "cors",
             credentials: "include",
@@ -20,6 +20,7 @@ export function AddFriendWrapper() {
                 // "Accept" : "application/json",
                 "Access-Control-Allow-Credentials": true,
             },
+            body: JSON.stringify(data),
         })
 
     }
@@ -29,7 +30,7 @@ export function AddFriendWrapper() {
 
         <p>Search for users to add:</p>
 
-        <form action="">
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
             <input type="text" {...register("username")}/>
             <input type="submit" />
         </form>
