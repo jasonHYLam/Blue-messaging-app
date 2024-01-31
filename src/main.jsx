@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { LoginPage } from '../Components/LoginPage/LoginPage';
 import { SignupPage } from '../Components/SignupPage/SignupPage';
 import { HomePage } from '../Components/HomePage/HomePage';
+import { AddFriendWrapper } from '../Components/AddFriendWrapper/AddFriendWrapper';
 // import './index.css'
 
 const router = createBrowserRouter([
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'add_friend',
+            element: < AddFriendWrapper />
 
           },
 
