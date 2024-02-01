@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form"
 
 export function AddFriendWrapper() {
+
+    const [ matchingUsers, setMatchingUsers ] = useState([]);
 
     const {
         register,
@@ -22,18 +25,21 @@ export function AddFriendWrapper() {
             },
             body: JSON.stringify(data),
         })
+        const returnedData = await response.json();
+        console.log(' checking returned data from database')
+        console.log(returnedData)
 
     }
     return (
         <>
-        <p>Hi it's me, add friend wrapper</p>
+            <p>Hi it's me, add friend wrapper</p>
 
-        <p>Search for users to add:</p>
+            <p>Search for users to add:</p>
 
-        <form action="" onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" {...register("username")}/>
-            <input type="submit" />
-        </form>
+            <form action="" onSubmit={handleSubmit(onSubmit)}>
+                <input type="text" {...register("username")}/>
+                <input type="submit" />
+            </form>
         
         </>
     )
