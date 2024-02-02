@@ -64,27 +64,12 @@ export function AddFriendWrapper() {
                 <input type="submit" />
             </form>
 
-            {/* {
-                matchingUsers.map(userData => {
-                    return (
-                        <>
-                        <section>
-                            <p>{userData.username}</p>
-                            <button onClick={() => addFriend(userData)}>Add user</button>
-                        </section>
-                        
-                        </>
-                    )
-                })
-            } */}
-        
             {
                 allFriends.map(userData => {
                     return (
                         <>
                         <section>
                             <p>{userData.username}</p>
-                            {/* <button onClick={() => addFriend(userData)}>Add user</button> */}
                             <p>Added</p>
                         </section>
                         
@@ -99,7 +84,6 @@ export function AddFriendWrapper() {
                         <section>
                             <p>{userData.username}</p>
                             <button onClick={() => addFriend(userData)}>Add user</button>
-                            {/* <p>Added</p> */}
                         </section>
                         
                         </>
