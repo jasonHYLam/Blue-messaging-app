@@ -11,10 +11,15 @@ export function SignupPage() {
         getValues,
     } = useForm();
 
+    async function onSubmit(data) {
+        console.log('checking data')
+        console.log(data)
+    }
+
     return (
         <>
             <h1>Signup</h1>
-            <form action="">
+            <form onSubmit={handleSubmit(onSubmit)}>
 
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" {...register("username", {required: true})} />
