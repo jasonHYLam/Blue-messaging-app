@@ -33,7 +33,13 @@ export function Sidebar() {
         <>
         <p>It's me, the sidebar</p>
 
-        {/* < Outlet /> */}
+        <>
+        <section>
+            Create new chat
+        </section>
+        
+        </>
+
         
         </>
     )
