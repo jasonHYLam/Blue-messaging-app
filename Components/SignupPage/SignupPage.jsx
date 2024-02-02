@@ -1,8 +1,10 @@
 
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate, } from "react-router-dom"
 
 export function SignupPage() {
+
+    const navigate = useNavigate();
 
     const {
         register,
@@ -31,6 +33,9 @@ export function SignupPage() {
                 console.log('error! error!')
                 return
             }
+
+            navigate('/login');
+
 
         } catch(err) {
 
