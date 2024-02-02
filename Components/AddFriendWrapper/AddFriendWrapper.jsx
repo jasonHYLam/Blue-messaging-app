@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form"
 
 export function AddFriendWrapper() {
 
-    const [ matchingUsers, setMatchingUsers ] = useState([]);
+    // const [ matchingUsers, setMatchingUsers ] = useState([]);
+    const [ allFriends, setAllFriends ] = useState([]);
+    const [ allNonFriends, setAllNonFriends ] = useState([]);
 
     const {
         register,
@@ -28,7 +30,9 @@ export function AddFriendWrapper() {
         const returnedData = await response.json();
         console.log(' checking returned data from database')
         console.log(returnedData)
-        setMatchingUsers(returnedData.matchingUsers)
+        // setMatchingUsers(returnedData.matchingUsers)
+        setAllFriends(returnedData.friends)
+        setAllNonFriends(returnedData.nonFriends)
     }
 
     async function addFriend(user) {
@@ -60,7 +64,7 @@ export function AddFriendWrapper() {
                 <input type="submit" />
             </form>
 
-            {
+            {/* {
                 matchingUsers.map(userData => {
                     return (
                         <>
@@ -72,8 +76,36 @@ export function AddFriendWrapper() {
                         </>
                     )
                 })
-            }
+            } */}
         
+            {
+                allFriends.map(userData => {
+                    return (
+                        <>
+                        <section>
+                            <p>{userData.username}</p>
+                            {/* <button onClick={() => addFriend(userData)}>Add user</button> */}
+                            <p>Added</p>
+                        </section>
+                        
+                        </>
+                    )
+                })
+            }
+            {
+                allNonFriends.map(userData => {
+                    return (
+                        <>
+                        <section>
+                            <p>{userData.username}</p>
+                            <button onClick={() => addFriend(userData)}>Add user</button>
+                            {/* <p>Added</p> */}
+                        </section>
+                        
+                        </>
+                    )
+                })
+            }
         </>
     )
 }
