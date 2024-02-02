@@ -14,6 +14,28 @@ export function SignupPage() {
     async function onSubmit(data) {
         console.log('checking data')
         console.log(data)
+
+        try {           
+            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/signup`, {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Content-Type" : "application/json",
+                "Access-Control-Allow-Credentials": true,
+            },
+            body: JSON.stringify(data)
+            })
+
+            if (!response.ok) {
+                console.log('error! error!')
+                return
+            }
+
+        } catch(err) {
+
+        }
+
     }
 
     return (
@@ -37,7 +59,7 @@ export function SignupPage() {
                     }
 
                     })} />
-                { errors.confirmPassword && errors.confirmPassword.type === "required" && <span>Please provide password</span> }
+                { errors.confirmPassword && errors.confirmPassword.type === "required" && <span>Please confirm password</span> }
                 { errors.confirmPassword && errors.confirmPassword.type === "validate" && <span>{errors.confirmPassword.message}</span> }
 
                 <input type="submit" />
