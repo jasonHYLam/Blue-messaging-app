@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 
 export function AddFriendWrapper() {
 
+    const [ isChanging, setIsChanging ] = useState(false);
     const [ searchQuery, setSearchQuery ] = useState('');
     // const [ matchingUsers, setMatchingUsers ] = useState([]);
     const [ allFriends, setAllFriends ] = useState([]);
@@ -67,6 +68,8 @@ export function AddFriendWrapper() {
     }
 
     async function addFriend(user) {
+        console.log('gonna check user when adding friend')
+        console.log(user)
         const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/user_profile/${user.id}`, {
             method: "POST",
             mode: "cors",
@@ -89,7 +92,8 @@ export function AddFriendWrapper() {
             await getAndSetUserData(searchQuery)
         }
         getAndSetDataOnQueryChange();
-    }, [searchQuery])
+        setIsChanging(false);
+    }, [searchQuery, isChanging])
 
     return (
         <>
@@ -106,11 +110,7 @@ export function AddFriendWrapper() {
                 value={searchQuery}
             
                 onChange={ async (e) => {
-                // set value i think?
                     setSearchQuery(e.target.value)
-                // call the getAndSetData
-                    // await getAndSetUserData(searchQuery)
-
             }} />
 
             {
@@ -132,7 +132,12 @@ export function AddFriendWrapper() {
                         <>
                         <section>
                             <p>{userData.username}</p>
-                            <button onClick={() => addFriend(userData)}>Add user</button>
+                            <button onClick={async () => {
+                                await addFriend(userData)
+                                // await getAndSetUserData(searchQuery)
+                                setIsChanging(true);
+                            }}>
+                                    Add user</button>
                         </section>
                         
                         </>
