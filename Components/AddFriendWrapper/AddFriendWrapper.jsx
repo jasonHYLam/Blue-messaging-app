@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"
 
 export function AddFriendWrapper() {
@@ -38,9 +38,13 @@ export function AddFriendWrapper() {
     //     setAllNonFriends(returnedData.nonFriends)
     // }
 
+
     async function getAndSetUserData(searchQuery) {
+
+        if (searchQuery === '') return;
         console.log('checking data for searching friend')
         console.log(searchQuery)
+        console.log()
 
         const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/user_profile/search`, {
             method: "POST",
@@ -51,7 +55,8 @@ export function AddFriendWrapper() {
                 // "Accept" : "application/json",
                 "Access-Control-Allow-Credentials": true,
             },
-            body: JSON.stringify(searchQuery),
+            // body: JSON.stringify(searchQuery),
+            body: JSON.stringify({searchQuery}),
         })
         const returnedData = await response.json();
         console.log(' checking returned data from database')
@@ -79,6 +84,13 @@ export function AddFriendWrapper() {
 
     }
 
+    useEffect(() => {
+        async function getAndSetDataOnQueryChange() {
+            await getAndSetUserData(searchQuery)
+        }
+        getAndSetDataOnQueryChange();
+    }, [searchQuery])
+
     return (
         <>
             <p>Hi it's me, add friend wrapper</p>
@@ -92,13 +104,13 @@ export function AddFriendWrapper() {
 
             <input type="text" 
                 value={searchQuery}
-                onChange={(e) => {
-                    setSearchQuery(e.target.value)
-                // change value
+            
+                onChange={ async (e) => {
                 // set value i think?
-                getAndSetUserData(searchQuery)
-
+                    setSearchQuery(e.target.value)
                 // call the getAndSetData
+                    // await getAndSetUserData(searchQuery)
+
             }} />
 
             {
