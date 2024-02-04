@@ -24,6 +24,13 @@ export function CreateChatWrapper() {
         setUsersNotAddedToChat(fetchedData.friends)
     }
 
+    function markUserToAddToChat(user) {
+        setUsersAddedToChat([
+            ...usersAddedToChat,
+            user
+        ])
+    }
+
     // useEffect hook to: 
     // enable component to be loaded via state variable isLoaded.
     // fetch data on first load
