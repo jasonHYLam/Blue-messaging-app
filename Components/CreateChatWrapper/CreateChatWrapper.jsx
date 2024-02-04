@@ -55,15 +55,6 @@ export function CreateChatWrapper() {
         }
         getAndSetDataOnLoad();
     },[isLoaded])
-
-    // Fetches data and sets in state.
-    useEffect(() => {
-        // async function getAndSetDataOnChange() {
-        //     await getAndSetData()
-        // }
-        // getAndSetDataOnChange();
-        // will need to put something in the dependency array
-    }, [])
     
     return (
         !isLoaded ? <p>Loading</p>  :
