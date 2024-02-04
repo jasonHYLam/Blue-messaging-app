@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export function CreateChatWrapper() {
 
     const [ isLoaded, setIsLoaded ] = useState(false);
+    const [ chatName, setChatName ] = useState('');
     // name of chat (optional)
     // users to add (at least one)
     const [ usersNotAddedToChat, setUsersNotAddedToChat ] = useState([]);
@@ -54,6 +55,9 @@ export function CreateChatWrapper() {
         !isLoaded ? <p>Loading</p>  :
         <>
         <main>
+            <label> Name your chat
+                <input type="text" value={chatName} onChange={(e) => setChatName(e.target.value)}/>
+            </label>
             <p>Add to chat:</p>
             {usersNotAddedToChat.map(user => {
                 return (
@@ -79,6 +83,7 @@ export function CreateChatWrapper() {
             })}
 
             
+            {/* try and disable this if no users are added */}
             <button>Start Talking</button>
 
         </main>
