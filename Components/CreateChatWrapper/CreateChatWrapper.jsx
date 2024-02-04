@@ -31,6 +31,19 @@ export function CreateChatWrapper() {
         ])
     }
 
+    function removeUserFromNotAddedToChat(userToRemove) {
+        // ugh
+        // add the users that do NOT match the user argument to usersNotAddedToChat
+        // maybe it's filter, and comparing ids
+        // for now, use map to test
+        const usersNotAdded = usersNotAddedToChat.filter(user => {
+            return user._id !== userToRemove._id
+        })
+        console.log(usersNotAdded)
+        setUsersNotAddedToChat(usersNotAdded)
+
+    }
+
     // useEffect hook to: 
     // enable component to be loaded via state variable isLoaded.
     // fetch data on first load
@@ -57,12 +70,14 @@ export function CreateChatWrapper() {
         <>
         <main>
             <p>Add to chat:</p>
-            {usersNotAddedToChat.map(friend => {
+            {usersNotAddedToChat.map(user => {
                 return (
                     <>
-                    <p>{friend.friendUser.username}</p>
-                    <button>Add to chat</button>
-                    
+                    <p>{user.friendUser.username}</p>
+                    <button onClick={() => {
+                        removeUserFromNotAddedToChat(user);
+                        // markUserToAddToChat(user);
+                        }}>Add to chat</button>
                     </>
                 )
                 
