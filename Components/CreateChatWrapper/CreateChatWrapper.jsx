@@ -5,11 +5,11 @@ export function CreateChatWrapper() {
     const [ isLoaded, setIsLoaded ] = useState(false);
     // name of chat (optional)
     // users to add (at least one)
-    const [ allFriendsNotAdded, setAllFriendsNotAdded ] = useState([]);
+    const [ usersNotAddedToChat, setUsersNotAddedToChat ] = useState([]);
+    const [ usersAddedToChat, setUsersAddedToChat ] = useState([]);
     // probably just list em out, like i did for searchUser
-
-    // hm perhaps show list of those added and those not added amongst friends
-    // need fetch request to get friends anyway
+    console.log('checking usersNotAddedToChat')
+    console.log(usersNotAddedToChat)
 
     async function getAndSetData() {
         // must be similar to that of searchUser
@@ -21,33 +21,40 @@ export function CreateChatWrapper() {
 
         const fetchedData = await response.json();
         console.log(fetchedData)
-        setAllFriendsNotAdded(fetchedData)
+        setUsersNotAddedToChat(fetchedData.friends)
     }
 
+    // useEffect hook to: 
+    // enable component to be loaded via state variable isLoaded.
+    // fetch data on first load
     useEffect(() => {
         setIsLoaded(true)
-    },[isLoaded])
 
-    useEffect(() => {
-        async function getAndSetDataOnChange() {
+        async function getAndSetDataOnLoad () {
             await getAndSetData()
         }
-        getAndSetDataOnChange();
+        getAndSetDataOnLoad();
+    },[isLoaded])
+
+    // Fetches data and sets in state.
+    useEffect(() => {
+        // async function getAndSetDataOnChange() {
+        //     await getAndSetData()
+        // }
+        // getAndSetDataOnChange();
         // will need to put something in the dependency array
     }, [])
-
-
-    
     
     return (
         !isLoaded ? <p>Loading</p>  :
         <>
         <main>
             <p>Add to chat:</p>
-            {allFriendsNotAdded.map(friend => {
+            {usersNotAddedToChat.map(friend => {
                 return (
                     <>
                     <p>{friend.friendUser.username}</p>
+                    <button>Add to chat</button>
                     
                     </>
                 )
