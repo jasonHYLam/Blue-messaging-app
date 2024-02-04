@@ -32,10 +32,10 @@ export function CreateChatWrapper() {
         ])
     }
 
-    // something has gone awry
     async function postToCreateChat() {
         const dataToPost = {
             chatName,
+            // what exactly is this... if anything this is a wrapper. this is wrapper that contains friendId (in friendUser)
             usersAddedToChat,
         }
 

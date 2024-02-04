@@ -1,10 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Sidebar.module.css';
 import { useNavigate, Outlet } from 'react-router-dom';
 
 export function Sidebar() {
 
+    const [ isLoaded, setIsLoaded ] = useState(false);
     const navigate = useNavigate();
+
+    const [ allChats, setAllChats ] = useState([]);
+
+    useEffect(() => {
+        setIsLoaded(true);
+    },[])
 
     useEffect(() => {
         async function fetchData() {
@@ -20,6 +27,7 @@ export function Sidebar() {
             const data = await response.json();
             console.log('checking data')
             console.log(data)
+            setAllChats(data.allChats)
         }
 
         fetchData()
@@ -30,6 +38,8 @@ export function Sidebar() {
     // requires useState and useEffect frankly
     // perhaps the chat should also have a field for the number of members.
     return (
+        !isLoaded ? <p>Loading</p> :
+
         <>
         <p>It's me, the sidebar</p>
 
