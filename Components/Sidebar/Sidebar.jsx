@@ -43,6 +43,16 @@ export function Sidebar() {
         <>
         <p>It's me, the sidebar</p>
 
+        <p>Chats:</p>
+        {allChats.map(chat => {
+            return (
+                <>
+                <p>{chat.name}</p>
+                </>
+
+            )
+        })}
+
         <>
         <section>
             <button onClick={() => navigate(`/home/create_chat`)}>Create new chat</button>
