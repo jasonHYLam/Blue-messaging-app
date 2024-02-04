@@ -32,6 +32,28 @@ export function CreateChatWrapper() {
         ])
     }
 
+    // something has gone awry
+    async function postToCreateChat() {
+        const dataToPost = {
+            chatName,
+            usersAddedToChat,
+        }
+
+        console.log('checking dataToPost')
+        console.log(dataToPost)
+
+        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/create_new_chat`, {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Content-Type" : "application/json",
+                "Access-Control-Allow-Credentials": true,
+            },
+            body: JSON.stringify(dataToPost),
+        })
+    }
+
     function removeUserFromNotAddedToChat(userToRemove) {
         const usersNotAdded = usersNotAddedToChat.filter(user => {
             return user._id !== userToRemove._id
@@ -84,7 +106,7 @@ export function CreateChatWrapper() {
 
             
             {/* try and disable this if no users are added */}
-            <button>Start Talking</button>
+            <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
 
         </main>
         

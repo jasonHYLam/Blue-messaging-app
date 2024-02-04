@@ -8,7 +8,7 @@ export function Sidebar() {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_all_chats`, {
+            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_chats_for_user`, {
                 // mode: "cors",
                 // not sure if withCredentials is required
                 // withCredentials: "true",
