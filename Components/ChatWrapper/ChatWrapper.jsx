@@ -47,10 +47,10 @@ export function ChatWrapper() {
             console.log('checking data for ChatWrapper:')
             console.log(fetchedData)
 
-            setChatMessages(fetchedData.chatMessages)
+            setChatMessages(fetchedData.chat.chatMessages)
 
-            if (chatName !== fetchedData.name) {
-                setChatName(fetchedData.name)
+            if (chatName !== fetchedData.chat.name) {
+                setChatName(fetchedData.chat.name)
             }
         }
 
@@ -71,7 +71,7 @@ export function ChatWrapper() {
                 return (
                     <>
                     <section>
-                        <p>{message.author}</p>
+                        <p>{message.author.username}</p>
                         <p>{message.timeStampFormatted}</p>
                         <p>{message.text}</p>
                     </section>
