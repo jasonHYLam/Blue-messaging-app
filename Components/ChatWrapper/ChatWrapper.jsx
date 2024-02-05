@@ -20,6 +20,12 @@ export function ChatWrapper() {
     // need a input component. perhaps make it not overflow.
     // need a button to add image file.
     const [ isUpdatePending, setIsUpdatePending ] = useState(false);
+    const [ isLoaded, setIsLoaded ] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(true)
+
+    })
 
     useEffect(() => {
         async function fetchMessages() {
@@ -29,6 +35,7 @@ export function ChatWrapper() {
         setIsUpdatePending(false);
     }, [isUpdatePending])
     return (
+        !isLoaded ? <p>Loading</p> :
         <>
         <section>
             <p>It's me, the chat</p>
