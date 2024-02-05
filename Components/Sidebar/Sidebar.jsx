@@ -32,6 +32,10 @@ export function Sidebar() {
 
         fetchData()
     }, [])
+
+    async function openChat(chat) {
+        navigate(`home/chats/${chat.id}`)
+    }
     // to store list of chatLinks
     // should make fetch request to get all chats, perhaps updated by time (most recently accessed at the top)
     // so perhaps each chat should have a lastUpdated field. When making a comment, update this field.
@@ -47,7 +51,9 @@ export function Sidebar() {
         {allChats.map(chat => {
             return (
                 <>
-                <p>{chat.name}</p>
+                <section onClick={() => {openChat(chat)}}>
+                    <p>{chat.name}</p>
+                </section>
                 </>
 
             )
