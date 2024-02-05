@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { TypeBar } from "./TypeBar/TypeBar"
 
 export function ChatWrapper() {
@@ -18,6 +19,15 @@ export function ChatWrapper() {
 
     // need a input component. perhaps make it not overflow.
     // need a button to add image file.
+    const [ isUpdatePending, setIsUpdatePending ] = useState(false);
+
+    useEffect(() => {
+        async function fetchMessages() {
+        }
+        fetchMessages();
+
+        setIsUpdatePending(false);
+    }, [isUpdatePending])
     return (
         <>
         <section>
