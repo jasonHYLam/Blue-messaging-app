@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 
 export function TypeBar() {
 
     const [ message, setMessage ] = useState('');
+
+    const {chatId} = useParams();
+    console.log('checking params')
+    console.log(chatId)
 
     const {
         register,
@@ -12,12 +17,9 @@ export function TypeBar() {
 
     async function postMessage(data) {
 
-        console.log('checking out data')
-        console.log(data)
-        // const dataToPost = {message};
-        // console.log('checking dataToPost')
-        // console.log(dataToPost)
-        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/:chatid/create_message`, {
+
+        // somehow i need to pass the chat Id to replace :chatid
+        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}/create_message`, {
             method: "POST",
             mode: "cors",
             credentials: "include",
