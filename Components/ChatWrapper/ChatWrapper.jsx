@@ -22,12 +22,14 @@ export function ChatWrapper() {
     // need a button to add image file.
     const [ isUpdatePending, setIsUpdatePending ] = useState(false);
     const [ isLoaded, setIsLoaded ] = useState(false);
+    const [ chatName, setChatName ] = useState('');
+    const [ chatMessages, setChatMessages ] = useState([]);
     const {chatId} = useParams();
+    
 
-    useEffect(() => {
-        setIsLoaded(true)
-
-    })
+    // useEffect(() => {
+    //     setIsLoaded(true)
+    // })
 
     useEffect(() => {
         async function fetchMessages() {
@@ -40,17 +42,42 @@ export function ChatWrapper() {
                     "Access-Control-Allow-Credentials": true,
                 },
             })
+            
+            const fetchedData = await response.json();
+            console.log('checking data for ChatWrapper:')
+            console.log(fetchedData)
 
+            setChatMessages(fetchedData.chatMessages)
+
+            if (chatName !== fetchedData.name) {
+                setChatName(fetchedData.name)
+            }
         }
+
         fetchMessages();
 
+        if (!isLoaded) setIsLoaded(true);
+
         setIsUpdatePending(false);
-    }, [isUpdatePending])
+    }, [isUpdatePending, isLoaded])
     return (
         !isLoaded ? <p>Loading</p> :
         <>
         <section>
             <p>It's me, the chat</p>
+            <h1>{chatName}</h1>
+
+            {chatMessages.map(message => {
+                return (
+                    <>
+                    <section>
+                        <p>{message.author}</p>
+                        <p>{message.timeStampFormatted}</p>
+                        <p>{message.text}</p>
+                    </section>
+                    </>
+                )
+            })}
             < TypeBar />
         </section>
         </>
