@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { TypeBar } from "./TypeBar/TypeBar"
+import { useParams } from "react-router-dom";
 
 export function ChatWrapper() {
 
@@ -21,6 +22,7 @@ export function ChatWrapper() {
     // need a button to add image file.
     const [ isUpdatePending, setIsUpdatePending ] = useState(false);
     const [ isLoaded, setIsLoaded ] = useState(false);
+    const {chatId} = useParams();
 
     useEffect(() => {
         setIsLoaded(true)
@@ -29,6 +31,16 @@ export function ChatWrapper() {
 
     useEffect(() => {
         async function fetchMessages() {
+            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}`, {
+                mode: "cors",
+                credentials: "include",
+                headers: {
+                    "Content-Type" : "application/json",
+                    // "Accept" : "application/json",
+                    "Access-Control-Allow-Credentials": true,
+                },
+            })
+
         }
         fetchMessages();
 
