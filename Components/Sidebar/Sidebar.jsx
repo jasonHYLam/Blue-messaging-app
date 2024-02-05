@@ -34,7 +34,7 @@ export function Sidebar() {
     }, [])
 
     async function openChat(chat) {
-        navigate(`home/chats/${chat.id}`)
+        navigate(`chats/${chat.id}`)
     }
     // to store list of chatLinks
     // should make fetch request to get all chats, perhaps updated by time (most recently accessed at the top)
@@ -61,7 +61,7 @@ export function Sidebar() {
 
         <>
         <section>
-            <button onClick={() => navigate(`/home/create_chat`)}>Create new chat</button>
+            <button onClick={() => navigate(`home/create_chat`)}>Create new chat</button>
         </section>
         
         </>

@@ -16,6 +16,9 @@ export function ChatWrapper() {
     // need a button to add image file.
     return (
         <>
+        <section>
+            <p>It's me, the chat</p>
+        </section>
         </>
     )
 
