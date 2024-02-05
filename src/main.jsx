@@ -7,6 +7,7 @@ import { SignupPage } from '../Components/SignupPage/SignupPage';
 import { HomePage } from '../Components/HomePage/HomePage';
 import { AddFriendWrapper } from '../Components/AddFriendWrapper/AddFriendWrapper';
 import { CreateChatWrapper } from '../Components/CreateChatWrapper/CreateChatWrapper';
+import { ChatWrapper } from '../Components/ChatWrapper/ChatWrapper';
 // import './index.css'
 
 const router = createBrowserRouter([
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'chats/:chatId',
-
+            element: < ChatWrapper />,
           },
           {
             path: 'user_profile/:userId',
