@@ -1,4 +1,8 @@
+import { TypeBar } from "./TypeBar/TypeBar"
+
 export function ChatWrapper() {
+
+
     // rendered in HomePage component
     // needs to make fetch request, requires .env variable and credentials.
     // should return list of messages, that are ordered by time sent regardless of sender.
@@ -18,6 +22,7 @@ export function ChatWrapper() {
         <>
         <section>
             <p>It's me, the chat</p>
+            < TypeBar />
         </section>
         </>
     )
