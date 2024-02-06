@@ -71,6 +71,7 @@ export function ChatWrapper() {
                 return (
                     <>
                     <section>
+                        <div>User pfp</div>
                         <p>{message.author.username}</p>
                         <p>{message.timeStampFormatted}</p>
                         <p>{message.text}</p>
