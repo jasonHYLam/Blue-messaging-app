@@ -38,9 +38,10 @@ export function UserProfileWrapper() {
                 },
             })
 
-            // const fetchedData = await response.json();
-            // console.log('checking data for userProfileWrapper:')
-            // console.log(fetchedData)
+            const fetchedData = await response.json();
+            console.log('checking data for userProfileWrapper:')
+            console.log(fetchedData)
+            setUserData(fetchedData.matchingUser)
         }
 
         fetchUserData();
@@ -55,6 +56,9 @@ export function UserProfileWrapper() {
 
         <>
         <p>It's me the user profile page</p>
+        <h1>User Profile: {userData.username}</h1>
+        <p>Description:</p>
+        <p>{userData.description}</p>
         
         </>
     )
