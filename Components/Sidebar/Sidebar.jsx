@@ -61,7 +61,7 @@ export function Sidebar() {
 
         <>
         <section>
-            <button onClick={() => navigate(`home/create_chat`)}>Create new chat</button>
+            <button onClick={() => navigate(`create_chat`)}>Create new chat</button>
         </section>
         
         </>
