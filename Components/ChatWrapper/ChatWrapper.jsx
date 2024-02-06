@@ -32,6 +32,7 @@ export function ChatWrapper() {
     // })
 
     useEffect(() => {
+        console.log('checking ChatWrapper useEffect:')
         async function fetchMessages() {
             const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}`, {
                 mode: "cors",
@@ -44,8 +45,8 @@ export function ChatWrapper() {
             })
             
             const fetchedData = await response.json();
-            console.log('checking data for ChatWrapper:')
-            console.log(fetchedData)
+            // console.log('checking data for ChatWrapper:')
+            // console.log(fetchedData)
 
             setChatMessages(fetchedData.chat.chatMessages)
 
@@ -79,7 +80,7 @@ export function ChatWrapper() {
                     </>
                 )
             })}
-            < TypeBar />
+            < TypeBar setIsUpdatePending={setIsUpdatePending} />
         </section>
         </>
     )

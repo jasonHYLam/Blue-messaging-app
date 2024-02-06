@@ -25,8 +25,8 @@ export function Sidebar() {
             if (response.status === 401) navigate('/login');
 
             const data = await response.json();
-            console.log('checking data for SideBar')
-            console.log(data)
+            // console.log('checking data for SideBar')
+            // console.log(data)
             setAllChats(data.allChats)
         }
 
