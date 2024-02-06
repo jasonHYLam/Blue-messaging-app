@@ -71,7 +71,7 @@ export function ChatWrapper() {
                 return (
                     <>
                     <section>
-                        <Link to={`user_profile/${message.author.id}`}>User pfp</Link>
+                        <Link to={`/home/user_profile/${message.author.id}`}>User pfp</Link>
                         <p>{message.author.username}</p>
                         <p>{message.timeStampFormatted}</p>
                         <p>{message.text}</p>
