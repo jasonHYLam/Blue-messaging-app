@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { TypeBar } from "./TypeBar/TypeBar"
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export function ChatWrapper() {
 
@@ -71,7 +71,7 @@ export function ChatWrapper() {
                 return (
                     <>
                     <section>
-                        <div>User pfp</div>
+                        <Link to={`user_profile/${message.author.id}`}>User pfp</Link>
                         <p>{message.author.username}</p>
                         <p>{message.timeStampFormatted}</p>
                         <p>{message.text}</p>
