@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react"
+
 export function UserProfileWrapper() {
 
     // if it is the current user's profile then show:
@@ -19,9 +21,24 @@ export function UserProfileWrapper() {
 
     // in order to do this, need to make a fetch request with the userID, which is perhaps derived from the params.
 
+    const [ isLoaded, setIsLoaded ] = useState(false);
+    const [ userData, setUserData ] = useState({});
+
+    useEffect(() => {
+        async function fetchUserData() {
+
+        }
+
+        fetchUserData();
+
+        if (!isLoaded) setIsLoaded(true);
+
+    }, [])
 
 
     return (
+        !isLoaded ? <p>Loading</p> :
+
         <>
         <p>It's me the user profile page</p>
         
