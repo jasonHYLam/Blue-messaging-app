@@ -28,7 +28,7 @@ export function UserProfileWrapper() {
 
     useEffect(() => {
         async function fetchUserData() {
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${userId}`, {
+            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/user_profile/${userId}`, {
                 mode: "cors",
                 credentials: "include",
                 headers: {
