@@ -23,6 +23,7 @@ export function UserProfileWrapper() {
 
     return (
         <>
+        <p>It's me the user profile page</p>
         
         </>
     )
