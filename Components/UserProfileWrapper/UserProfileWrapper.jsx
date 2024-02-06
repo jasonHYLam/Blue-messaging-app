@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
 
 export function UserProfileWrapper() {
 
@@ -23,10 +24,23 @@ export function UserProfileWrapper() {
 
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [ userData, setUserData ] = useState({});
+    const { userId } = useParams();
 
     useEffect(() => {
         async function fetchUserData() {
+            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${userId}`, {
+                mode: "cors",
+                credentials: "include",
+                headers: {
+                    "Content-Type" : "application/json",
+                    // "Accept" : "application/json",
+                    "Access-Control-Allow-Credentials": true,
+                },
+            })
 
+            // const fetchedData = await response.json();
+            // console.log('checking data for userProfileWrapper:')
+            // console.log(fetchedData)
         }
 
         fetchUserData();
