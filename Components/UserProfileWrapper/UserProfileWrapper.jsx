@@ -76,6 +76,7 @@ export function UserProfileWrapper() {
                 // "Accept" : "application/json",
                 "Access-Control-Allow-Credentials": true,
             },
+            body: JSON.stringify(data)
         })
 
         // I may need to refresh this page when change is submitted
