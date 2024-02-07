@@ -67,16 +67,16 @@ export function UserProfileWrapper() {
 
         // what do i submit?
         // I may have to change form into react hook form
-        // const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }${fetchURL}`, {
-        //     method: "POST",
-        //     mode: "cors",
-        //     credentials: "include",
-        //     headers: {
-        //         "Content-Type" : "application/json",
-        //         // "Accept" : "application/json",
-        //         "Access-Control-Allow-Credentials": true,
-        //     },
-        // })
+        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }${fetchURL}`, {
+            method: "PUT",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Content-Type" : "application/json",
+                // "Accept" : "application/json",
+                "Access-Control-Allow-Credentials": true,
+            },
+        })
 
         // I may need to refresh this page when change is submitted
         // Man I absolutely detest these pages where you submit a change and need to refresh the page.
