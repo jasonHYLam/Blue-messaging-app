@@ -23,8 +23,11 @@ export function UserProfileWrapper() {
     // in order to do this, need to make a fetch request with the userID, which is perhaps derived from the params.
 
     const [ isLoaded, setIsLoaded ] = useState(false);
+    const [ isCurrentUser, setIsCurrentUser ] = useState(false);
     const [ userData, setUserData ] = useState({});
     const { userId } = useParams();
+    console.log('checking isCurrent user')
+    console.log(isCurrentUser)
 
     useEffect(() => {
         async function fetchUserData() {
@@ -39,9 +42,10 @@ export function UserProfileWrapper() {
             })
 
             const fetchedData = await response.json();
-            console.log('checking data for userProfileWrapper:')
-            console.log(fetchedData)
+            // console.log('checking data for userProfileWrapper:')
+            // console.log(fetchedData)
             setUserData(fetchedData.matchingUser)
+            setIsCurrentUser(fetchedData.isCurrentUserProfile)
         }
 
         fetchUserData();
@@ -49,6 +53,9 @@ export function UserProfileWrapper() {
         if (!isLoaded) setIsLoaded(true);
 
     }, [])
+
+    const changeDescriptionButton = (<button>Change description</button>)
+    
 
 
     return (
@@ -59,6 +66,8 @@ export function UserProfileWrapper() {
         <h1>User Profile: {userData.username}</h1>
         <p>Description:</p>
         <p>{userData.description}</p>
+        {isCurrentUser ? changeDescriptionButton : null}
+
         
         </>
     )

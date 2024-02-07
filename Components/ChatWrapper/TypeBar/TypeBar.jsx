@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
@@ -30,17 +29,12 @@ export function TypeBar( {setIsUpdatePending} ) {
         })
 
         reset();
-        // This is required to update the chat messages.
-        // Not working for some reason. Promise is pending...
-        console.log('updatePending TO BE set to true')
         setIsUpdatePending(true);
-        console.log('updatePending set to true')
     }
 
     return (
         <>
         <form onSubmit={handleSubmit(postMessage)}>
-            {/* <input type="text" value={message} onChange={(e) => setMessage(e.target.value)}/> */}
             <input type="text" {...register("message", {required: true})} />
             <input type="submit"/>
         </form>
