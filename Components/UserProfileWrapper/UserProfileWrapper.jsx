@@ -29,6 +29,7 @@ export function UserProfileWrapper() {
     const [ isCurrentUser, setIsCurrentUser ] = useState(false);
     const [ userData, setUserData ] = useState({});
     const { userId } = useParams();
+    const [ imageToUpload, setImageToUpload ] = useState(null);
 
     // currentStatus takes the following values: "editDescription", "editPassword", "editUsername"
     const [ currentStatus, setCurrentStatus ] = useState('');
@@ -101,15 +102,27 @@ export function UserProfileWrapper() {
         </>
     )
 
+    function selectImageToUpload(e) {
+        // console.log('checking file')
+        // console.log(e.target.files[0])
+        setImageToUpload(e.target.files[0])
+    }
+
+    // async function uploadImage() {
+    //     await fetch
+
+    // }
+
     const changeImageButton = (
         <button >Change Image</button>
     )
 
     const changeImageForm = (
         <>
-        <form encType="multipart/form-data"></form>
-        <input type="file" name="profilePic" />
-        <input type="submit" />
+        <form encType="multipart/form-data">
+            <input type="file" name="profilePic" onChange={selectImageToUpload}/>
+            <input type="submit" />
+        </form>
         </>
     )
     
@@ -131,11 +144,6 @@ export function UserProfileWrapper() {
 
         {changeImageButton}
         {changeImageForm}
-
-
-        
-
-
         
         </>
     )
