@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Outlet } from "react-router-dom"
 
 import { Sidebar } from "../Sidebar/Sidebar"
+import { Header } from "../Header/Header"
 
 export function HomePage() {
 
@@ -19,7 +20,7 @@ export function HomePage() {
     return (
         <>
         <p>It's me, the home page</p>
-
+        < Header />
         < Sidebar />
         < Outlet />
 
