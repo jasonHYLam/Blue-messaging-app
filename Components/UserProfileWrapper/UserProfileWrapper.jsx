@@ -84,9 +84,6 @@ export function UserProfileWrapper() {
 
         setIsUpdatePending(true);
         setCurrentStatus("");
-
-        // I may need to refresh this page when change is submitted
-        // Man I absolutely detest these pages where you submit a change and need to refresh the page.
     }
 
     const cancelChangeButton = <button onClick={() => setCurrentStatus('')}>Cancel</button>
@@ -103,6 +100,18 @@ export function UserProfileWrapper() {
         {cancelChangeButton}
         </>
     )
+
+    const changeImageButton = (
+        <button >Change Image</button>
+    )
+
+    const changeImageForm = (
+        <>
+        <form encType="multipart/form-data"></form>
+        <input type="file" name="profilePic" />
+        <input type="submit" />
+        </>
+    )
     
 
 
@@ -113,11 +122,19 @@ export function UserProfileWrapper() {
         <p>It's me the user profile page</p>
         <h1>User Profile: {userData.username}</h1>
         <p>Description:</p>
+
         {currentStatus === "editDescription" 
         ? changeDescriptionForm 
         : <p>{userData.description}</p>
         }
         {isCurrentUser ? changeDescriptionButton : null}
+
+        {changeImageButton}
+        {changeImageForm}
+
+
+        
+
 
         
         </>
