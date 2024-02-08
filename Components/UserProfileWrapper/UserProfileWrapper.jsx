@@ -111,7 +111,8 @@ export function UserProfileWrapper() {
     async function uploadImage(e) {
 
         e.preventDefault();
-        await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/personal_profile/change_image`), {
+
+        await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/personal_profile/change_image`, {
             method: "PUT",
             mode: "cors",
             credentials: "include",
@@ -123,6 +124,7 @@ export function UserProfileWrapper() {
             // body: JSON.stringify(data)
             body: imageToUpload
         }
+        )
     }
 
     const changeImageButton = (
@@ -131,7 +133,7 @@ export function UserProfileWrapper() {
 
     const changeImageForm = (
         <>
-        <form encType="multipart/form-data" onSubmit={uploadImage}>
+        <form method="PUT" encType="multipart/form-data" onSubmit={uploadImage}>
             <input type="file" name="profilePic" onChange={selectImageToUpload}/>
             <input type="submit" disabled={!imageToUpload} />
         </form>
