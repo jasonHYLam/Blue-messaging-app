@@ -24,6 +24,7 @@ export function UserProfileWrapper() {
     // in order to do this, need to make a fetch request with the userID, which is perhaps derived from the params.
 
     const {register, handleSubmit} = useForm();
+    const [ isUpdatePending, setIsUpdatePending ] = useState(false);
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [ isCurrentUser, setIsCurrentUser ] = useState(false);
     const [ userData, setUserData ] = useState({});
@@ -57,7 +58,9 @@ export function UserProfileWrapper() {
 
         if (!isLoaded) setIsLoaded(true);
 
-    }, [])
+        if (isUpdatePending) setIsUpdatePending(false)
+
+    }, [isUpdatePending])
 
     async function submitChange(data) {
         const endRoute = (currentStatus === "editDescription") ? "change_description" : "";
@@ -78,6 +81,9 @@ export function UserProfileWrapper() {
             },
             body: JSON.stringify(data)
         })
+
+        setIsUpdatePending(true);
+        setCurrentStatus("");
 
         // I may need to refresh this page when change is submitted
         // Man I absolutely detest these pages where you submit a change and need to refresh the page.
