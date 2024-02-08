@@ -108,10 +108,22 @@ export function UserProfileWrapper() {
         setImageToUpload(e.target.files[0])
     }
 
-    // async function uploadImage() {
-    //     await fetch
+    async function uploadImage(e) {
 
-    // }
+        e.preventDefault();
+        await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/personal_profile/change_image`), {
+            method: "PUT",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                // "Content-Type" : "application/json",
+                // "Accept" : "application/json",
+                "Access-Control-Allow-Credentials": true,
+            },
+            // body: JSON.stringify(data)
+            body: imageToUpload
+        }
+    }
 
     const changeImageButton = (
         <button >Change Image</button>
@@ -119,9 +131,9 @@ export function UserProfileWrapper() {
 
     const changeImageForm = (
         <>
-        <form encType="multipart/form-data">
+        <form encType="multipart/form-data" onSubmit={uploadImage}>
             <input type="file" name="profilePic" onChange={selectImageToUpload}/>
-            <input type="submit" />
+            <input type="submit" disabled={!imageToUpload} />
         </form>
         </>
     )
