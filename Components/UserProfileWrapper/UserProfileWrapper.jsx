@@ -112,6 +112,9 @@ export function UserProfileWrapper() {
 
         e.preventDefault();
 
+        const data = new FormData();
+        data.append('profilePic', imageToUpload)
+
         await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/personal_profile/change_image`, {
             method: "PUT",
             mode: "cors",
@@ -122,7 +125,7 @@ export function UserProfileWrapper() {
                 "Access-Control-Allow-Credentials": true,
             },
             // body: JSON.stringify(data)
-            body: imageToUpload
+            body: data
         }
         )
     }
