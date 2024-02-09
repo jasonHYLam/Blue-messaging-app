@@ -6,8 +6,10 @@
 .profilePic {
     height: 50px;
 
+
 }
 .top {
     display: flex;
     flex-direction: row;
+    gap: 20px;
 }
