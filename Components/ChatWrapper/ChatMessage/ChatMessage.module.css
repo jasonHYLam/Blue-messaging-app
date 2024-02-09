@@ -1,0 +1,12 @@
+.messageWrapper {
+    display: flex;
+    flex-direction: row;
+}
+.profilePic {
+    /* height: ; */
+
+}
+.top {
+    display: flex;
+    flex-direction: row;
+}

@@ -27,11 +27,6 @@ export function ChatWrapper() {
     const [ chatMessages, setChatMessages ] = useState([]);
     const {chatId} = useParams();
     
-
-    // useEffect(() => {
-    //     setIsLoaded(true)
-    // })
-
     useEffect(() => {
         console.log('checking ChatWrapper useEffect:')
         async function fetchMessages() {
@@ -70,20 +65,7 @@ export function ChatWrapper() {
             <p>It's me, the chat</p>
             <h1>{chatName}</h1>
 
-            {chatMessages.map(message => {
-                return (
-                    <>
-                    < ChatMessage message={message}/>
-                    {/* <section>
-                        <Link to={`/home/user_profile/${message.author.id}`}>User pfp</Link>
-                        <p>{message.author.username}</p>
-                        <p>{message.timeStampFormatted}</p>
-                        {!message.imageURL ? null : <img src={message.imageURL} alt="" /> }
-                        <p>{message.text}</p>
-                    </section> */}
-                    </>
-                )
-            })}
+            {chatMessages.map(message => < ChatMessage message={message}/>)}
             < TypeBar setIsUpdatePending={setIsUpdatePending} />
         </section>
         </>
