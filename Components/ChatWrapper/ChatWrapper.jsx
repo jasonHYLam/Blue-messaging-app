@@ -1,3 +1,5 @@
+import styles from './ChatWrapper.module.css'
+
 import { useEffect, useState } from "react"
 import { TypeBar } from "./TypeBar/TypeBar"
 import { ChatMessage } from "./ChatMessage/ChatMessage";
