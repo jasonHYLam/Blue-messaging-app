@@ -45,23 +45,24 @@ export function Sidebar() {
         !isLoaded ? <p>Loading</p> :
 
         <>
-        <p>It's me, the sidebar</p>
+        <section>
+            <p>It's me, the sidebar</p>
+            <p>Chats:</p>
+            <ul>
+            {allChats.map(chat => {
+                return (
+                    <li>
+                        <Link to={`chats/${chat.id}`}>
+                            <section>{chat.name}</section>
+                        </Link>
+                    </li>
+                )
+            })}
 
-        <p>Chats:</p>
-        {allChats.map(chat => {
-            return (
-                <>
-                <Link to={`chats/${chat.id}`}>
-                    <section>{chat.name}</section>
-                </Link>
+            </ul>
 
-                {/* <section onClick={() => {openChat(chat)}}>
-                    <p>{chat.name}</p>
-                </section> */}
-                </>
+        </section>
 
-            )
-        })}
 
         <>
         <section>
