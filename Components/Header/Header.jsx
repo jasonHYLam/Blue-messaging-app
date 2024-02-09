@@ -11,33 +11,41 @@ export function Header() {
 
     useEffect(() => {
         async function getLoggedInUser() {
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/personal_profile/get_logged_in_user`, {
-                mode: "cors",
+            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_logged_in_user`, {
+                // mode: "cors",
                 credentials: "include",
-                headers: {
-                    "Content-Type" : "application/json",
-                    // "Accept" : "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
+                // headers: {
+                //     "Content-Type" : "application/json",
+                //     // "Accept" : "application/json",
+                //     "Access-Control-Allow-Credentials": true,
+                // },
             })
             
             const returnedData = await response.json();
 
             console.log(' checking returned data from database')
-            console.log(returnedData)
-            // setLoggedInUser
+            // console.log(returnedData)
+            console.log(returnedData.loggedInUser.id)
+            setLoggedInUser(returnedData.loggedInUser)
         }
+
         getLoggedInUser()
+
+        setIsLoaded(true)
 
     }, [])
 
     // links
     // user profile
+    console.log('checking loggedInUser.id')
+    console.log(`${loggedInUser.id}`)
     return (
         !isLoaded ? <p>Loading</p> : 
 
         <>
-        {/* <Link to={loggedInUser}>Profile</Link> */}
+        <p>It's me the header</p>
+
+        <Link to={`/home/user_profile/${loggedInUser.id}`}>Profile</Link>
         
         </>
     )

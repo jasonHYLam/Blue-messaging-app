@@ -33,8 +33,10 @@ export function UserProfileWrapper() {
 
     // currentStatus takes the following values: "editDescription", "editPassword", "editUsername"
     const [ currentStatus, setCurrentStatus ] = useState('');
-    console.log('checking isCurrent user')
-    console.log(isCurrentUser)
+    // console.log('checking isCurrent user')
+    // console.log(isCurrentUser)
+    console.log('checking userData')
+    console.log(userData)
 
     useEffect(() => {
         async function fetchUserData() {
@@ -151,6 +153,7 @@ export function UserProfileWrapper() {
         <>
         <p>It's me the user profile page</p>
         <h1>User Profile: {userData.username}</h1>
+        <img src={userData.profilePicURL} alt="" />
         <p>Description:</p>
 
         {currentStatus === "editDescription" 
