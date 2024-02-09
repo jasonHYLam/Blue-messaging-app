@@ -1,3 +1,5 @@
+import styles from './TypeBar.module.css'
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
@@ -66,11 +68,13 @@ export function TypeBar( {setIsUpdatePending} ) {
 
     return (
         <>
-        <form encType="multipart/form-data" onSubmit={handleSubmit(postMessage)}>
-            <input type="file" onChange={selectImageToUpload} />
-            <input type="text" {...register("message", {required: true})} />
-            <input type="submit"/>
-        </form>
+        <section className={styles.typeBar}>
+            <form encType="multipart/form-data" onSubmit={handleSubmit(postMessage)}>
+                <input type="file" onChange={selectImageToUpload} />
+                <input type="text" {...register("message", {required: true})} />
+                <input type="submit"/>
+            </form>
+        </section>
         </>
     )
 }
