@@ -17,7 +17,10 @@ export function ChatMessage( { message }) {
         <>
         <section className={styles.messageWrapper}>
             <Link to={`/home/user_profile/${message.author.id}`}>
-                <img src={message.author.profilePicURL} alt="" />
+                <img 
+                className={styles.profilePic} 
+                src={message.author.profilePicURL} 
+                alt="Profile Pic" />
             </Link>
             <section>
                 <section className={styles.top}>
