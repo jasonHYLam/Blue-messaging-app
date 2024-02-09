@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Sidebar.module.css';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { useNavigate, Outlet, Link } from 'react-router-dom';
 
 export function Sidebar() {
 
@@ -51,9 +51,13 @@ export function Sidebar() {
         {allChats.map(chat => {
             return (
                 <>
-                <section onClick={() => {openChat(chat)}}>
+                <Link to={`chats/${chat.id}`}>
+                    <section>{chat.name}</section>
+                </Link>
+
+                {/* <section onClick={() => {openChat(chat)}}>
                     <p>{chat.name}</p>
-                </section>
+                </section> */}
                 </>
 
             )

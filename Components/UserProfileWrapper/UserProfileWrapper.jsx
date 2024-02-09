@@ -35,8 +35,8 @@ export function UserProfileWrapper() {
     const [ currentStatus, setCurrentStatus ] = useState('');
     // console.log('checking isCurrent user')
     // console.log(isCurrentUser)
-    console.log('checking userData')
-    console.log(userData)
+    // console.log('checking userData')
+    // console.log(userData)
 
     useEffect(() => {
         async function fetchUserData() {
@@ -71,15 +71,12 @@ export function UserProfileWrapper() {
         console.log('checking data')
         console.log(data)
 
-        // what do i submit?
-        // I may have to change form into react hook form
         const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }${fetchURL}`, {
             method: "PUT",
             mode: "cors",
             credentials: "include",
             headers: {
                 "Content-Type" : "application/json",
-                // "Accept" : "application/json",
                 "Access-Control-Allow-Credentials": true,
             },
             body: JSON.stringify(data)

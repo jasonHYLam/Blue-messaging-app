@@ -45,8 +45,8 @@ export function ChatWrapper() {
             })
             
             const fetchedData = await response.json();
-            // console.log('checking data for ChatWrapper:')
-            // console.log(fetchedData)
+            console.log('checking data for ChatWrapper:')
+            console.log(fetchedData)
 
             setChatMessages(fetchedData.chat.chatMessages)
 
@@ -60,7 +60,8 @@ export function ChatWrapper() {
         if (!isLoaded) setIsLoaded(true);
 
         setIsUpdatePending(false);
-    }, [isUpdatePending, isLoaded])
+    }, [ isUpdatePending, isLoaded, chatId ])
+
     return (
         !isLoaded ? <p>Loading</p> :
         <>
@@ -75,6 +76,7 @@ export function ChatWrapper() {
                         <Link to={`/home/user_profile/${message.author.id}`}>User pfp</Link>
                         <p>{message.author.username}</p>
                         <p>{message.timeStampFormatted}</p>
+                        {!message.imageURL ? null : <img src={message.imageURL} alt="" /> }
                         <p>{message.text}</p>
                     </section>
                     </>
