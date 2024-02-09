@@ -1,3 +1,5 @@
+import styles from './ChatMessage.module.css';
+
 import { Link } from "react-router-dom"
 export function ChatMessage( { message }) {
     // should contain:
