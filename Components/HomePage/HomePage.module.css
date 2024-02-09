@@ -1,0 +1,9 @@
+.homePage {
+    display: flex;
+    flex-direction: column;
+}
+
+.belowHeader {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,3 +1,5 @@
+import styles from './HomePage.module.css'
+
 import { useEffect } from "react"
 import { Outlet } from "react-router-dom"
 
@@ -19,10 +21,13 @@ export function HomePage() {
     // Will need to add an "Add friend" component and "users online" button.
     return (
         <>
-        <p>It's me, the home page</p>
-        < Header />
-        < Sidebar />
-        < Outlet />
+        <main className={styles.homePage}>
+            < Header />
+            <section className={styles.belowHeader}>
+                < Sidebar />
+                < Outlet />
+            </section>
+        </main>
 
 
         </>
