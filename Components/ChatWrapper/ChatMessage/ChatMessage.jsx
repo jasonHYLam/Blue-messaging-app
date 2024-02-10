@@ -33,6 +33,14 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
+                {!message.messageReplyingTo ? null : 
+                
+                <section>
+                    <p>{message.messageReplyingTo.author.username}</p>
+                    <p>{message.messageReplyingTo.text}</p>
+
+                </section>
+                }
 
                 <section className={styles.top}>
                     <p>{message.author.username}</p>

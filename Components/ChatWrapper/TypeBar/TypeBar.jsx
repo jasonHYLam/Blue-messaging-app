@@ -50,7 +50,7 @@ export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToRep
 
         else {
 
-            const messageObject = {
+            const modifiedMessageObject = {
                 message: messageObject.message,
                 messageToReplyTo: messageToReplyTo,
             }
@@ -63,7 +63,7 @@ export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToRep
                     "Content-Type" : "application/json",
                     "Access-Control-Allow-Credentials": true,
                 },
-                body: JSON.stringify(messageObject),
+                body: JSON.stringify(modifiedMessageObject),
             })
 
         }
