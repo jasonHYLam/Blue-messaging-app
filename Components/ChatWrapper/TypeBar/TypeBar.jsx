@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
-export function TypeBar( {setIsUpdatePending} ) {
+export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToReplyTo } ) {
 
     // console.log('checking setIsUpdatePending prop in TypeBar')
     // console.log(setIsUpdatePending)
