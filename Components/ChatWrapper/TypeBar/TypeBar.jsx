@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 
 export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToReplyTo } ) {
 
+    console.log('messageToReplyTo')
+    console.log(messageToReplyTo)
     // console.log('checking setIsUpdatePending prop in TypeBar')
     // console.log(setIsUpdatePending)
     const {chatId} = useParams();
@@ -69,6 +71,17 @@ export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToRep
     return (
         <>
         <section className={styles.typeBar}>
+
+            {!messageToReplyTo ? null : 
+            <>
+            <section>
+                <p>{messageToReplyTo.author.username}</p>
+                <p>{messageToReplyTo.text}</p>
+                <button onClick={() => setMessageToReplyTo(null)}>Cancel reply</button>
+            </section>
+            </>
+            }
+
             <form encType="multipart/form-data" onSubmit={handleSubmit(postMessage)}>
                 <input type="file" onChange={selectImageToUpload} />
                 <input type="text" {...register("message", {required: true})} />

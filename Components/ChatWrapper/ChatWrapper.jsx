@@ -27,11 +27,14 @@ export function ChatWrapper() {
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [ chatName, setChatName ] = useState('');
     const [ chatMessages, setChatMessages ] = useState([]);
-    const [ messageToReplyTo, setMessageToReplyTo ] = useState({});
+    const [ messageToReplyTo, setMessageToReplyTo ] = useState(null);
     const {chatId} = useParams();
+
+    console.log('checking messageToReplyTo:')
+    console.log(messageToReplyTo)
     
     useEffect(() => {
-        console.log('checking ChatWrapper useEffect:')
+        // console.log('checking ChatWrapper useEffect:')
         async function fetchMessages() {
             const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}`, {
                 mode: "cors",
@@ -44,8 +47,8 @@ export function ChatWrapper() {
             })
             
             const fetchedData = await response.json();
-            console.log('checking data for ChatWrapper:')
-            console.log(fetchedData)
+            // console.log('checking data for ChatWrapper:')
+            // console.log(fetchedData)
 
             setChatMessages(fetchedData.chat.chatMessages)
 
@@ -80,6 +83,7 @@ export function ChatWrapper() {
             messageToReplyTo={messageToReplyTo}
             setMessageToReplyTo={setMessageToReplyTo}
             />
+
         </section>
         </>
     )
