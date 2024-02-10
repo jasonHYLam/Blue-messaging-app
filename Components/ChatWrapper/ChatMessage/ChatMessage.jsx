@@ -42,7 +42,7 @@ export function ChatMessage( { message }) {
 
                     {!isHovered ? null : 
                     
-                    <section>
+                    <section className={styles.messageOptions}>
                         <button>Reply</button>
                         <button>Add reaction</button>
                     </section>

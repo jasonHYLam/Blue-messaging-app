@@ -2,12 +2,18 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
+    position: relative;
 }
+
+.messageOptions {
+    position: absolute;
+
+}
+
 .profilePic {
     height: 50px;
-
-
 }
+
 .top {
     display: flex;
     flex-direction: row;
