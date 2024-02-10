@@ -34,6 +34,7 @@ export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToRep
             const data = new FormData();
             data.append('image', imageToUpload)
             data.append('message', messageObject.message)
+            data.append('messageToReplyTo', messageToReplyTo)
 
             await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}/create_message_with_image`, {
                 method: "POST",
@@ -45,10 +46,14 @@ export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToRep
                 },
                 body: data,
             })
-
         }
 
         else {
+
+            const messageObject = {
+                message: messageObject.message,
+                messageToReplyTo: messageToReplyTo,
+            }
 
             await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}/create_message`, {
                 method: "POST",
