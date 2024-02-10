@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './ChatMessage.module.css';
 
 import { Link } from "react-router-dom"
-export function ChatMessage( { message }) {
+export function ChatMessage( { message, setMessageToReplyTo }) {
     // should contain:
 
     // message author username and profile image.
@@ -47,7 +47,7 @@ export function ChatMessage( { message }) {
                     {!isHovered ? null : 
                     
                     <section className={styles.messageOptions}>
-                        <button>Reply</button>
+                        <button onClick={() => setMessageToReplyTo(message)}>Reply</button>
                         <button>Add reaction</button>
                     </section>
 

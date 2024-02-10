@@ -68,7 +68,12 @@ export function ChatWrapper() {
             <p>It's me, the chat</p>
             <h1>{chatName}</h1>
 
-            {chatMessages.map(message => < ChatMessage message={message}/>)}
+            {chatMessages.map(message => {
+                return (< ChatMessage 
+                    message={message} 
+                    setMessageToReplyTo={setMessageToReplyTo}
+                    />)
+                })}
             < TypeBar setIsUpdatePending={setIsUpdatePending} />
         </section>
         </>
