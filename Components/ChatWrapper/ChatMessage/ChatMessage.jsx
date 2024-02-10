@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './ChatMessage.module.css';
 
 import { Link } from "react-router-dom"
@@ -13,6 +14,9 @@ export function ChatMessage( { message }) {
     // if hovering, then buttons to allow reaction or reply.
 
     // if making a reply or a reaction, then that will need to update the message in the database.
+
+    const [ isHovered, setIsHovered ] = useState(false);
+
     return (
         <>
         <section className={styles.messageWrapper}>
@@ -23,12 +27,30 @@ export function ChatMessage( { message }) {
                 alt="Profile Pic" />
             </Link>
             <section>
+
                 <section className={styles.top}>
                     <p>{message.author.username}</p>
                     <p>{message.timeStampFormatted}</p>
                 </section>
-                {!message.imageURL ? null : <img src={message.imageURL} alt="" /> }
-                <p>{message.text}</p>
+
+                <section 
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                >
+                    {!message.imageURL ? null : <img src={message.imageURL} alt="" /> }
+                    <p>{message.text}</p>
+
+                    {!isHovered ? null : 
+                    
+                    <section>
+                        <button>Reply</button>
+                        <button>Add reaction</button>
+                    </section>
+
+                    }
+
+                </section>
+
             </section>
         </section>
         </>
