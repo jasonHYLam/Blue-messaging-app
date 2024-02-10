@@ -27,6 +27,7 @@ export function ChatWrapper() {
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [ chatName, setChatName ] = useState('');
     const [ chatMessages, setChatMessages ] = useState([]);
+    const [ messageToReplyTo, setMessageToReplyTo ] = useState({});
     const {chatId} = useParams();
     
     useEffect(() => {
