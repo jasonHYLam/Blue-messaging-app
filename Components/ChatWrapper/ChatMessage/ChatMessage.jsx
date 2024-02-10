@@ -34,7 +34,7 @@ export function ChatMessage( { message }) {
                 </section>
 
                 <section 
-                onMouseEnter={() => setIsHovered(true)}
+                onMouseOver={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 >
                     {!message.imageURL ? null : <img src={message.imageURL} alt="" /> }
