@@ -119,11 +119,8 @@ export function UserProfileWrapper() {
             mode: "cors",
             credentials: "include",
             headers: {
-                // "Content-Type" : "application/json",
-                // "Accept" : "application/json",
                 "Access-Control-Allow-Credentials": true,
             },
-            // body: JSON.stringify(data)
             body: data
         }
         )
