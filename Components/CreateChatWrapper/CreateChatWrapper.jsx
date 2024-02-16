@@ -7,18 +7,18 @@ export function CreateChatWrapper() {
     // name of chat (optional)
     // users to add (at least one)
     const [ usersNotAddedToChat, setUsersNotAddedToChat ] = useState([]);
-    const [ usersAddedToChat, setUsersAddedToChat ] = useState([]);
+    const [ usersToAddToChat, setUsersToAddToChat ] = useState([]);
     // probably just list em out, like i did for searchUser
     console.log('checking usersNotAddedToChat')
     console.log(usersNotAddedToChat)
 
     async function postToCreateChat() {
 
-        // const addedToChatUserIds = usersAddedToChat.
+        const addToChatUserIds = usersToAddToChat.friends.map(friend => friend.friendUser)
         const dataToPost = {
             chatName,
             // what exactly is this... if anything this is a wrapper. this is wrapper that contains friendId (in friendUser)
-            usersAddedToChat,
+            addToChatUserIds: addToChatUserIds,
         }
 
         console.log('checking dataToPost')
@@ -50,8 +50,8 @@ export function CreateChatWrapper() {
     }
 
     function markUserToAddToChat(user) {
-        setUsersAddedToChat([
-            ...usersAddedToChat,
+        setUsersToAddToChat([
+            ...usersToAddToChat,
             user
         ])
     }
@@ -98,7 +98,7 @@ export function CreateChatWrapper() {
             })}
 
             <p>Added to chat:</p>
-            {usersAddedToChat.map(user => {
+            {usersToAddToChat.map(user => {
                 return (
                     <>
                     <p>{user.friendUser.username}</p>
