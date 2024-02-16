@@ -12,7 +12,7 @@ export function CreateChatWrapper() {
     console.log('checking usersNotAddedToChat')
     console.log(usersNotAddedToChat)
 
-    async function getAndSetData() {
+    async function getAndSetFriendsData() {
         // must be similar to that of searchUser
         // I guess I need to create new backend callback for addingFriendsToChat
         const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/show_friends_for_chat`, {
@@ -68,7 +68,7 @@ export function CreateChatWrapper() {
         setIsLoaded(true)
 
         async function getAndSetDataOnLoad () {
-            await getAndSetData()
+            await getAndSetFriendsData()
         }
         getAndSetDataOnLoad();
     },[isLoaded])
