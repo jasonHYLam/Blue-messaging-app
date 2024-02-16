@@ -13,6 +13,8 @@ export function CreateChatWrapper() {
     console.log(usersNotAddedToChat)
 
     async function postToCreateChat() {
+
+        // const addedToChatUserIds = usersAddedToChat.
         const dataToPost = {
             chatName,
             // what exactly is this... if anything this is a wrapper. this is wrapper that contains friendId (in friendUser)
@@ -37,7 +39,7 @@ export function CreateChatWrapper() {
     async function getAndSetFriendsDataOnMount() {
         // must be similar to that of searchUser
         // I guess I need to create new backend callback for addingFriendsToChat
-        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/show_friends_for_chat`, {
+        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/show_friends_for_initial_chat_creation`, {
             mode: "cors",
             credentials: "include",
         })
