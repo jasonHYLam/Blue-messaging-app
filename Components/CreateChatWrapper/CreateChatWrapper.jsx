@@ -12,26 +12,6 @@ export function CreateChatWrapper() {
     console.log('checking usersNotAddedToChat')
     console.log(usersNotAddedToChat)
 
-    async function getAndSetFriendsData() {
-        // must be similar to that of searchUser
-        // I guess I need to create new backend callback for addingFriendsToChat
-        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/show_friends_for_chat`, {
-            mode: "cors",
-            credentials: "include",
-        })
-
-        const fetchedData = await response.json();
-        console.log(fetchedData)
-        setUsersNotAddedToChat(fetchedData.friends)
-    }
-
-    function markUserToAddToChat(user) {
-        setUsersAddedToChat([
-            ...usersAddedToChat,
-            user
-        ])
-    }
-
     async function postToCreateChat() {
         const dataToPost = {
             chatName,
@@ -54,6 +34,27 @@ export function CreateChatWrapper() {
         })
     }
 
+    async function getAndSetFriendsDataOnMount() {
+        // must be similar to that of searchUser
+        // I guess I need to create new backend callback for addingFriendsToChat
+        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/show_friends_for_chat`, {
+            mode: "cors",
+            credentials: "include",
+        })
+
+        const fetchedData = await response.json();
+        console.log(fetchedData)
+        setUsersNotAddedToChat(fetchedData.friends)
+    }
+
+    function markUserToAddToChat(user) {
+        setUsersAddedToChat([
+            ...usersAddedToChat,
+            user
+        ])
+    }
+
+
     function removeUserFromNotAddedToChat(userToRemove) {
         const usersNotAdded = usersNotAddedToChat.filter(user => {
             return user._id !== userToRemove._id
@@ -68,7 +69,7 @@ export function CreateChatWrapper() {
         setIsLoaded(true)
 
         async function getAndSetDataOnLoad () {
-            await getAndSetFriendsData()
+            await getAndSetFriendsDataOnMount()
         }
         getAndSetDataOnLoad();
     },[isLoaded])
