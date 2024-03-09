@@ -1,20 +1,27 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function CreateChatWrapper() {
 
+  const navigate = useNavigate();
+
     const [ isLoaded, setIsLoaded ] = useState(false);
+    // optional
     const [ chatName, setChatName ] = useState('');
-    // name of chat (optional)
     // users to add (at least one)
     const [ usersNotAddedToChat, setUsersNotAddedToChat ] = useState([]);
     const [ usersToAddToChat, setUsersToAddToChat ] = useState([]);
     // probably just list em out, like i did for searchUser
-    console.log('checking usersNotAddedToChat')
-    console.log(usersNotAddedToChat)
+    console.log('checking usersToAddToChat')
+    console.log(usersToAddToChat)
+    
+    // console.log('checking usersNotAddedToChat')
+    // console.log(usersNotAddedToChat)
 
     async function postToCreateChat() {
 
-        const addToChatUserIds = usersToAddToChat.friends.map(friend => friend.friendUser)
+        // const addToChatUserIds = usersToAddToChat.friends.map(friend => friend.friendUser)
+        const addToChatUserIds = usersToAddToChat.map(friend => friend._id)
         const dataToPost = {
             chatName,
             // what exactly is this... if anything this is a wrapper. this is wrapper that contains friendId (in friendUser)
@@ -34,6 +41,11 @@ export function CreateChatWrapper() {
             },
             body: JSON.stringify(dataToPost),
         })
+
+        const data = await response.json();
+        console.log('checking newChatid')
+        console.log(newChatId)
+
     }
 
     async function getAndSetFriendsDataOnMount() {
