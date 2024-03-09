@@ -44,7 +44,9 @@ export function CreateChatWrapper() {
 
         const data = await response.json();
         console.log('checking newChatid')
-        console.log(newChatId)
+        console.log(data)
+
+        navigate(`/home/chats/${data.chatid}`)
 
     }
 
