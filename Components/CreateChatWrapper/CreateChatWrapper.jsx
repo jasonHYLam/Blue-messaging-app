@@ -11,16 +11,9 @@ export function CreateChatWrapper() {
     // users to add (at least one)
     const [ usersNotAddedToChat, setUsersNotAddedToChat ] = useState([]);
     const [ usersToAddToChat, setUsersToAddToChat ] = useState([]);
-    // probably just list em out, like i did for searchUser
-    console.log('checking usersToAddToChat')
-    console.log(usersToAddToChat)
-    
-    // console.log('checking usersNotAddedToChat')
-    // console.log(usersNotAddedToChat)
 
     async function postToCreateChat() {
 
-        // const addToChatUserIds = usersToAddToChat.friends.map(friend => friend.friendUser)
         const addToChatUserIds = usersToAddToChat.map(friend => friend._id)
         const dataToPost = {
             chatName,
@@ -47,7 +40,6 @@ export function CreateChatWrapper() {
         console.log(data)
 
         navigate(`/home/chats/${data.chatid}`)
-
     }
 
     async function getAndSetFriendsDataOnMount() {

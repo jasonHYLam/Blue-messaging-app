@@ -57,7 +57,25 @@ export function ChatWrapper() {
             }
         }
 
+        async function fetchFriends() {
+          const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}/show_friends_in_chat`, {
+                mode: "cors",
+                credentials: "include",
+                headers: {
+                    "Content-Type" : "application/json",
+                    // "Accept" : "application/json",
+                    "Access-Control-Allow-Credentials": true,
+                },
+          })
+
+          const fetchedData = await response.json(); 
+          const friends = fetchedData
+          console.log('checking friends')
+          console.log(friends)
+        }
+
         fetchMessages();
+        fetchFriends();
 
         if (!isLoaded) setIsLoaded(true);
 
