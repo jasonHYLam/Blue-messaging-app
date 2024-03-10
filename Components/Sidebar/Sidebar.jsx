@@ -9,6 +9,9 @@ export function Sidebar() {
 
     const [ allChats, setAllChats ] = useState([]);
 
+    console.log('checking allChats')
+    console.log(allChats)
+
     useEffect(() => {
         setIsLoaded(true);
     },[])
@@ -53,9 +56,16 @@ export function Sidebar() {
                     <button onClick={() => navigate(`create_chat`)}>Create new chat</button>
                 </section>
 
+
                 <p>Chats:</p>
 
+                {
+                  allChats.length === 0 ? 
+                  <p>No chats!</p>
+                  :
+
                 <ul>
+
                 {allChats.map(chat => {
                     return (
                         <li>
@@ -67,6 +77,9 @@ export function Sidebar() {
                 })}
 
                 </ul>
+                }
+
+
 
             </section>
         </>

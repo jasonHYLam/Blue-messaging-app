@@ -57,6 +57,7 @@ export function ChatWrapper() {
             }
         }
 
+        // ADDED THIS JUST NOW
         async function fetchFriends() {
           const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}/show_friends_in_chat`, {
                 mode: "cors",

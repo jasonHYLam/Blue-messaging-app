@@ -12,9 +12,11 @@ export function CreateChatWrapper() {
     const [ usersNotAddedToChat, setUsersNotAddedToChat ] = useState([]);
     const [ usersToAddToChat, setUsersToAddToChat ] = useState([]);
 
+    console.log('checking usersToAddToChat')
+    console.log(usersToAddToChat)
     async function postToCreateChat() {
 
-        const addToChatUserIds = usersToAddToChat.map(friend => friend._id)
+        const addToChatUserIds = usersToAddToChat.map(userFriendRelation => userFriendRelation.friendUser._id)
         const dataToPost = {
             chatName,
             // what exactly is this... if anything this is a wrapper. this is wrapper that contains friendId (in friendUser)
