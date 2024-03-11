@@ -90,6 +90,9 @@ export function ChatWrapper() {
             <p>It's me, the chat</p>
             <h1>{chatName}</h1>
 
+            <p>View Friends:</p>
+            <button></button>
+
             {chatMessages.map(message => {
                 return (< ChatMessage 
                     message={message} 

@@ -70,7 +70,11 @@ export function Sidebar() {
                     return (
                         <li>
                             <Link to={`chats/${chat.id}`}>
-                                <section>{chat.name}</section>
+                                <section>
+                                  <p>{chat.name}</p>
+                                  <p>{chat.lastUpdated}</p>
+                                  </section>
+
                             </Link>
                         </li>
                     )
