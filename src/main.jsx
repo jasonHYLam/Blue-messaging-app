@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 
+import { ErrorPage } from '../Components/ErrorPage/ErrorPage';
 import { LoginPage } from '../Components/LoginPage/LoginPage';
 import { SignupPage } from '../Components/SignupPage/SignupPage';
 import { HomePage } from '../Components/HomePage/HomePage';
@@ -14,9 +15,14 @@ import { UserProfileWrapper } from '../Components/UserProfileWrapper/UserProfile
 const router = createBrowserRouter([
   {
     path: '/',
+    errorElement: <ErrorPage/>,
     // element: 
     //PageLayout
     children: [
+      {
+        path: 'error',
+        element: <ErrorPage/>,
+      },
       {
         path: 'login',
         // login-signup
