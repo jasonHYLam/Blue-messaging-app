@@ -1,7 +1,7 @@
 import styles from './HomePage.module.css'
 
 import { useEffect, useState } from "react"
-import { Outlet, useOutletContext } from "react-router-dom"
+import { Outlet, } from "react-router-dom"
 
 import { Sidebar } from "../Sidebar/Sidebar"
 import { Header } from "../Header/Header"
@@ -9,6 +9,7 @@ import { Header } from "../Header/Header"
 export function HomePage() {
 
   const [ chatsList, setChatsList ] = useState([]);
+  const [ updateChatsList, setUpdateChatsList ] = useState(true)
     // create fetch request for req.user. 
     // useEffect(() => {
     //     fetch(`${ import.meta.env.VITE_BACKEND_URL }`)
@@ -22,6 +23,7 @@ export function HomePage() {
     // Will need to add an "Add friend" component and "users online" button.
 
     useEffect(() => {
+
       async function fetchChats() {
         const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_chats_for_user`, {
           mode: "cors",
@@ -38,11 +40,13 @@ export function HomePage() {
         const fetchedData = await response.json();
 
         setChatsList(fetchedData.allChats)
+
+        setUpdateChatsList(false)
       }
 
-      fetchChats();
+      if(updateChatsList) fetchChats()
 
-    }, [])
+    }, [updateChatsList])
 
     return (
         <>
@@ -50,7 +54,7 @@ export function HomePage() {
             < Header />
             <section className={styles.belowHeader}>
                 < Sidebar chatsList={chatsList} />
-                < Outlet context={setChatsList} />
+                < Outlet context={[ setUpdateChatsList ]} />
             </section>
         </main>
 

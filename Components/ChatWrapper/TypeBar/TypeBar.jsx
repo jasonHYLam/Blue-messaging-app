@@ -4,7 +4,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
-export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToReplyTo } ) {
+export function TypeBar( { 
+  setIsUpdatePending, 
+  messageToReplyTo, 
+  setMessageToReplyTo,
+  setUpdateChatsList,
+ } ) {
 
     console.log('messageToReplyTo')
     console.log(messageToReplyTo)
@@ -70,6 +75,7 @@ export function TypeBar( { setIsUpdatePending, messageToReplyTo, setMessageToRep
 
         reset();
         setIsUpdatePending(true);
+        setUpdateChatsList(true);
 
     }
 

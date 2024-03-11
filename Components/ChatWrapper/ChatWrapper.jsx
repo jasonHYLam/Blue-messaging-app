@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { TypeBar } from "./TypeBar/TypeBar"
 import { ChatMessage } from "./ChatMessage/ChatMessage";
 import { ViewFriendsModal } from './ViewFriendsModal/ViewFriendsModal';
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useOutletContext } from "react-router-dom";
 
 export function ChatWrapper() {
 
@@ -34,6 +34,7 @@ export function ChatWrapper() {
     const [ showViewFriendsModal, setShowViewFriendsModal ] = useState(false);
     const {chatId} = useParams();
 
+    const [ setUpdateChatsList ] = useOutletContext();
     
     useEffect(() => {
         // console.log('checking ChatWrapper useEffect:')
@@ -103,9 +104,10 @@ export function ChatWrapper() {
                 })}
 
             < TypeBar 
-            setIsUpdatePending={setIsUpdatePending} 
-            messageToReplyTo={messageToReplyTo}
-            setMessageToReplyTo={setMessageToReplyTo}
+              setIsUpdatePending={setIsUpdatePending} 
+              messageToReplyTo={messageToReplyTo}
+              setMessageToReplyTo={setMessageToReplyTo}
+              setUpdateChatsList={setUpdateChatsList}
             />
 
         </section>
