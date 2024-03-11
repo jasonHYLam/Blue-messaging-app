@@ -158,6 +158,7 @@ export function UserProfileWrapper() {
 
         {changeImageButton}
         {changeImageForm}
+        {isCurrentUser ? <p>Logout</p>: null}
         
         </>
     )

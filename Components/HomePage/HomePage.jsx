@@ -1,13 +1,14 @@
 import styles from './HomePage.module.css'
 
 import { useEffect, useState } from "react"
-import { Outlet, } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 
 import { Sidebar } from "../Sidebar/Sidebar"
 import { Header } from "../Header/Header"
 
 export function HomePage() {
 
+  const navigate = useNavigate();
   const [ chatsList, setChatsList ] = useState([]);
   const [ updateChatsList, setUpdateChatsList ] = useState(true)
     // create fetch request for req.user. 
