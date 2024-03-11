@@ -2,43 +2,40 @@ import { useEffect, useState } from 'react';
 import styles from './Sidebar.module.css';
 import { useNavigate, Outlet, Link } from 'react-router-dom';
 
-export function Sidebar() {
+export function Sidebar({chatsList}) {
 
     const [ isLoaded, setIsLoaded ] = useState(false);
     const navigate = useNavigate();
 
-    const [ allChats, setAllChats ] = useState([]);
+    // const [ allChats, setAllChats ] = useState([]);
 
-    console.log('checking allChats')
-    console.log(allChats)
+    // console.log('checking allChats')
+    // console.log(allChats)
 
     useEffect(() => {
         setIsLoaded(true);
     },[])
 
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_chats_for_user`, {
-                // mode: "cors",
-                // not sure if withCredentials is required
-                // withCredentials: "true",
-                credentials: "include",
-            })
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_chats_for_user`, {
+    //             credentials: "include",
+    //         })
 
-            if (response.status === 401) navigate('/login');
+    //         if (response.status === 401) navigate('/login');
 
-            const data = await response.json();
-            console.log('checking data for SideBar')
-            console.log(data)
-            setAllChats(data.allChats)
-        }
+    //         const data = await response.json();
+    //         console.log('checking data for SideBar')
+    //         console.log(data)
+    //         setAllChats(data.allChats)
+    //     }
 
-        fetchData()
-    }, [])
+    //     fetchData()
+    // }, [])
 
-    async function openChat(chat) {
-        navigate(`chats/${chat.id}`)
-    }
+    // async function openChat(chat) {
+    //     navigate(`chats/${chat.id}`)
+    // }
     // to store list of chatLinks
     // should make fetch request to get all chats, perhaps updated by time (most recently accessed at the top)
     // so perhaps each chat should have a lastUpdated field. When making a comment, update this field.
@@ -60,13 +57,15 @@ export function Sidebar() {
                 <p>Chats:</p>
 
                 {
-                  allChats.length === 0 ? 
+                  // allChats.length === 0 ? 
+                  chatsList.length === 0 ? 
                   <p>No chats!</p>
                   :
 
                 <ul>
 
-                {allChats.map(chat => {
+                {/* {allChats.map(chat => { */}
+                {chatsList.map(chat => {
                     return (
                         <li>
                             <Link to={`chats/${chat.id}`}>

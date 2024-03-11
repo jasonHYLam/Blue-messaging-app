@@ -33,6 +33,8 @@ export function HomePage() {
           },
         })
 
+        if (response.status === 401) navigate('/login');
+
         const fetchedData = await response.json();
 
         setChatsList(fetchedData.allChats)
@@ -40,14 +42,14 @@ export function HomePage() {
 
       fetchChats();
 
-    })
+    }, [])
 
     return (
         <>
         <main className={styles.homePage}>
             < Header />
             <section className={styles.belowHeader}>
-                < Sidebar />
+                < Sidebar chatsList={chatsList} />
                 < Outlet />
             </section>
         </main>
