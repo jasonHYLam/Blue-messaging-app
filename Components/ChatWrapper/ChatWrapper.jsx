@@ -3,6 +3,7 @@ import styles from './ChatWrapper.module.css'
 import { useEffect, useState } from "react"
 import { TypeBar } from "./TypeBar/TypeBar"
 import { ChatMessage } from "./ChatMessage/ChatMessage";
+import { ViewFriendsModal } from './ViewFriendsModal/ViewFriendsModal';
 import { useParams, Link } from "react-router-dom";
 
 export function ChatWrapper() {
@@ -28,6 +29,9 @@ export function ChatWrapper() {
     const [ chatName, setChatName ] = useState('');
     const [ chatMessages, setChatMessages ] = useState([]);
     const [ messageToReplyTo, setMessageToReplyTo ] = useState(null);
+    const [ friendsList, setFriendsList ] = useState([]);
+
+    const [ showViewFriendsModal, setShowViewFriendsModal ] = useState(false);
     const {chatId} = useParams();
 
     console.log('checking messageToReplyTo:')
@@ -91,7 +95,10 @@ export function ChatWrapper() {
             <h1>{chatName}</h1>
 
             <p>View Friends:</p>
-            <button></button>
+            <button onClick={() => {setShowViewFriendsModal(!showViewFriendsModal)}}>View Friends</button>
+             {
+              showViewFriendsModal ? <ViewFriendsModal/> : null
+             }
 
             {chatMessages.map(message => {
                 return (< ChatMessage 
