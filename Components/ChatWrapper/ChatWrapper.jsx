@@ -76,7 +76,8 @@ export function ChatWrapper() {
           const fetchedData = await response.json(); 
           const friends = fetchedData
           console.log('checking friends')
-          console.log(friends)
+          console.log(fetchedData)
+          setFriendsList(fetchedData.allUsers)
         }
 
         fetchMessages();
@@ -97,7 +98,7 @@ export function ChatWrapper() {
             <p>View Friends:</p>
             <button onClick={() => {setShowViewFriendsModal(!showViewFriendsModal)}}>View Friends</button>
              {
-              showViewFriendsModal ? <ViewFriendsModal/> : null
+              showViewFriendsModal ? <ViewFriendsModal friendsList={friendsList}/> : null
              }
 
             {chatMessages.map(message => {

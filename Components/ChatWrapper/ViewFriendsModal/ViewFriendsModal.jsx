@@ -1,13 +1,17 @@
-export function ViewFriendsModal(friendsList) {
+export function ViewFriendsModal({friendsList}) {
 
   console.log(friendsList)
   return (
     <>
-    <p>List of Friends:</p>
+    <p>In chat:</p>
     <ul>
-      {/* {friendsList.map(friend => {
-        friend.name
-      })} */}
+      {friendsList.map(friend => {
+        return (
+          <>
+            <p>{friend.username}</p>
+          </>
+        )
+      })}
     </ul>
     </>
   )
