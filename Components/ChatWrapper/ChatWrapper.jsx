@@ -34,8 +34,6 @@ export function ChatWrapper() {
     const [ showViewFriendsModal, setShowViewFriendsModal ] = useState(false);
     const {chatId} = useParams();
 
-    console.log('checking messageToReplyTo:')
-    console.log(messageToReplyTo)
     
     useEffect(() => {
         // console.log('checking ChatWrapper useEffect:')
@@ -51,8 +49,6 @@ export function ChatWrapper() {
             })
             
             const fetchedData = await response.json();
-            // console.log('checking data for ChatWrapper:')
-            // console.log(fetchedData)
 
             setChatMessages(fetchedData.chat.chatMessages)
 
@@ -68,13 +64,11 @@ export function ChatWrapper() {
                 credentials: "include",
                 headers: {
                     "Content-Type" : "application/json",
-                    // "Accept" : "application/json",
                     "Access-Control-Allow-Credentials": true,
                 },
           })
 
           const fetchedData = await response.json(); 
-          const friends = fetchedData
           console.log('checking friends')
           console.log(fetchedData)
           setFriendsList(fetchedData.allUsers)
