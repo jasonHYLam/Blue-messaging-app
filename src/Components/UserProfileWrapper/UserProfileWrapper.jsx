@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export function UserProfileWrapper() {
@@ -23,6 +23,7 @@ export function UserProfileWrapper() {
 
     // in order to do this, need to make a fetch request with the userID, which is perhaps derived from the params.
 
+    const navigate = useNavigate();
     const {register, handleSubmit} = useForm();
     const [ isUpdatePending, setIsUpdatePending ] = useState(false);
     const [ isLoaded, setIsLoaded ] = useState(false);
@@ -138,8 +139,10 @@ export function UserProfileWrapper() {
         </form>
         </>
     )
-    
 
+    function logout() {
+      navigate('logout')
+    }
 
     return (
         !isLoaded ? <p>Loading</p> :
@@ -158,7 +161,7 @@ export function UserProfileWrapper() {
 
         {changeImageButton}
         {changeImageForm}
-        {isCurrentUser ? <p>Logout</p>: null}
+        {isCurrentUser ? <button onClick={() => {}}>Logout</button> : null}
         
         </>
     )

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { TypeBar } from "./TypeBar/TypeBar"
 import { ChatMessage } from "./ChatMessage/ChatMessage";
 import { ViewFriendsModal } from './ViewFriendsModal/ViewFriendsModal';
-import { useParams, Link, useOutletContext } from "react-router-dom";
+import { useParams, Link, useOutletContext, useNavigate } from "react-router-dom";
 
 export function ChatWrapper() {
 
@@ -24,6 +24,7 @@ export function ChatWrapper() {
 
     // need a input component. perhaps make it not overflow.
     // need a button to add image file.
+    const navigate = useNavigate();
     const [ isUpdatePending, setIsUpdatePending ] = useState(false);
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [ chatName, setChatName ] = useState('');
@@ -48,7 +49,9 @@ export function ChatWrapper() {
                     "Access-Control-Allow-Credentials": true,
                 },
             })
-            
+
+            if(!response.ok) navigate('/error');
+
             const fetchedData = await response.json();
 
             setChatMessages(fetchedData.chat.chatMessages)
