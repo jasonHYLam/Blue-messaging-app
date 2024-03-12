@@ -5,6 +5,7 @@ import { TypeBar } from "./TypeBar/TypeBar"
 import { ChatMessage } from "./ChatMessage/ChatMessage";
 import { ViewFriendsModal } from './ViewFriendsModal/ViewFriendsModal';
 import { useParams, Link, useOutletContext, useNavigate } from "react-router-dom";
+import { fetchData } from '../../helper/helperFunctions';
 
 export function ChatWrapper() {
 
@@ -41,18 +42,8 @@ export function ChatWrapper() {
     useEffect(() => {
         // console.log('checking ChatWrapper useEffect:')
         async function fetchMessages() {
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}`, {
-                mode: "cors",
-                credentials: "include",
-                headers: {
-                    "Content-Type" : "application/json",
-                    // "Accept" : "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-            })
-
+            const response = await fetchData(`home/chat/${chatId}`, "GET")
             if(!response.ok) navigate('/error');
-
             const fetchedData = await response.json();
 
             setChatMessages(fetchedData.chat.chatMessages)
@@ -64,18 +55,8 @@ export function ChatWrapper() {
 
         // ADDED THIS JUST NOW
         async function fetchFriends() {
-          const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}/show_friends_in_chat`, {
-                mode: "cors",
-                credentials: "include",
-                headers: {
-                    "Content-Type" : "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-          })
-
+          const response = await fetchData(`home/chat/${chatId}/show_friends_in_chat`, "GET")
           const fetchedData = await response.json(); 
-          console.log('checking friends')
-          console.log(fetchedData)
           setAllUsersInChat(fetchedData.allUsersInChat)
           setFriendsNotInChat(fetchedData.friendsNotAddedToChat)
         }
@@ -121,5 +102,4 @@ export function ChatWrapper() {
         </section>
         </>
     )
-
 }
