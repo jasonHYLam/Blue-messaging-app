@@ -10,9 +10,10 @@ import { Header } from "../Header/Header"
 export function HomePage() {
 
   const navigate = useNavigate();
+  const [ isLoaded, setIsLoaded ] = useState(false);
   const [ chatsList, setChatsList ] = useState([]);
   const [ updateChatsList, setUpdateChatsList ] = useState(true)
-  const [ loggedInUser, setLoggedInUser ] = useState({});
+  const [ loggedInUser, setLoggedInUser ] = useState(null);
     // create fetch request for req.user. 
     // useEffect(() => {
     //     fetch(`${ import.meta.env.VITE_BACKEND_URL }`)
@@ -38,16 +39,27 @@ export function HomePage() {
       async function fetchLoggedInUserData() {
         const response = await fetchData(`home/get_logged_in_user`, "GET")
         const fetchedData = await response.json();
+        setLoggedInUser(fetchedData.loggedInUser)
       }
 
-      if(updateChatsList) fetchChats()
+      if(updateChatsList) fetchChats();
+      if(!loggedInUser) fetchLoggedInUserData();
 
-    }, [updateChatsList])
+      console.log('checking loggedInUser state')
+      console.log(loggedInUser)
+      console.log('checking chats state')
+      console.log(chatsList)
+
+      setIsLoaded(true)
+
+    }, [updateChatsList, isLoaded])
 
     return (
+      !isLoaded ? <p>loading heh</p> :
+
         <>
         <main className={styles.homePage}>
-            < Header />
+            < Header loggedInUser={loggedInUser} />
             <section className={styles.belowHeader}>
                 < Sidebar chatsList={chatsList} />
                 < Outlet context={[ setUpdateChatsList ]} />
