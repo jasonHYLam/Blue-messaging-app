@@ -1,4 +1,10 @@
-export function ViewFriendsModal({usersInChat, friendsNotAddedToChat}) {
+import { fetchData } from "../../../helper/helperFunctions"
+
+export function ViewFriendsModal({chatid, usersInChat, friendsNotAddedToChat, setIsUpdatePending}) {
+
+  async function addFriendToChat(chatid, userid) {
+    await fetchData(`home/chat/${chatid}/add_user/${userid}`, "POST")
+  }
 
   console.log(usersInChat)
   return (
@@ -20,6 +26,12 @@ export function ViewFriendsModal({usersInChat, friendsNotAddedToChat}) {
         return (
           <>
             <p>{friend.username}</p>
+            <button onClick={() => {
+              addFriendToChat(chatid, friend.id)
+              setIsUpdatePending(true)
+              }}>
+                Add to chat
+              </button>
           </>
         )
       })}

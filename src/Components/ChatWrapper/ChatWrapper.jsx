@@ -80,8 +80,10 @@ export function ChatWrapper() {
             <button onClick={() => {setShowViewFriendsModal(!showViewFriendsModal)}}>View Friends</button>
              {
               showViewFriendsModal ? <ViewFriendsModal 
+                chatid={chatId}
                 usersInChat={allUsersInChat}
                 friendsNotAddedToChat={friendsNotInChat}
+                setIsUpdatePending={setIsUpdatePending}
                 /> : null
              }
 
