@@ -12,6 +12,7 @@ export function HomePage() {
   const navigate = useNavigate();
   const [ chatsList, setChatsList ] = useState([]);
   const [ updateChatsList, setUpdateChatsList ] = useState(true)
+  const [ loggedInUser, setLoggedInUser ] = useState({});
     // create fetch request for req.user. 
     // useEffect(() => {
     //     fetch(`${ import.meta.env.VITE_BACKEND_URL }`)
@@ -27,24 +28,16 @@ export function HomePage() {
     useEffect(() => {
 
       async function fetchChats() {
-      const response = await fetchData(`home/get_chats_for_user`, "GET")
-        // const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_chats_for_user`, {
-        //   mode: "cors",
-        //   credentials: "include",
-        //   headers: {
-        //       "Content-Type" : "application/json",
-        //       // "Accept" : "application/json",
-        //       "Access-Control-Allow-Credentials": true,
-        //   },
-        // })
-
+        const response = await fetchData(`home/get_chats_for_user`, "GET")
         if (response.status === 401) navigate('/login');
-
         const fetchedData = await response.json();
-
         setChatsList(fetchedData.allChats)
-
         setUpdateChatsList(false)
+      }
+
+      async function fetchLoggedInUserData() {
+        const response = await fetchData(`home/get_logged_in_user`, "GET")
+        const fetchedData = await response.json();
       }
 
       if(updateChatsList) fetchChats()
