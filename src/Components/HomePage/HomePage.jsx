@@ -45,21 +45,18 @@ export function HomePage() {
       if(updateChatsList) fetchChats();
       if(!loggedInUser) fetchLoggedInUserData();
 
-      console.log('checking loggedInUser state')
-      console.log(loggedInUser)
-      console.log('checking chats state')
-      console.log(chatsList)
-
       setIsLoaded(true)
 
     }, [updateChatsList, isLoaded])
+    console.log('check if is loaded or not')
+    console.log(isLoaded)
 
     return (
       !isLoaded ? <p>loading heh</p> :
 
         <>
         <main className={styles.homePage}>
-            < Header loggedInUser={loggedInUser} />
+            {/* < Header loggedInUser={loggedInUser} /> */}
             <section className={styles.belowHeader}>
                 < Sidebar chatsList={chatsList} />
                 < Outlet context={[ setUpdateChatsList ]} />

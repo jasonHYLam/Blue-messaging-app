@@ -30,7 +30,8 @@ export function ChatWrapper() {
     const [ chatName, setChatName ] = useState('');
     const [ chatMessages, setChatMessages ] = useState([]);
     const [ messageToReplyTo, setMessageToReplyTo ] = useState(null);
-    const [ friendsList, setFriendsList ] = useState([]);
+    const [ allUsersInChat, setAllUsersInChat ] = useState([]);
+    const [ friendsNotInChat, setFriendsNotInChat ] = useState([]);
 
     const [ showViewFriendsModal, setShowViewFriendsModal ] = useState(false);
     const {chatId} = useParams();
@@ -75,7 +76,8 @@ export function ChatWrapper() {
           const fetchedData = await response.json(); 
           console.log('checking friends')
           console.log(fetchedData)
-          setFriendsList(fetchedData.allUsers)
+          setAllUsersInChat(fetchedData.allUsersInChat)
+          setFriendsNotInChat(fetchedData.friendsNotAddedToChat)
         }
 
         fetchMessages();
@@ -96,7 +98,10 @@ export function ChatWrapper() {
             <p>View Friends:</p>
             <button onClick={() => {setShowViewFriendsModal(!showViewFriendsModal)}}>View Friends</button>
              {
-              showViewFriendsModal ? <ViewFriendsModal friendsList={friendsList}/> : null
+              showViewFriendsModal ? <ViewFriendsModal 
+                usersInChat={allUsersInChat}
+                friendsNotAddedToChat={friendsNotInChat}
+                /> : null
              }
 
             {chatMessages.map(message => {

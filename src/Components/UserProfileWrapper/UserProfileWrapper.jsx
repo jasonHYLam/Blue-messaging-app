@@ -52,8 +52,6 @@ export function UserProfileWrapper() {
             })
 
             const fetchedData = await response.json();
-            // console.log('checking data for userProfileWrapper:')
-            // console.log(fetchedData)
             setUserData(fetchedData.matchingUser)
             setIsCurrentUser(fetchedData.isCurrentUserProfile)
         }
@@ -61,7 +59,6 @@ export function UserProfileWrapper() {
         fetchUserData();
 
         if (!isLoaded) setIsLoaded(true);
-
         if (isUpdatePending) setIsUpdatePending(false)
 
     }, [isUpdatePending])
