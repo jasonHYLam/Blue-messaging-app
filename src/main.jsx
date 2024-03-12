@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 
+import { Logout } from './Components/Logout/Logout';
 import { ErrorPage } from './Components/ErrorPage/ErrorPage';
 import { LoginPage } from './Components/LoginPage/LoginPage';
 import { SignupPage } from './Components/SignupPage/SignupPage';
@@ -25,17 +26,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        // login-signup
         element: < LoginPage />
       },
       {
         path: 'signup',
-        // login-signup
         element: < SignupPage />
       },
       {
         path: 'logout',
-        element: < SignupPage />
+        element: < Logout />
       },
       {
         path: 'home',
