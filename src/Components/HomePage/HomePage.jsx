@@ -1,4 +1,5 @@
 import styles from './HomePage.module.css'
+import { fetchData } from '../../helper/helperFunctions'
 
 import { useEffect, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
@@ -26,15 +27,16 @@ export function HomePage() {
     useEffect(() => {
 
       async function fetchChats() {
-        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_chats_for_user`, {
-          mode: "cors",
-          credentials: "include",
-          headers: {
-              "Content-Type" : "application/json",
-              // "Accept" : "application/json",
-              "Access-Control-Allow-Credentials": true,
-          },
-        })
+      const response = await fetchData(`home/get_chats_for_user`, "GET")
+        // const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_chats_for_user`, {
+        //   mode: "cors",
+        //   credentials: "include",
+        //   headers: {
+        //       "Content-Type" : "application/json",
+        //       // "Accept" : "application/json",
+        //       "Access-Control-Allow-Credentials": true,
+        //   },
+        // })
 
         if (response.status === 401) navigate('/login');
 

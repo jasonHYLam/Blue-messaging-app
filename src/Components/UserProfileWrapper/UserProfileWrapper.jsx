@@ -161,11 +161,7 @@ export function UserProfileWrapper() {
 
         {changeImageButton}
         {changeImageForm}
-        {isCurrentUser ? <button onClick={() => {
-          console.log('logout has been invoked')
-          logout();
-          // navigate('/login')
-          }}>Logout</button> : null}
+        {isCurrentUser ? <button onClick={() => {logout()}}>Logout</button> : null}
         
         </>
     )
