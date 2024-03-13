@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom"
+import { GuestLogin } from "../GuestLogin/GuestLogin";
 
 export function LoginPage() {
 
@@ -68,6 +69,8 @@ export function LoginPage() {
                 
             </form>
             <Link to={'/signup'}>New here? Signup</Link>
+
+            <GuestLogin />
         </>
 
 

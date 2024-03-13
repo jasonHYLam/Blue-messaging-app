@@ -11,7 +11,7 @@ import { AddFriendWrapper } from './Components/AddFriendWrapper/AddFriendWrapper
 import { CreateChatWrapper } from './Components/CreateChatWrapper/CreateChatWrapper';
 import { ChatWrapper } from './Components/ChatWrapper/ChatWrapper';
 import { UserProfileWrapper } from './Components/UserProfileWrapper/UserProfileWrapper';
-// import './index.css'
+import './index.css'
 
 const router = createBrowserRouter([
   {
