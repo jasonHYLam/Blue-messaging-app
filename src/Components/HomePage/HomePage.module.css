@@ -1,13 +1,14 @@
 .homePage {
     display: flex;
     flex-direction: column;
-
     background-color: var(--background-color);
+    height: 100%;
 }
 
 .belowHeader {
     display: flex;
     flex-direction: row;
+    height: 100%;
 }
 
 .content {
