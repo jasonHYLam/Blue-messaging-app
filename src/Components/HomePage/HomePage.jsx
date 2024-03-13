@@ -14,10 +14,7 @@ export function HomePage() {
   const [ chatsList, setChatsList ] = useState([]);
   const [ updateChatsList, setUpdateChatsList ] = useState(true)
   const [ loggedInUser, setLoggedInUser ] = useState(null);
-    // create fetch request for req.user. 
-    // useEffect(() => {
-    //     fetch(`${ import.meta.env.VITE_BACKEND_URL }`)
-    // })
+
     // create fetch request for req.isAuthenticated. If not, then redirect. Perhaps add this to the route beforehand.
     // needs a check for user authorization. Redirect to login page if not logged in.
     // requires state logic to see if logged in. Perhaps on this component, or the parent component (PageLayout)
@@ -45,18 +42,17 @@ export function HomePage() {
       if(updateChatsList) fetchChats();
       if(!loggedInUser) fetchLoggedInUserData();
 
-      setIsLoaded(true)
+      if (chatsList && loggedInUser) setIsLoaded(true)
 
-    }, [updateChatsList, isLoaded])
-    console.log('check if is loaded or not')
-    console.log(isLoaded)
+    }, [updateChatsList, isLoaded, chatsList, loggedInUser])
+
 
     return (
       !isLoaded ? <p>loading heh</p> :
 
         <>
         <main className={styles.homePage}>
-            {/* < Header loggedInUser={loggedInUser} /> */}
+            < Header loggedInUser={loggedInUser} />
             <section className={styles.belowHeader}>
                 < Sidebar chatsList={chatsList} />
                 < Outlet context={[ setUpdateChatsList ]} />

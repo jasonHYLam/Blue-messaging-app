@@ -12,8 +12,6 @@ export function CreateChatWrapper() {
     const [ usersNotAddedToChat, setUsersNotAddedToChat ] = useState([]);
     const [ usersToAddToChat, setUsersToAddToChat ] = useState([]);
 
-    console.log('checking usersToAddToChat')
-    console.log(usersToAddToChat)
     async function postToCreateChat() {
 
         const addToChatUserIds = usersToAddToChat.map(userFriendRelation => userFriendRelation.friendUser._id)
@@ -23,8 +21,6 @@ export function CreateChatWrapper() {
             addToChatUserIds: addToChatUserIds,
         }
 
-        console.log('checking dataToPost')
-        console.log(dataToPost)
 
         const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/create_new_chat`, {
             method: "POST",
@@ -38,8 +34,6 @@ export function CreateChatWrapper() {
         })
 
         const data = await response.json();
-        console.log('checking newChatid')
-        console.log(data)
 
         navigate(`/home/chats/${data.chatid}`)
     }
@@ -53,7 +47,6 @@ export function CreateChatWrapper() {
         })
 
         const fetchedData = await response.json();
-        console.log(fetchedData)
         setUsersNotAddedToChat(fetchedData.friends)
     }
 
