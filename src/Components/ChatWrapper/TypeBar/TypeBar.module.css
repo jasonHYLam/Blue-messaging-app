@@ -1,4 +1,8 @@
 .typeBar {
     position: fixed;
     bottom: 0;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: var(--background-color-subdued);
 }

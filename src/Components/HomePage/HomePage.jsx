@@ -55,7 +55,7 @@ export function HomePage() {
             < Header loggedInUser={loggedInUser} />
             <section className={styles.belowHeader}>
                 < Sidebar chatsList={chatsList} />
-                < Outlet context={[ setUpdateChatsList ]} />
+                < Outlet className={styles.content} context={[ setUpdateChatsList ]} />
             </section>
         </main>
 

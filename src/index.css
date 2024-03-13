@@ -12,7 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --background-color: #583b84;
+  --background-color: #161e27;
+  --background-color-subdued: #243141;
+  --background-color-dark: #0d1217;
   --foreground-color: blue;
 }
 
