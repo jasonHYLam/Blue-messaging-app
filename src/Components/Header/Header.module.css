@@ -9,5 +9,6 @@ flex direction row
 
 */
 .header {
+  background-color: var(--foreground-color);
 
 }

@@ -12,8 +12,10 @@ export function Header({loggedInUser}) {
     return (
 
         <>
-        <p>It's me the header</p>
-        <Link to={`/home/user_profile/${loggedInUser.id}`}>Profile</Link>
+        <header className={styles.header}>
+          <p>It's me the header</p>
+          <Link to={`/home/user_profile/${loggedInUser.id}`}>Profile</Link>
+        </header>
         </>
     )
 }
