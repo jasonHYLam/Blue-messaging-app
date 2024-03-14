@@ -1,6 +1,7 @@
 import styles from './ChatWrapper.module.css'
 
 import { useEffect, useState } from "react"
+import { ChatHeader } from './ChatHeader/ChatHeader';
 import { TypeBar } from "./TypeBar/TypeBar"
 import { ChatMessage } from "./ChatMessage/ChatMessage";
 import { ViewFriendsModal } from './ViewFriendsModal/ViewFriendsModal';
@@ -73,18 +74,16 @@ export function ChatWrapper() {
         !isLoaded ? <p>Loading</p> :
         <>
         <section className={styles.chatWrapper}>
-            <h2>{chatName}</h2>
 
-            <p>View Friends:</p>
-            <button onClick={() => {setShowViewFriendsModal(!showViewFriendsModal)}}>View Friends</button>
-             {
-              showViewFriendsModal ? <ViewFriendsModal 
-                chatid={chatId}
-                usersInChat={allUsersInChat}
-                friendsNotAddedToChat={friendsNotInChat}
-                setIsUpdatePending={setIsUpdatePending}
-                /> : null
-             }
+          <ChatHeader 
+            chatName={chatName}
+            setShowViewFriendsModal={setShowViewFriendsModal}
+            showViewFriendsModal={showViewFriendsModal}
+            chatid={chatId}
+            usersInChat={allUsersInChat}
+            friendsNotInChat={friendsNotInChat}
+            setIsUpdatePending={setIsUpdatePending}
+          />
 
              <section className={styles.chatMessages}>
               {chatMessages.map(message => {
@@ -94,10 +93,6 @@ export function ChatWrapper() {
                       />)
                   })}
              </section>
-
-
-
-
 
             < TypeBar 
               setIsUpdatePending={setIsUpdatePending} 
