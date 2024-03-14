@@ -1,4 +1,4 @@
-export function ChatPreview() {
+export function ChatPreview({chat}) {
   return (
     <article >
         <Link to={`chats/${chat.id}`}>
