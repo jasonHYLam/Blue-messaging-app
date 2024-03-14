@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import { ChatHeader } from './ChatHeader/ChatHeader';
 import { TypeBar } from "./TypeBar/TypeBar"
 import { ChatMessage } from "./ChatMessage/ChatMessage";
-import { ViewFriendsModal } from './ViewFriendsModal/ViewFriendsModal';
 import { useParams, Link, useOutletContext, useNavigate } from "react-router-dom";
 import { fetchData } from '../../helper/helperFunctions';
 
@@ -22,7 +21,6 @@ export function ChatWrapper() {
     // perhaps limit this to the 50 most recent comments.
     // Need to convert these into chatMessage Components
     // perhaps on each message, there are several options that I can do, for example reply to it or react.
-
 
     // need a input component. perhaps make it not overflow.
     // need a button to add image file.
