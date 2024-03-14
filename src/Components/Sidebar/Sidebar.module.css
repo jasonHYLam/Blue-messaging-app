@@ -8,4 +8,7 @@ width... responsive maybe. maybe i can drag it? fixed for now i guess at 300px
     flex-direction: column;
     height: 100%;
     background-color: var(--background-color-dark);
+    padding-right: 30px;
+
+
 }

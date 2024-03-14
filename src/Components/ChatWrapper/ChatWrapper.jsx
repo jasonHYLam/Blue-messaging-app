@@ -72,9 +72,8 @@ export function ChatWrapper() {
     return (
         !isLoaded ? <p>Loading</p> :
         <>
-        <section>
-            <p>It's me, the chat</p>
-            <h1>{chatName}</h1>
+        <section className={styles.chatWrapper}>
+            <h2>{chatName}</h2>
 
             <p>View Friends:</p>
             <button onClick={() => {setShowViewFriendsModal(!showViewFriendsModal)}}>View Friends</button>
@@ -87,12 +86,18 @@ export function ChatWrapper() {
                 /> : null
              }
 
-            {chatMessages.map(message => {
-                return (< ChatMessage 
-                    message={message} 
-                    setMessageToReplyTo={setMessageToReplyTo}
-                    />)
-                })}
+             <section className={styles.chatMessages}>
+              {chatMessages.map(message => {
+                  return (< ChatMessage 
+                      message={message} 
+                      setMessageToReplyTo={setMessageToReplyTo}
+                      />)
+                  })}
+             </section>
+
+
+
+
 
             < TypeBar 
               setIsUpdatePending={setIsUpdatePending} 

@@ -1,3 +1,11 @@
 .chatWrapper {
     position: relative;
+    /* padding-bottom: 30px; */
+    margin-bottom: 30px;
+    height: 100%;
+}
+
+.chatMessages {
+  overflow: auto;
+  height: 30%;
 }

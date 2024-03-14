@@ -54,8 +54,13 @@ export function HomePage() {
         <main className={styles.homePage}>
             < Header loggedInUser={loggedInUser} />
             <section className={styles.belowHeader}>
-                < Sidebar chatsList={chatsList} />
-                < Outlet className={styles.content} context={[ setUpdateChatsList ]} />
+              <section className={styles.insideBelowHeader}>
+
+                  < Sidebar chatsList={chatsList} />
+                  <section className={styles.content}>
+                    < Outlet context={[ setUpdateChatsList ]} />
+                  </section>
+              </section>
             </section>
         </main>
 

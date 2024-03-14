@@ -13,8 +13,13 @@ export function Header({loggedInUser}) {
 
         <>
         <header className={styles.header}>
-          <p>It's me the header</p>
-          <Link to={`/home/user_profile/${loggedInUser.id}`}>Profile</Link>
+
+          <Link to={`/home/user_profile/${loggedInUser.id}`}>
+            <section className={styles.profile}>
+              <img className={styles.profilePic} src={loggedInUser.profilePicURL} alt="" />
+              <p>{loggedInUser.username}</p>
+            </section>
+          </Link>
         </header>
         </>
     )
