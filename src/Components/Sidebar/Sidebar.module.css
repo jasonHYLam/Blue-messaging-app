@@ -11,3 +11,7 @@ width... responsive maybe. maybe i can drag it? fixed for now i guess at 300px
     padding-right: 30px;
     max-width: 15%;
 }
+
+.chatPreview {
+  max-width: 100%;
+}

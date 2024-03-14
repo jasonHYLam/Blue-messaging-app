@@ -16,26 +16,7 @@ export function Sidebar({chatsList}) {
         setIsLoaded(true);
     },[])
 
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/get_chats_for_user`, {
-    //             credentials: "include",
-    //         })
 
-    //         if (response.status === 401) navigate('/login');
-
-    //         const data = await response.json();
-    //         console.log('checking data for SideBar')
-    //         console.log(data)
-    //         setAllChats(data.allChats)
-    //     }
-
-    //     fetchData()
-    // }, [])
-
-    // async function openChat(chat) {
-    //     navigate(`chats/${chat.id}`)
-    // }
     // to store list of chatLinks
     // should make fetch request to get all chats, perhaps updated by time (most recently accessed at the top)
     // so perhaps each chat should have a lastUpdated field. When making a comment, update this field.
@@ -47,7 +28,6 @@ export function Sidebar({chatsList}) {
         <>
 
             <section className={styles.sidebar}>
-                <p>It's me, the sidebar</p>
 
                 <section>
                     <button onClick={() => navigate(`create_chat`)}>Create new chat</button>
@@ -67,7 +47,8 @@ export function Sidebar({chatsList}) {
                 {/* {allChats.map(chat => { */}
                 {chatsList.map(chat => {
                     return (
-                        <li>
+
+                        <article>
                             <Link to={`chats/${chat.id}`}>
                                 <section>
                                   <p>{chat.name}</p>
@@ -75,7 +56,7 @@ export function Sidebar({chatsList}) {
                                   </section>
 
                             </Link>
-                        </li>
+                        </article>
                     )
                 })}
 
