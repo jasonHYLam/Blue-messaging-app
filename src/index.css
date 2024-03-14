@@ -34,7 +34,7 @@ body {
   margin: 0;
   place-items: center;
   min-width: 320px;
-  min-height: 100svh;
+  height: 100svh;
 }
 
 h1 {
@@ -63,7 +63,7 @@ button:focus-visible {
 
 #root {
   display: flex;
-  min-height: 100svh;
+  height: 100svh;
 }
 
 @media (prefers-color-scheme: light) {

@@ -83,6 +83,8 @@ export function ChatWrapper() {
             setIsUpdatePending={setIsUpdatePending}
           />
 
+          <section className={styles.messagesContainer}>
+
              <section className={styles.chatMessages}>
               {chatMessages.map(message => {
                   return (< ChatMessage 
@@ -91,6 +93,8 @@ export function ChatWrapper() {
                       />)
                   })}
              </section>
+
+          </section>
 
             < TypeBar 
               setIsUpdatePending={setIsUpdatePending} 

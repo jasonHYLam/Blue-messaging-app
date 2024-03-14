@@ -3,11 +3,18 @@
     /* padding-bottom: 30px; */
     margin-bottom: 30px;
     height: 100%;
-  background-color: greenyellow;
+  /* overflow: auto; */
+  /* background-color: greenyellow; */
+}
+
+.messagesContainer {
+  overflow: auto;
+  overflow-anchor: auto;
+  height: 90%;
 }
 
 .chatMessages {
-  overflow: auto;
-  height: 70%;
-  background-color: aqua;
+  /* overflow: auto; */
+  /* height: 90%; */
+  /* background-color: aqua; */
 }
