@@ -62,6 +62,7 @@ button:focus-visible {
 }
 
 #root {
+  display: flex;
   min-height: 100svh;
 }
 
