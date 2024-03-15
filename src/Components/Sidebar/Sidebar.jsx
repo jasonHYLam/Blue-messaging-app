@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './Sidebar.module.css';
 import { useNavigate, Outlet, Link } from 'react-router-dom';
 import { ChatPreview } from './ChatPreview/ChatPreview';
+import { ToggleSidebar } from '../ToggleSidebar/ToggleSidebar';
 
 export function Sidebar({chatsList}) {
 
@@ -30,6 +31,7 @@ export function Sidebar({chatsList}) {
 
             <section className={styles.sidebar}>
 
+              <ToggleSidebar />
                 <section>
                   <button onClick={() => navigate(`/home/add_friend`)}>Add Friend</button>
                     <button onClick={() => navigate(`create_chat`)}>Create new chat</button>
