@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './Sidebar.module.css';
 import { useNavigate, Outlet, Link } from 'react-router-dom';
+import { ChatPreview } from './ChatPreview/ChatPreview';
 
 export function Sidebar({chatsList}) {
 
@@ -30,6 +31,7 @@ export function Sidebar({chatsList}) {
             <section className={styles.sidebar}>
 
                 <section>
+                  <button onClick={() => navigate(`/home/add_friend`)}>Add Friend</button>
                     <button onClick={() => navigate(`create_chat`)}>Create new chat</button>
                 </section>
 
@@ -37,33 +39,11 @@ export function Sidebar({chatsList}) {
                 <p>Chats:</p>
 
                 {
-                  // allChats.length === 0 ? 
-                  chatsList.length === 0 ? 
-                  <p>No chats!</p>
-                  :
-
-                <ul>
-
-                {/* {allChats.map(chat => { */}
-                {chatsList.map(chat => {
-                    return (
-
-                        <article>
-                            <Link to={`chats/${chat.id}`}>
-                                <section>
-                                  <p>{chat.name}</p>
-                                  <p>{chat.lastUpdated}</p>
-                                  </section>
-
-                            </Link>
-                        </article>
-                    )
-                })}
-
-                </ul>
+                  chatsList.length === 0 ? <p>No chats!</p> :
+                  <ul>
+                    {chatsList.map(chat => <ChatPreview chat={chat}/>)}
+                  </ul>
                 }
-
-
 
             </section>
         </>

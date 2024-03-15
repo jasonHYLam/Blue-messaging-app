@@ -1,0 +1,15 @@
+
+.chatPreview {
+  /* max-width: 100%; */
+  text-wrap: wrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  
+}
+
+.title {
+  display: inline-block;
+  max-width: calc(100%);
+  text-wrap: wrap;
+  text-overflow: ellipsis;
+}
