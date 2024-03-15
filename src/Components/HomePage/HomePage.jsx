@@ -14,6 +14,7 @@ export function HomePage() {
   const [ chatsList, setChatsList ] = useState([]);
   const [ updateChatsList, setUpdateChatsList ] = useState(true)
   const [ loggedInUser, setLoggedInUser ] = useState(null);
+  const [ isSidebarMinimised, setIsSideBarMinimised ] = useState(false);
 
     // create fetch request for req.isAuthenticated. If not, then redirect. Perhaps add this to the route beforehand.
     // needs a check for user authorization. Redirect to login page if not logged in.

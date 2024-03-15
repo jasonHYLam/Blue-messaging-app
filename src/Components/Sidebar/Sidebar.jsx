@@ -4,7 +4,7 @@ import { useNavigate, Outlet, Link } from 'react-router-dom';
 import { ChatPreview } from './ChatPreview/ChatPreview';
 import { ToggleSidebar } from '../ToggleSidebar/ToggleSidebar';
 
-export function Sidebar({chatsList}) {
+export function Sidebar({chatsList, setIsSidebarMinimised }) {
 
     const [ isLoaded, setIsLoaded ] = useState(false);
     const navigate = useNavigate();
