@@ -1,28 +1,10 @@
+import { fetchData } from '../../helper/helperFunctions'
 import styles from "./UserProfileWrapper.module.css";
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export function UserProfileWrapper() {
-
-    // if it is the current user's profile then show:
-    // requires logic to compare userID in params, with session info/state currentUser info.
-    // should list:
-    // user name
-    // user password maybe
-    // user description
-    // user profile image.
-    // buttons to change these, which have fetch requests to do that.
-
-    // maybe a friends count.
-
-    // if it is another person's user profile, then show:
-    // user name
-    // user description
-    // button to add them as a friend automatically
-
-
-    // in order to do this, need to make a fetch request with the userID, which is perhaps derived from the params.
 
     const navigate = useNavigate();
     const {register, handleSubmit} = useForm();
@@ -33,25 +15,15 @@ export function UserProfileWrapper() {
     const { userId } = useParams();
     const [ imageToUpload, setImageToUpload ] = useState(null);
 
-    // currentStatus takes the following values: "editDescription", "editPassword", "editUsername"
+    console.log('checking imageToUpload')
+    console.log(imageToUpload)
+
+    // currentStatus takes the following values: "editDescription"
     const [ currentStatus, setCurrentStatus ] = useState('');
-    // console.log('checking isCurrent user')
-    // console.log(isCurrentUser)
-    // console.log('checking userData')
-    // console.log(userData)
 
     useEffect(() => {
         async function fetchUserData() {
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/user_profile/${userId}`, {
-                mode: "cors",
-                credentials: "include",
-                headers: {
-                    "Content-Type" : "application/json",
-                    // "Accept" : "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-            })
-
+          const response = await fetchData(`home/user_profile/${userId}`, "GET")
             const fetchedData = await response.json();
             setUserData(fetchedData.matchingUser)
             setIsCurrentUser(fetchedData.isCurrentUserProfile)
@@ -66,20 +38,10 @@ export function UserProfileWrapper() {
 
     async function submitChange(data) {
         const endRoute = (currentStatus === "editDescription") ? "change_description" : "";
-        const fetchURL = `/home/personal_profile/${endRoute}`;
-        console.log('checking data')
-        console.log(data)
+        const fetchURL = `home/personal_profile/${endRoute}`;
+        const dataToSubmit = JSON.stringify(data);
 
-        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }${fetchURL}`, {
-            method: "PUT",
-            mode: "cors",
-            credentials: "include",
-            headers: {
-                "Content-Type" : "application/json",
-                "Access-Control-Allow-Credentials": true,
-            },
-            body: JSON.stringify(data)
-        })
+        const response = await fetchData(`${fetchURL}`, "PUT", dataToSubmit);
 
         setIsUpdatePending(true);
         setCurrentStatus("");
@@ -110,17 +72,19 @@ export function UserProfileWrapper() {
 
         const data = new FormData();
         data.append('profilePic', imageToUpload)
+        console.log('checking data')
+        console.log(data)
 
-        await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/personal_profile/change_image`, {
-            method: "PUT",
-            mode: "cors",
-            credentials: "include",
-            headers: {
-                "Access-Control-Allow-Credentials": true,
-            },
-            body: data
-        }
-        )
+        const response = await fetchData(`home/personal_profile/change_image`, "PUT", data);
+        // await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/personal_profile/change_image`, {
+        //     method: "PUT",
+        //     mode: "cors",
+        //     credentials: "include",
+        //     headers: {
+        //         "Access-Control-Allow-Credentials": true,
+        //     },
+        //     body: data
+        // })
     }
 
     const changeImageButton = (
