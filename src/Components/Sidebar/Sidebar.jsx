@@ -37,6 +37,11 @@ export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised })
               setIsSidebarMinimised={setIsSidebarMinimised} 
               isSidebarMinimised={isSidebarMinimised}
               />
+
+              {isSidebarMinimised ? null :
+              
+              <>
+              
                 <section>
                   <button onClick={() => navigate(`/home/add_friend`)}>Add Friend</button>
                     <button onClick={() => navigate(`create_chat`)}>Create new chat</button>
@@ -51,6 +56,9 @@ export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised })
                     {chatsList.map(chat => <ChatPreview chat={chat}/>)}
                   </ul>
                 }
+              </>
+
+              }
 
             </section>
         </>
