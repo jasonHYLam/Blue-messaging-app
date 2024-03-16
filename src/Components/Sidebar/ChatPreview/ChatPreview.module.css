@@ -4,7 +4,10 @@
   text-wrap: wrap;
   text-overflow: ellipsis;
   display: inline-block;
-  
+}
+
+.chatPreview:hover {
+  background-color: var(--light-hover);
 }
 
 .title {
