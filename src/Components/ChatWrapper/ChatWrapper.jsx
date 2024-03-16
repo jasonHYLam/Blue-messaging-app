@@ -97,6 +97,7 @@ export function ChatWrapper() {
           </section>
 
             < TypeBar 
+              isUpdatePending={isUpdatePending}
               setIsUpdatePending={setIsUpdatePending} 
               messageToReplyTo={messageToReplyTo}
               setMessageToReplyTo={setMessageToReplyTo}

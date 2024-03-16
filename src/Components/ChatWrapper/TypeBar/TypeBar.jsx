@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { fetchData, fetchDataWithImageUpload } from '../../../helper/helperFunctions';
 
 export function TypeBar( { 
+  isUpdatePending,
   setIsUpdatePending, 
   messageToReplyTo, 
   setMessageToReplyTo,
@@ -14,7 +15,6 @@ export function TypeBar( {
 
     const {chatId} = useParams();
     const [ imageToUpload, setImageToUpload ] = useState(null);
-    const [ isBeingSubmitted, setIsBeingSubmitted ] = useState(false);
 
     const {
         register,
@@ -56,6 +56,8 @@ export function TypeBar( {
         setIsUpdatePending(true);
         setUpdateChatsList(true);
 
+        setIsBeingSubmitted(true);
+
     }
 
     return (
@@ -75,7 +77,7 @@ export function TypeBar( {
             <form encType="multipart/form-data" onSubmit={handleSubmit(postMessage)}>
                 <input type="file" onChange={selectImageToUpload} />
                 <input type="text" {...register("message", {required: true})} />
-                <input type="submit"/>
+                {isUpdatePending ? <input disabled="true" type="submit"/> : <input type="submit"/> }
             </form>
         </section>
         </>
