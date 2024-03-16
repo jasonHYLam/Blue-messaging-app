@@ -3,6 +3,7 @@ import styles from './TypeBar.module.css'
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { fetchData, fetchDataWithImageUpload } from '../../../helper/helperFunctions';
 
 export function TypeBar( { 
   setIsUpdatePending, 
@@ -11,14 +12,9 @@ export function TypeBar( {
   setUpdateChatsList,
  } ) {
 
-    console.log('messageToReplyTo')
-    console.log(messageToReplyTo)
-    // console.log('checking setIsUpdatePending prop in TypeBar')
-    // console.log(setIsUpdatePending)
     const {chatId} = useParams();
-    // console.log('checking params')
-    // console.log(chatId)
     const [ imageToUpload, setImageToUpload ] = useState(null);
+    const [ isBeingSubmitted, setIsBeingSubmitted ] = useState(false);
 
     const {
         register,
@@ -41,16 +37,7 @@ export function TypeBar( {
             data.append('message', messageObject.message)
             data.append('messageToReplyTo', messageToReplyTo)
 
-            await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}/create_message_with_image`, {
-                method: "POST",
-                mode: "cors",
-                credentials: "include",
-                headers: {
-                    // "Content-Type" : "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-                body: data,
-            })
+            const response = await fetchDataWithImageUpload(`home/chat/${chatId}/create_message_with_image`, "POST", data)
         }
 
         else {
@@ -60,17 +47,9 @@ export function TypeBar( {
                 messageToReplyTo: messageToReplyTo,
             }
 
-            await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/chat/${chatId}/create_message`, {
-                method: "POST",
-                mode: "cors",
-                credentials: "include",
-                headers: {
-                    "Content-Type" : "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-                body: JSON.stringify(modifiedMessageObject),
-            })
+            const dataToSubmit = JSON.stringify(modifiedMessageObject);
 
+            const response = await fetchData(`home/chat/${chatId}/create_message`, "POST", dataToSubmit);
         }
 
         reset();
