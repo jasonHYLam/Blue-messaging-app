@@ -15,9 +15,6 @@ export function UserProfileWrapper() {
     const { userId } = useParams();
     const [ imageToUpload, setImageToUpload ] = useState(null);
 
-    console.log('checking imageToUpload')
-    console.log(imageToUpload)
-
     // currentStatus takes the following values: "editDescription"
     const [ currentStatus, setCurrentStatus ] = useState('');
 
@@ -69,7 +66,6 @@ export function UserProfileWrapper() {
     async function uploadImage(e) {
 
         e.preventDefault();
-
         if (!imageToUpload) return;
 
         const data = new FormData();
@@ -77,8 +73,6 @@ export function UserProfileWrapper() {
 
         const response = await fetchDataWithImageUpload(`home/personal_profile/change_image`, "PUT", data);
     }
-
-    // const changeImageButton = <button >Change Image</button>;
 
     const changeImageForm = (
         <>
@@ -106,13 +100,9 @@ export function UserProfileWrapper() {
         <img className={styles.profilePic} src={userData.profilePicURL} alt="" />
         <p>Description:</p>
 
-        {currentStatus === "editDescription" 
-        ? changeDescriptionForm 
-        : <p>{userData.description}</p>
-        }
+        {currentStatus === "editDescription" ? changeDescriptionForm : <p>{userData.description}</p>}
         {isCurrentUser ? changeDescriptionButton : null}
 
-        {/* {changeImageButton} */}
         {changeImageForm}
         {isCurrentUser ? <button onClick={() => {logout()}}>Logout</button> : null}
         
