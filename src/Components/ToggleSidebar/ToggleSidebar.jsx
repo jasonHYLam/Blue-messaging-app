@@ -1,8 +1,8 @@
 
-export function ToggleSidebar() {
+export function ToggleSidebar({ setIsSidebarMinimised, isSidebarMinimised }) {
   return (
-    <button>
-      <img src="../../../../public/menu.svg" alt="" />
+    <button onClick={() => {setIsSidebarMinimised(!isSidebarMinimised)}}>
+      <img src="../../../../menu.svg" alt="" />
     </button>
   )
 }

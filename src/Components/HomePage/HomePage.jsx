@@ -16,6 +16,9 @@ export function HomePage() {
   const [ loggedInUser, setLoggedInUser ] = useState(null);
   const [ isSidebarMinimised, setIsSideBarMinimised ] = useState(false);
 
+  console.log('checking isSidebarMinimised')
+  console.log(isSidebarMinimised)
+
     // create fetch request for req.isAuthenticated. If not, then redirect. Perhaps add this to the route beforehand.
     // needs a check for user authorization. Redirect to login page if not logged in.
     // requires state logic to see if logged in. Perhaps on this component, or the parent component (PageLayout)
@@ -57,7 +60,11 @@ export function HomePage() {
             <section className={styles.belowHeader}>
               <section className={styles.insideBelowHeader}>
 
-                  < Sidebar chatsList={chatsList} />
+                  < Sidebar 
+                  chatsList={chatsList} 
+                  setIsSidebarMinimised={setIsSideBarMinimised} 
+                  isSidebarMinimised={isSidebarMinimised}
+                  />
                   <section className={styles.content}>
                     < Outlet context={[ setUpdateChatsList ]} />
                   </section>

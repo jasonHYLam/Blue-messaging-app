@@ -4,10 +4,12 @@ import { useNavigate, Outlet, Link } from 'react-router-dom';
 import { ChatPreview } from './ChatPreview/ChatPreview';
 import { ToggleSidebar } from '../ToggleSidebar/ToggleSidebar';
 
-export function Sidebar({chatsList, setIsSidebarMinimised }) {
+export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised }) {
 
     const [ isLoaded, setIsLoaded ] = useState(false);
     const navigate = useNavigate();
+
+    const sidebarClass = isSidebarMinimised ? `${styles.sidebar} ${styles.closed}` : `${styles.sidebar} ${styles.open}` ;
 
     // const [ allChats, setAllChats ] = useState([]);
 
@@ -29,9 +31,12 @@ export function Sidebar({chatsList, setIsSidebarMinimised }) {
 
         <>
 
-            <section className={styles.sidebar}>
+            <section className={sidebarClass}>
 
-              <ToggleSidebar />
+              <ToggleSidebar 
+              setIsSidebarMinimised={setIsSidebarMinimised} 
+              isSidebarMinimised={isSidebarMinimised}
+              />
                 <section>
                   <button onClick={() => navigate(`/home/add_friend`)}>Add Friend</button>
                     <button onClick={() => navigate(`create_chat`)}>Create new chat</button>
