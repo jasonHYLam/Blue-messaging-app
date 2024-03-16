@@ -1,4 +1,4 @@
-import { fetchData } from '../../helper/helperFunctions'
+import { fetchData, fetchDataWithImageUpload } from '../../helper/helperFunctions'
 import styles from "./UserProfileWrapper.module.css";
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
@@ -70,33 +70,22 @@ export function UserProfileWrapper() {
 
         e.preventDefault();
 
+        if (!imageToUpload) return;
+
         const data = new FormData();
         data.append('profilePic', imageToUpload)
-        console.log('checking data')
-        console.log(data)
 
-        const response = await fetchData(`home/personal_profile/change_image`, "PUT", data);
-        // await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/personal_profile/change_image`, {
-        //     method: "PUT",
-        //     mode: "cors",
-        //     credentials: "include",
-        //     headers: {
-        //         "Access-Control-Allow-Credentials": true,
-        //     },
-        //     body: data
-        // })
+        const response = await fetchDataWithImageUpload(`home/personal_profile/change_image`, "PUT", data);
     }
 
-    const changeImageButton = (
-        <button >Change Image</button>
-    )
+    // const changeImageButton = <button >Change Image</button>;
 
     const changeImageForm = (
         <>
         <form method="PUT" encType="multipart/form-data" onSubmit={uploadImage}>
-            <label>
+            <label >
               <p>Change image</p>
-              <input type="file" name="profilePic" onChange={selectImageToUpload}/>
+              <input className={styles.imageInput} type="file" name="profilePic" onChange={selectImageToUpload}/>
             </label>
             {
               !imageToUpload ? null : <input type="submit" disabled={!imageToUpload} />
@@ -113,8 +102,7 @@ export function UserProfileWrapper() {
         !isLoaded ? <p>Loading</p> :
 
         <>
-        <p>It's me the user profile page</p>
-        <h1>User Profile: {userData.username}</h1>
+        <h2>User Profile: {userData.username}</h2>
         <img className={styles.profilePic} src={userData.profilePicURL} alt="" />
         <p>Description:</p>
 
@@ -124,7 +112,7 @@ export function UserProfileWrapper() {
         }
         {isCurrentUser ? changeDescriptionButton : null}
 
-        {changeImageButton}
+        {/* {changeImageButton} */}
         {changeImageForm}
         {isCurrentUser ? <button onClick={() => {logout()}}>Logout</button> : null}
         
