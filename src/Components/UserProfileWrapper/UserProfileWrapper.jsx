@@ -98,9 +98,9 @@ export function UserProfileWrapper() {
         <>
         <h2>User Profile: {userData.username}</h2>
         <img className={styles.profilePic} src={userData.profilePicURL} alt="" />
-        <p>Description:</p>
+        <p>Description: { userData.description }</p>
 
-        {currentStatus === "editDescription" ? changeDescriptionForm : <p>{userData.description}</p>}
+        {currentStatus === "editDescription" ? changeDescriptionForm : null }
         {isCurrentUser ? changeDescriptionButton : null}
 
         {changeImageForm}

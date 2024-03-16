@@ -28,7 +28,6 @@ export function TypeBar( {
 
     async function postMessage(messageObject) {
 
-
         // after this, probably need to reset imageToUpload to null
         if (imageToUpload) {
 

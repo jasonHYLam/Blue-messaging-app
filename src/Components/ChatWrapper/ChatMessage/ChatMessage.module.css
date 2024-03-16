@@ -14,6 +14,11 @@
     height: 50px;
 }
 
+
+.profilePic:hover {
+  background-color: var(--dark-hover);
+}
+
 .top {
     display: flex;
     flex-direction: row;
