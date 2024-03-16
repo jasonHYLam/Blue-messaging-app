@@ -101,8 +101,6 @@ export function UserProfileWrapper() {
     )
 
     function selectImageToUpload(e) {
-        // console.log('checking file')
-        // console.log(e.target.files[0])
         setImageToUpload(e.target.files[0])
     }
 
@@ -132,8 +130,13 @@ export function UserProfileWrapper() {
     const changeImageForm = (
         <>
         <form method="PUT" encType="multipart/form-data" onSubmit={uploadImage}>
-            <input type="file" name="profilePic" onChange={selectImageToUpload}/>
-            <input type="submit" disabled={!imageToUpload} />
+            <label>
+              <p>Change image</p>
+              <input type="file" name="profilePic" onChange={selectImageToUpload}/>
+            </label>
+            {
+              !imageToUpload ? null : <input type="submit" disabled={!imageToUpload} />
+            }
         </form>
         </>
     )
@@ -148,7 +151,7 @@ export function UserProfileWrapper() {
         <>
         <p>It's me the user profile page</p>
         <h1>User Profile: {userData.username}</h1>
-        <img src={userData.profilePicURL} alt="" />
+        <img className={styles.profilePic} src={userData.profilePicURL} alt="" />
         <p>Description:</p>
 
         {currentStatus === "editDescription" 
