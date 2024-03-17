@@ -1,0 +1,9 @@
+.icon {
+
+  color: aliceblue;
+}
+
+.icon:hover {
+  background-color: var(--icon-bg-hover);
+  color: var(--icon-text-hover);
+}

@@ -3,6 +3,7 @@ import styles from './Sidebar.module.css';
 import { useNavigate, Outlet, Link } from 'react-router-dom';
 import { ChatPreview } from './ChatPreview/ChatPreview';
 import { ToggleSidebar } from '../ToggleSidebar/ToggleSidebar';
+import { ClickableIcon } from '../ClickableIcon/ClickableIcon';
 
 // import icon from "../../../public/user-add"
 const ADD_FRIEND_ICON_PATH = "../../../user-add.svg";
@@ -51,17 +52,8 @@ export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised })
               <>
               
                 <section className={ styles.buttonsContainer }>
-                    <img 
-                    onClick={() => navigate(`/home/add_friend`)} 
-                    className={styles.icon} 
-                    src={ADD_FRIEND_ICON_PATH} 
-                    alt="" />
-
-                    <img 
-                    onClick={() => navigate(`create_chat`)}
-                    className={styles.icon} 
-                    src={CREATE_CHAT_ICON_PATH} 
-                    alt="" />
+                  <ClickableIcon onClick={() => navigate(`/home/add_friend`)} imgPath={ADD_FRIEND_ICON_PATH}/>
+                  <ClickableIcon onClick={() => navigate(`create_chat`)} imgPath={CREATE_CHAT_ICON_PATH}/>
                 </section>
 
 
