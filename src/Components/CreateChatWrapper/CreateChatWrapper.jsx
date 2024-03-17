@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./CreateChatWrapper.module.css";
 
 export function CreateChatWrapper() {
 
@@ -88,11 +89,15 @@ export function CreateChatWrapper() {
             {usersNotAddedToChat.map(user => {
                 return (
                     <>
-                    <p>{user.friendUser.username}</p>
+                    <section className={styles.row}>
+
                     <button onClick={() => {
                         removeUserFromNotAddedToChat(user);
                         markUserToAddToChat(user);
                         }}>Add to chat</button>
+
+                    <p>{user.friendUser.username}</p>
+                    </section>
                     </>
                 )
                 
@@ -103,7 +108,6 @@ export function CreateChatWrapper() {
                 return (
                     <>
                     <p>{user.friendUser.username}</p>
-                    <p>Added</p>
                     </>
                 )
             })}

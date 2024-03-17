@@ -1,9 +1,8 @@
 
 .chatPreview {
-  /* max-width: 100%; */
-  text-wrap: wrap;
-  text-overflow: ellipsis;
-  display: inline-block;
+  overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .chatPreview:hover {
@@ -12,9 +11,6 @@
 
 .title {
   display: inline-block;
-  max-width: calc(100%);
-  text-wrap: wrap;
-  text-overflow: ellipsis;
   margin: 0;
 }
 
