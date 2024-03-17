@@ -60,7 +60,7 @@ export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised })
 
                 {
                   chatsList.length === 0 ? <p>No chats!</p> :
-                  <ul>
+                  <ul className={ styles.chatPreviewList }>
                     {chatsList.map(chat => <ChatPreview chat={chat}/>)}
                   </ul>
                 }

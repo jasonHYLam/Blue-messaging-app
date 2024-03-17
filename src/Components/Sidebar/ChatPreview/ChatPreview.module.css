@@ -15,4 +15,9 @@
   max-width: calc(100%);
   text-wrap: wrap;
   text-overflow: ellipsis;
+  margin: 0;
+}
+
+.lastUpdated {
+  margin: 0;
 }

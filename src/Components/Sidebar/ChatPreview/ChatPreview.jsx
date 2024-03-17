@@ -6,8 +6,8 @@ export function ChatPreview({chat}) {
     <article className={styles.chatPreview}>
         <Link to={`chats/${chat.id}`}>
             <section>
-              <p className={styles.title}>{chat.name}</p>
-              <p>{chat.lastUpdated}</p>
+              <p className={ styles.title }>{chat.name}</p>
+              <p className={ styles.lastUpdated }>{chat.lastUpdatedFormatted}</p>
               </section>
         </Link>
     </article>
