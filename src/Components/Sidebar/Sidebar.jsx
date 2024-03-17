@@ -37,16 +37,20 @@ export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised })
 
             <section className={sidebarClass}>
 
-              <ToggleSidebar 
-              setIsSidebarMinimised={setIsSidebarMinimised} 
-              isSidebarMinimised={isSidebarMinimised}
-              />
+              <section className={styles.sidebarTop}>
+                <ToggleSidebar 
+                setIsSidebarMinimised={setIsSidebarMinimised} 
+                isSidebarMinimised={isSidebarMinimised}
+                />
+              </section>
+
+
 
               {isSidebarMinimised ? null :
               
               <>
               
-                <section>
+                <section className={ styles.buttonsContainer }>
                     <img 
                     onClick={() => navigate(`/home/add_friend`)} 
                     className={styles.icon} 

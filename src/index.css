@@ -81,15 +81,12 @@ ul {
   padding-left: 0px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    /* color: #213547; */
-    /* background-color: #ffffff; */
-  }
-  a:hover {
-    /* color: #747bff; */
-  }
-  button {
-    /* background-color: #f9f9f9; */
-  }
+.iconHoverable {
+  /* color: azure; */
+  cursor: pointer;
+  width: var(--icon-height-small);
+}
+
+.iconHoverable:hover {
+  background-color: #243141;
 }

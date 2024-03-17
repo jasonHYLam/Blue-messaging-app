@@ -10,6 +10,11 @@
 
 }
 
+.sidebarTop {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .buttonsContainer {
   display: flex;
   flex-direction: row;
@@ -40,4 +45,9 @@
 
 .icon {
   width: var(--icon-height-small);
+  cursor: pointer;
+}
+
+.icon:hover {
+  background-color: #243141;
 }

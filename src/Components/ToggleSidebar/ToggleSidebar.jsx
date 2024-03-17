@@ -6,7 +6,10 @@ export function ToggleSidebar({ setIsSidebarMinimised, isSidebarMinimised }) {
       <img 
       onClick={() => {setIsSidebarMinimised(!isSidebarMinimised)}} 
       src={TOGGLE_SIDEBAR_ICON_PATH} 
-      style={{width: '24px'}}
+      style={{
+        width: '24px',
+        cursor: 'pointer',
+      }}
       alt="" />
     // </button>
   )
