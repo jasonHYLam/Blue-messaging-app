@@ -2,8 +2,12 @@ const TOGGLE_SIDEBAR_ICON_PATH = "../../../../menu.svg";
 
 export function ToggleSidebar({ setIsSidebarMinimised, isSidebarMinimised }) {
   return (
-    <button onClick={() => {setIsSidebarMinimised(!isSidebarMinimised)}}>
-      <img src={TOGGLE_SIDEBAR_ICON_PATH} alt="" />
-    </button>
+    // <button onClick={() => {setIsSidebarMinimised(!isSidebarMinimised)}}>
+      <img 
+      onClick={() => {setIsSidebarMinimised(!isSidebarMinimised)}} 
+      src={TOGGLE_SIDEBAR_ICON_PATH} 
+      style={{width: '24px'}}
+      alt="" />
+    // </button>
   )
 }
