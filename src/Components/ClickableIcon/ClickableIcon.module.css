@@ -1,9 +1,11 @@
 .icon {
-
   color: aliceblue;
+  padding: 10px;
 }
 
 .icon:hover {
   background-color: var(--icon-bg-hover);
   color: var(--icon-text-hover);
+  cursor: pointer;
+
 }
