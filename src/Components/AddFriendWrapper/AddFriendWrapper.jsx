@@ -1,3 +1,4 @@
+import styles from "./AddFriendWrapper.module.css";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"
 
@@ -103,14 +104,13 @@ export function AddFriendWrapper() {
                 allNonFriends.map(userData => {
                     return (
                         <>
-                        <section>
-                            <p>{userData.username}</p>
+                        <section className={styles.row}>
                             <button onClick={async () => {
-                                await addFriend(userData)
-                                // await getAndSetUserData(searchQuery)
+                                await addFriend(userData);
                                 setIsChanging(true);
-                            }}>
-                                    Add user</button>
+                            }}>Add user</button>
+
+                            <p>{userData.username}</p>
                         </section>
                         
                         </>
