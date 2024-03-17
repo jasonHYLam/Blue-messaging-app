@@ -6,12 +6,26 @@
     padding-left: 20px;
     padding-right: 30px;
     overflow-y: auto;
+    overflow-x: auto;
 
 }
 
-.open {
-    max-width: 15%;
+@media (max-width: 400px) {
+  .open {
+      max-width: 100%;
+  }
 }
+
+@media (min-width: 1000px) {
+  .open {
+    max-width: 250px;
+  }
+}
+
+/* .open {
+    max-width: 250px;
+} */
+
 .closed {
     max-width: 3%;
 }
@@ -20,4 +34,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.icon {
+  width: var(--icon-height-small);
 }

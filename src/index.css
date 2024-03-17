@@ -19,6 +19,8 @@
 
   --icon-height-big: 70px;
   --icon-height-medium: 50px;
+  --icon-height-small: 40px;
+
 
   --dark-hover: #1e2834;
   --light-hover: #646cff;
@@ -37,7 +39,9 @@ body {
   margin: 0;
   place-items: center;
   min-width: 320px;
-  height: 100svh;
+  /* height: 100svh; */
+  height: 100%;
+  width: 100svw;
 }
 
 h1 {
@@ -68,7 +72,9 @@ button:focus-visible {
 
 #root {
   display: flex;
+  /* flex-direction: column; */
   height: 100svh;
+  width: 100svw;
 }
 
 ul {

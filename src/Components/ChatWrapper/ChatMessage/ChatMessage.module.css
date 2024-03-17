@@ -24,3 +24,7 @@
     flex-direction: row;
     gap: 20px;
 }
+
+.image {
+  max-width: 400px;
+}

@@ -49,16 +49,15 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
 
                 <section 
                 >
-                    {!message.imageURL ? null : <img src={message.imageURL} alt="" /> }
+                    {!message.imageURL ? null : <img className={styles.image} src={message.imageURL} alt="" /> }
                     <p>{message.text}</p>
 
                     {!isHovered ? null : 
                     
                     <section className={styles.messageOptions}>
                         <button onClick={() => setMessageToReplyTo(message)}>Reply</button>
-                        <button>Add reaction</button>
+                        {/* <button>Add reaction</button> */}
                     </section>
-
                     }
 
                 </section>

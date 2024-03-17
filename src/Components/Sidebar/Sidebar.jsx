@@ -48,10 +48,10 @@ export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised })
               
                 <section>
                   <button onClick={() => navigate(`/home/add_friend`)}>
-                    <img src={ADD_FRIEND_ICON_PATH} alt="" />
+                    <img className={styles.icon} src={ADD_FRIEND_ICON_PATH} alt="" />
                   </button>
                   <button onClick={() => navigate(`create_chat`)}>
-                    <img src={CREATE_CHAT_ICON_PATH} alt="" />
+                    <img className={styles.icon} src={CREATE_CHAT_ICON_PATH} alt="" />
                   </button>
                 </section>
 

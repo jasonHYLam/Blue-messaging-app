@@ -85,14 +85,14 @@ export function ChatWrapper() {
 
           <section className={styles.messagesContainer}>
 
-             <section className={styles.chatMessages}>
+             {/* <section className={styles.chatMessages}> */}
               {chatMessages.map(message => {
                   return (< ChatMessage 
                       message={message} 
                       setMessageToReplyTo={setMessageToReplyTo}
                       />)
                   })}
-             </section>
+             {/* </section> */}
 
           </section>
 
