@@ -96,15 +96,18 @@ export function UserProfileWrapper() {
         !isLoaded ? <p>Loading</p> :
 
         <>
-        <h2>User Profile: {userData.username}</h2>
-        <img className={styles.profilePic} src={userData.profilePicURL} alt="" />
-        <p>Description: { userData.description }</p>
+        <main>
 
-        {currentStatus === "editDescription" ? changeDescriptionForm : null }
-        {isCurrentUser ? changeDescriptionButton : null}
+          <h2>User Profile: {userData.username}</h2>
+          <img className={styles.profilePic} src={userData.profilePicURL} alt="" />
+          <p>Description: { userData.description }</p>
 
-        {changeImageForm}
-        {isCurrentUser ? <button onClick={() => {logout()}}>Logout</button> : null}
+          {currentStatus === "editDescription" ? changeDescriptionForm : null }
+          {isCurrentUser ? changeDescriptionButton : null}
+
+          {changeImageForm}
+          {isCurrentUser ? <button onClick={() => {logout()}}>Logout</button> : null}
+          </main>
         
         </>
     )

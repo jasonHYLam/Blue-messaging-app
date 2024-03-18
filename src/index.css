@@ -65,6 +65,11 @@ button {
   max-width: 150px;
   cursor: pointer;
   transition: border-color 0.25s;
+
+}
+
+button > p {
+  size: 1rem;
 }
 button:hover {
   border-color: #646cff;

@@ -19,8 +19,10 @@ export function ViewFriendsModal({chatid, usersInChat, friendsNotAddedToChat, se
           const profilePicPath = friend.profilePicURL ? friend.profilePicURL : DEFAULT_PROFILE_PIC_PATH;
           return (
             <>
-              <img src={profilePicPath} alt="" />
+            <article className={styles.row}>
+              <img className={styles.profilePicIcon} src={profilePicPath} alt="" />
               <p>{friend.username}</p>
+            </article>
             </>
           )
         })}
@@ -40,7 +42,7 @@ export function ViewFriendsModal({chatid, usersInChat, friendsNotAddedToChat, se
                 }}>
                   Add to chat
                 </button>
-              <img src={profilePicPath} alt="" />
+              <img className={styles.profilePicIcon} src={profilePicPath} alt="" />
               <p>{friend.username}</p>
 
             </section>

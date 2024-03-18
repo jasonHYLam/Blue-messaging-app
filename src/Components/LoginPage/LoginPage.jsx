@@ -1,3 +1,4 @@
+import styles from "./LoginPage.module.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom"
@@ -35,9 +36,6 @@ export function LoginPage() {
                 body: JSON.stringify(data)
             })
 
-            // console.log('checking response')
-            // console.log(response)
-
             if (response.status === 401) {
                 setBackendErrors("Incorrect username/password")
                 return
@@ -54,6 +52,7 @@ export function LoginPage() {
 
     return (
         <>
+        <section className={styles.page}>
             <h1>Login</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="username">Username</label>
@@ -71,6 +70,7 @@ export function LoginPage() {
             <Link to={'/signup'}>New here? Signup</Link>
 
             <GuestLogin />
+        </section>
         </>
 
 
