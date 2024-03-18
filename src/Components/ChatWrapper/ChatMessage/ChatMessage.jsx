@@ -3,6 +3,8 @@ import styles from './ChatMessage.module.css';
 
 import { Link } from "react-router-dom"
 export function ChatMessage( { message, setMessageToReplyTo }) {
+
+  const DEFAULT_PROFILE_PIC_PATH = "../../../../defaultProfilePic";
     // should contain:
 
     // message author username and profile image.
@@ -14,6 +16,8 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
     // if hovering, then buttons to allow reaction or reply.
 
     // if making a reply or a reaction, then that will need to update the message in the database.
+
+    const profilePicPath = message.imagePath ? message.imagePath : DEFAULT_PROFILE_PIC_PATH;
 
     const [ isHovered, setIsHovered ] = useState(false);
 
@@ -49,7 +53,7 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
 
                 <section 
                 >
-                    {!message.imageURL ? null : <img className={styles.image} src={message.imageURL} alt="" /> }
+                    <img className={styles.image} src={profilePicPath} alt="" />
                     <p>{message.text}</p>
 
                     {!isHovered ? null : 
