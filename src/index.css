@@ -84,13 +84,3 @@ button:focus-visible {
 ul {
   padding-left: 0px;
 }
-
-.iconHoverable {
-  /* color: azure; */
-  cursor: pointer;
-  width: var(--icon-height-small);
-}
-
-.iconHoverable:hover {
-  background-color: #243141;
-}

@@ -17,7 +17,7 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
 
     // if making a reply or a reaction, then that will need to update the message in the database.
 
-    const profilePicPath = message.imagePath ? message.imagePath : DEFAULT_PROFILE_PIC_PATH;
+    const profilePicPath = message.author.profilePicURL ? message.author.profilePicURL : DEFAULT_PROFILE_PIC_PATH;
 
     const [ isHovered, setIsHovered ] = useState(false);
 
@@ -29,7 +29,7 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
             <Link to={`/home/user_profile/${message.author.id}`}>
                 <img 
                 className={styles.profilePic} 
-                src={message.author.profilePicURL} 
+                src={profilePicPath} 
                 alt="Profile Pic" />
             </Link>
             <section
@@ -41,7 +41,7 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
                 
                 <section>
                     <p>{message.messageReplyingTo.author.username}</p>
-                    <p>{message.messageReplyingTo.text}</p>
+                    <p >{message.messageReplyingTo.text}</p>
 
                 </section>
                 }
@@ -51,10 +51,9 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
                     <p>{message.timeStampFormatted}</p>
                 </section>
 
-                <section 
-                >
-                    <img className={styles.image} src={profilePicPath} alt="" />
-                    <p>{message.text}</p>
+                <section >
+                  {message.imagePath ? <img className={styles.image} src={message.imagePath} alt=""/> : null}
+                    <p className={styles.messageText}>{message.text}</p>
 
                     {!isHovered ? null : 
                     
