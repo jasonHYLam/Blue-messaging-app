@@ -5,18 +5,8 @@ export function ChatHeader({ chatName, setShowViewFriendsModal, showViewFriendsM
   return (
 
           <section className={styles.chatHeader}>
-
-            <h2>{chatName}</h2>
-
+            <h2 className={styles.title}>{chatName}</h2>
             <button onClick={() => {setShowViewFriendsModal(!showViewFriendsModal)}}>View Friends</button>
-             {
-              showViewFriendsModal ? <ViewFriendsModal 
-                chatid={chatid}
-                usersInChat={usersInChat}
-                friendsNotAddedToChat={friendsNotInChat}
-                setIsUpdatePending={setIsUpdatePending}
-                /> : null
-             }
           </section>
   )
 }

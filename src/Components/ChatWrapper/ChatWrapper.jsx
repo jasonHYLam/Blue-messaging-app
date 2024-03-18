@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { ChatHeader } from './ChatHeader/ChatHeader';
 import { TypeBar } from "./TypeBar/TypeBar"
 import { ChatMessage } from "./ChatMessage/ChatMessage";
+import { ViewFriendsModal } from './ViewFriendsModal/ViewFriendsModal';
 import { useParams, Link, useOutletContext, useNavigate } from "react-router-dom";
 import { fetchData } from '../../helper/helperFunctions';
 
@@ -38,6 +39,8 @@ export function ChatWrapper() {
 
     const [ setUpdateChatsList ] = useOutletContext();
     
+  console.log('checking allUsersInChat')
+  console.log(allUsersInChat)
     useEffect(() => {
         // console.log('checking ChatWrapper useEffect:')
         async function fetchMessages() {
@@ -83,26 +86,37 @@ export function ChatWrapper() {
             setIsUpdatePending={setIsUpdatePending}
           />
 
-          <section className={styles.messagesContainer}>
+          {showViewFriendsModal ? 
+          <ViewFriendsModal 
+            chatid={chatId}
+            usersInChat={allUsersInChat}
+            friendsNotAddedToChat={friendsNotInChat}
+            setIsUpdatePending={setIsUpdatePending}
+          /> :
+          
+          <>
+            <section className={styles.messagesContainer}>
 
-             {/* <section className={styles.chatMessages}> */}
-              {chatMessages.map(message => {
-                  return (< ChatMessage 
-                      message={message} 
-                      setMessageToReplyTo={setMessageToReplyTo}
-                      />)
-                  })}
-             {/* </section> */}
+                {chatMessages.map(message => {
+                    return (< ChatMessage 
+                        message={message} 
+                        setMessageToReplyTo={setMessageToReplyTo}
+                        />)
+                    })}
 
-          </section>
+            </section>
 
-            < TypeBar 
-              isUpdatePending={isUpdatePending}
-              setIsUpdatePending={setIsUpdatePending} 
-              messageToReplyTo={messageToReplyTo}
-              setMessageToReplyTo={setMessageToReplyTo}
-              setUpdateChatsList={setUpdateChatsList}
-            />
+              < TypeBar 
+                isUpdatePending={isUpdatePending}
+                setIsUpdatePending={setIsUpdatePending} 
+                messageToReplyTo={messageToReplyTo}
+                setMessageToReplyTo={setMessageToReplyTo}
+                setUpdateChatsList={setUpdateChatsList}
+              />
+          </>
+          
+          }
+
 
         </section>
         </>

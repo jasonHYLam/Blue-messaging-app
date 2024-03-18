@@ -1,4 +1,5 @@
-import { fetchData } from "../../../helper/helperFunctions"
+import styles from "./ViewFriendsModal.module.css";
+import { fetchData } from "../../../helper/helperFunctions";
 
 export function ViewFriendsModal({chatid, usersInChat, friendsNotAddedToChat, setIsUpdatePending}) {
 
@@ -6,36 +7,42 @@ export function ViewFriendsModal({chatid, usersInChat, friendsNotAddedToChat, se
     await fetchData(`home/chat/${chatid}/add_user/${userid}`, "POST")
   }
 
+  console.log('checking usersInChat')
   console.log(usersInChat)
+
   return (
     <>
-    <p>In chat:</p>
-    <ul>
-      {usersInChat.map(friend => {
-        return (
-          <>
-            <p>{friend.username}</p>
-          </>
-        )
-      })}
-    </ul>
+    <section className={styles.container}>
 
-    <p>Not In Chat:</p>
-    <ul>
-      {friendsNotAddedToChat.map(friend => {
-        return (
-          <>
-            <p>{friend.username}</p>
-            <button onClick={() => {
-              addFriendToChat(chatid, friend.id)
-              setIsUpdatePending(true)
-              }}>
-                Add to chat
-              </button>
-          </>
-        )
-      })}
-    </ul>
+      <p>In chat:</p>
+      <ul>
+        {usersInChat.map(friend => {
+          return (<p>{friend.username}</p>)
+        })}
+      </ul>
+
+      <p>Not In Chat:</p>
+      <ul>
+        {friendsNotAddedToChat.map(friend => {
+          return (
+            <>
+            <section className={styles.row}>
+
+              <button onClick={() => {
+                addFriendToChat(chatid, friend.id)
+                setIsUpdatePending(true)
+                }}>
+                  Add to chat
+                </button>
+              <p>{friend.username}</p>
+
+            </section>
+            </>
+          )
+        })}
+      </ul>
+
+    </section>
     </>
   )
 
