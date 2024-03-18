@@ -1,4 +1,4 @@
-
+import styles from "./SignupPage.module.css";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate, } from "react-router-dom"
 import { GuestLogin } from "../GuestLogin/GuestLogin";
@@ -46,6 +46,8 @@ export function SignupPage() {
 
     return (
         <>
+        <section className={styles.page}>
+
             <h1>Signup</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -73,6 +75,7 @@ export function SignupPage() {
             </form>
             <Link to={'/login'}>Got an account? Login</Link>
             <GuestLogin />
+        </section>
         </>
     )
 }
