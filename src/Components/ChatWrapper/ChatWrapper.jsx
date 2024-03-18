@@ -80,10 +80,6 @@ export function ChatWrapper() {
             chatName={chatName}
             setShowViewFriendsModal={setShowViewFriendsModal}
             showViewFriendsModal={showViewFriendsModal}
-            chatid={chatId}
-            usersInChat={allUsersInChat}
-            friendsNotInChat={friendsNotInChat}
-            setIsUpdatePending={setIsUpdatePending}
           />
 
           {showViewFriendsModal ? 

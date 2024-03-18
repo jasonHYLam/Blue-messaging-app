@@ -1,7 +1,7 @@
 import styles from './ChatHeader.module.css';
 import { ViewFriendsModal } from '../ViewFriendsModal/ViewFriendsModal';
 
-export function ChatHeader({ chatName, setShowViewFriendsModal, showViewFriendsModal, chatid, usersInChat, friendsNotInChat, setIsUpdatePending}) {
+export function ChatHeader({ chatName, setShowViewFriendsModal, showViewFriendsModal}) {
   return (
 
           <section className={styles.chatHeader}>
