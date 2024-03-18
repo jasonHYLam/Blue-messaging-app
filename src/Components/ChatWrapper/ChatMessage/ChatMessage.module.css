@@ -9,7 +9,7 @@
 
 .messageText {
   overflow-wrap: break-word;
-  width: 80%;
+  max-width: 40%;
 }
 
 .messageOptions {
