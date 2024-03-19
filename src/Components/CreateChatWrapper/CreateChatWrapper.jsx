@@ -4,6 +4,8 @@ import styles from "./CreateChatWrapper.module.css";
 
 export function CreateChatWrapper() {
 
+  const [ setUpdateChatsList ] = useOutletContext();
+
   const navigate = useNavigate();
 
     const [ isLoaded, setIsLoaded ] = useState(false);

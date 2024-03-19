@@ -54,7 +54,7 @@ export function LoginPage() {
         <>
         <section className={styles.page}>
             <h1>Login</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
               <section className={styles.row}>
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" {...register("username", {required: true})} />
