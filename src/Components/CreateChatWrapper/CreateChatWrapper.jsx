@@ -25,22 +25,9 @@ export function CreateChatWrapper() {
             addToChatUserIds: addToChatUserIds,
         }
 
-        const response = await fetchData(`home/create_new_chat`, POST, JSON.stringify(dataToPost))
-
-
-        // const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/create_new_chat`, {
-        //     method: "POST",
-        //     mode: "cors",
-        //     credentials: "include",
-        //     headers: {
-        //         "Content-Type" : "application/json",
-        //         "Access-Control-Allow-Credentials": true,
-        //     },
-        //     body: JSON.stringify(dataToPost),
-        // })
-
+        const response = await fetchData(`home/create_new_chat`, "POST", JSON.stringify(dataToPost))
         const data = await response.json();
-
+        setUpdateChatsList(true);
         navigate(`/home/chats/${data.chatid}`)
     }
 
@@ -49,10 +36,6 @@ export function CreateChatWrapper() {
         // I guess I need to create new backend callback for addingFriendsToChat
 
         const response = await fetchData(`home/show_friends_for_initial_chat_creation`, "GET")
-        // const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/show_friends_for_initial_chat_creation`, {
-        //     mode: "cors",
-        //     credentials: "include",
-        // })
 
         const fetchedData = await response.json();
         setUsersNotAddedToChat(fetchedData.friends)
