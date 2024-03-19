@@ -5,6 +5,7 @@ import { GuestLogin } from "../GuestLogin/GuestLogin";
 
 export function SignupPage() {
 
+    // const [backendErrors, setBackendErrors ] = useState(null)
     const navigate = useNavigate();
 
     const {
@@ -15,26 +16,14 @@ export function SignupPage() {
     } = useForm();
 
     async function onSubmit(data) {
-        console.log('checking data')
-        console.log(data)
+      const dataToSubmit = JSON.stringify(data);
 
         try {           
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/signup`, {
-            method: "POST",
-            mode: "cors",
-            credentials: "include",
-            headers: {
-                "Content-Type" : "application/json",
-                "Access-Control-Allow-Credentials": true,
-            },
-            body: JSON.stringify(data)
-            })
+            const response = await fetchData(`signup`, "POST", dataToSubmit)
 
             if (!response.ok) {
-                console.log('error! error!')
                 return
             }
-
             navigate('/login');
 
 

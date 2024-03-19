@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom"
 import { GuestLogin } from "../GuestLogin/GuestLogin";
+import { fetchData } from "../../helper/helperFunctions";
 
 export function LoginPage() {
 
@@ -18,23 +19,10 @@ export function LoginPage() {
     } = useForm();
 
     async function onSubmit(data) {
-        // console.log('checking data')
-        // console.log(data)
+      const dataToSubmit = JSON.stringify(data);
 
         try {
-            const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/login`, {
-                method: "POST",
-                mode: "cors",
-                // not sure if withCredentials is required
-                withCredentials: "true",
-                credentials: "include",
-                headers: {
-                    "Content-Type" : "application/json",
-                    // "Accept" : "application/json",
-                    "Access-Control-Allow-Credentials": true,
-                },
-                body: JSON.stringify(data)
-            })
+              const response = await fetchData(`login`, "POST", dataToSubmit)
 
             if (response.status === 401) {
                 setBackendErrors("Incorrect username/password")

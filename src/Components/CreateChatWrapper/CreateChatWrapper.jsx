@@ -32,11 +32,8 @@ export function CreateChatWrapper() {
     }
 
     async function getAndSetFriendsDataOnMount() {
-        // must be similar to that of searchUser
-        // I guess I need to create new backend callback for addingFriendsToChat
 
         const response = await fetchData(`home/show_friends_for_initial_chat_creation`, "GET")
-
         const fetchedData = await response.json();
         setUsersNotAddedToChat(fetchedData.friends)
     }
@@ -104,7 +101,10 @@ export function CreateChatWrapper() {
 
             
             {/* try and disable this if no users are added */}
+
+            {!usersToAddToChat.length ? null : 
             <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
+            }
 
         </main>
         
