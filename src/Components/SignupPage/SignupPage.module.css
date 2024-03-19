@@ -6,7 +6,11 @@
 }
 
 .form {
-  width: 30%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+  align-items: center;
 }
 
 .row {
@@ -19,4 +23,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.textInput {
+
+}
+
+.submit {
+  width: 100%;
 }

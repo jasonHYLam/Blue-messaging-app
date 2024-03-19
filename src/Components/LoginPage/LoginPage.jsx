@@ -56,7 +56,7 @@ export function LoginPage() {
                 {backendErrors ? <p>{backendErrors}</p> : null}
               </section>
 
-                <input type="submit" />
+                <input className={styles.submit} type="submit" />
                 
             </form>
             <Link to={'/signup'}>New here? Signup</Link>

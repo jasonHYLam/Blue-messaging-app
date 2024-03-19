@@ -28,6 +28,8 @@
   --icon-bg: ;
   --icon-bg-hover: #535bf2;
   --icon-text-hover: red;
+
+  --text-light: aliceblue;
 }
 
 a {
@@ -88,4 +90,11 @@ button:focus-visible {
 
 ul {
   padding-left: 0px;
+}
+
+input, textarea {
+  background-color: #0d1217;
+  color: var(--text-light);
+  padding: 10px;
+  border: 1px solid var(--background-color-subdued);
 }

@@ -64,7 +64,7 @@ export function SignupPage() {
                 {backendErrors ? <p>{backendErrors}</p> : null}
               </section>
 
-                <input type="submit" />
+                <input className={styles.submit} type="submit" />
 
             </form>
             <Link to={'/login'}>Got an account? Login</Link>

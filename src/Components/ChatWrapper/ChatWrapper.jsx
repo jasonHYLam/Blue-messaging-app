@@ -39,10 +39,7 @@ export function ChatWrapper() {
 
     const [ setUpdateChatsList ] = useOutletContext();
     
-  console.log('checking allUsersInChat')
-  console.log(allUsersInChat)
     useEffect(() => {
-        // console.log('checking ChatWrapper useEffect:')
         async function fetchMessages() {
             const response = await fetchData(`home/chat/${chatId}`, "GET")
             if(!response.ok) navigate('/error');
@@ -55,7 +52,6 @@ export function ChatWrapper() {
             }
         }
 
-        // ADDED THIS JUST NOW
         async function fetchFriends() {
           const response = await fetchData(`home/chat/${chatId}/show_friends_in_chat`, "GET")
           const fetchedData = await response.json(); 
