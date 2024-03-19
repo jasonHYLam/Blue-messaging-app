@@ -1,4 +1,22 @@
 .page {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form {
+  width: 50%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

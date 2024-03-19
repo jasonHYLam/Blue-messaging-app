@@ -55,14 +55,20 @@ export function LoginPage() {
         <section className={styles.page}>
             <h1>Login</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
+              <section className={styles.row}>
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" {...register("username", {required: true})} />
-                { errors.username && errors.username.type === "required" && <span>Please provide username</span> }
-                
+              </section>
+
+              <section className={styles.row}>
                 <label htmlFor="password">Password</label>
                 <input type="password" id="password" {...register("password", {required: true})} />
+              </section>
+              <section className={styles.errors}>
+                { errors.username && errors.username.type === "required" && <span>Please provide username</span> }
                 { errors.password && errors.password.type === "required" && <span>Please provide password</span> }
                 {backendErrors ? <p>{backendErrors}</p> : null}
+              </section>
 
                 <input type="submit" />
                 

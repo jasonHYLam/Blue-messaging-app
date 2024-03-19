@@ -49,26 +49,32 @@ export function SignupPage() {
         <section className={styles.page}>
 
             <h1>Signup</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+              <section className={styles.row}>
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" {...register("username", {required: true})} />
-                { errors.username && errors.username.type === "required" && <span>Please provide username</span> }
-                
+              </section>
+
+              <section className={styles.row}>
                 <label htmlFor="password">Password</label>
                 <input type="password" id="password" {...register("password", {required: true})} />
-                { errors.password && errors.password.type === "required" && <span>Please provide password</span> }
+              </section>
 
+              <section className={styles.row}>
                 <label htmlFor="confirmPassword">Confirm password</label>
                 <input type="password" id="confirmPassword" {...register("confirmPassword", {
                     required: true,
                     validate: (val) => {
                         if (getValues('password') !== val) return "Passwords don't match"
                     }
-
                     })} />
+              </section>
+              <section className={styles.errors}>
+                { errors.username && errors.username.type === "required" && <span>Please provide username</span> }
+                { errors.password && errors.password.type === "required" && <span>Please provide password</span> }
                 { errors.confirmPassword && errors.confirmPassword.type === "required" && <span>Please confirm password</span> }
                 { errors.confirmPassword && errors.confirmPassword.type === "validate" && <span>{errors.confirmPassword.message}</span> }
+              </section>
 
                 <input type="submit" />
 
