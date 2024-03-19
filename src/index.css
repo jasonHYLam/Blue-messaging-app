@@ -16,6 +16,7 @@
   --background-color-subdued: #243141;
   --background-color-dark: #0d1217;
   --foreground-color: blue;
+  --foreground-color-light: rgb(76, 76, 255);
 
   --icon-height-big: 70px;
   --icon-height-medium: 50px;
@@ -34,7 +35,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--foreground-color-light);
   text-decoration: inherit;
 }
 a:hover {
