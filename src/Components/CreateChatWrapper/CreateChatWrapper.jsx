@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import styles from "./CreateChatWrapper.module.css";
+import { fetchData } from "../../helper/helperFunctions";
 
 export function CreateChatWrapper() {
 
@@ -20,21 +21,23 @@ export function CreateChatWrapper() {
         const addToChatUserIds = usersToAddToChat.map(userFriendRelation => userFriendRelation.friendUser._id)
         const dataToPost = {
             chatName,
-            // what exactly is this... if anything this is a wrapper. this is wrapper that contains friendId (in friendUser)
+            // this is a wrapper that contains friendId (in friendUser)
             addToChatUserIds: addToChatUserIds,
         }
 
+        const response = await fetchData(`home/create_new_chat`, POST, JSON.stringify(dataToPost))
 
-        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/create_new_chat`, {
-            method: "POST",
-            mode: "cors",
-            credentials: "include",
-            headers: {
-                "Content-Type" : "application/json",
-                "Access-Control-Allow-Credentials": true,
-            },
-            body: JSON.stringify(dataToPost),
-        })
+
+        // const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/create_new_chat`, {
+        //     method: "POST",
+        //     mode: "cors",
+        //     credentials: "include",
+        //     headers: {
+        //         "Content-Type" : "application/json",
+        //         "Access-Control-Allow-Credentials": true,
+        //     },
+        //     body: JSON.stringify(dataToPost),
+        // })
 
         const data = await response.json();
 
@@ -44,10 +47,12 @@ export function CreateChatWrapper() {
     async function getAndSetFriendsDataOnMount() {
         // must be similar to that of searchUser
         // I guess I need to create new backend callback for addingFriendsToChat
-        const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/show_friends_for_initial_chat_creation`, {
-            mode: "cors",
-            credentials: "include",
-        })
+
+        const response = await fetchData(`home/show_friends_for_initial_chat_creation`, "GET")
+        // const response = await fetch(`${ import.meta.env.VITE_BACKEND_URL }/home/show_friends_for_initial_chat_creation`, {
+        //     mode: "cors",
+        //     credentials: "include",
+        // })
 
         const fetchedData = await response.json();
         setUsersNotAddedToChat(fetchedData.friends)
