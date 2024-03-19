@@ -41,6 +41,9 @@ export function LoginPage() {
     return (
         <>
         <section className={styles.page}>
+
+          <section className={styles.wrapper}>
+
             <h1>Login</h1>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
               <section className={styles.row}>
@@ -55,13 +58,13 @@ export function LoginPage() {
                 { errors.password && errors.password.type === "required" && <span>Please provide password</span> }
                 {backendErrors ? <p>{backendErrors}</p> : null}
               </section>
-
-                <input className={styles.submit} type="submit"  value="Login"/>
-                
+              <input className={styles.submit} type="submit"  value="Login"/>
             </form>
-            <Link to={'/signup'}>New here? Signup</Link>
-
-            <GuestLogin />
+            <section className={styles.links}>
+              <Link to={'/signup'}>New here? Signup</Link>
+              <GuestLogin />
+            </section>
+          </section>
         </section>
         </>
 

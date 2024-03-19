@@ -5,6 +5,13 @@
   width: 100%;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -35,4 +42,10 @@
   cursor: pointer;
   background-color: var(--foreground-color);
   color: var(--text-light);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
