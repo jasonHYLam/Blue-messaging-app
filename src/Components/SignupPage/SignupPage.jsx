@@ -63,8 +63,8 @@ export function SignupPage() {
                 { errors.confirmPassword && errors.confirmPassword.type === "validate" && <span>{errors.confirmPassword.message}</span> }
                 {backendErrors ? <p>{backendErrors}</p> : null}
               </section>
-
-                <input className={styles.submit} type="submit" />
+              
+                <input className={styles.submit} type="submit" value="Signup"/>
 
             </form>
             <Link to={'/login'}>Got an account? Login</Link>

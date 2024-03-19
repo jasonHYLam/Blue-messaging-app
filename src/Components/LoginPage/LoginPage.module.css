@@ -30,3 +30,9 @@
 .submit {
   width: 100%;
 }
+
+.submit:hover {
+  cursor: pointer;
+  background-color: var(--foreground-color);
+  color: var(--text-light);
+}

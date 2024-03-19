@@ -75,6 +75,7 @@ button > p {
 }
 button:hover {
   border-color: #646cff;
+  background-color: var(--foreground-color);
 }
 button:focus,
 button:focus-visible {
@@ -97,4 +98,5 @@ input, textarea {
   color: var(--text-light);
   padding: 10px;
   border: 1px solid var(--background-color-subdued);
+  width: 100%;
 }
