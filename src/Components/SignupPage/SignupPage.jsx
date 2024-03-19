@@ -1,3 +1,4 @@
+import { fetchData } from "../../helper/helperFunctions";
 import styles from "./SignupPage.module.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form"
