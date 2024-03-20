@@ -71,14 +71,11 @@ export function AddFriendWrapper() {
 
     return (
         <>
+          <section>
+
             <p>Hi it's me, add friend wrapper</p>
 
             <p>Search for users to add:</p>
-
-            {/* <form action="" onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" {...register("username")}/>
-                <input type="submit" />
-            </form> */}
 
             <input type="text" 
                 value={searchQuery}
@@ -117,6 +114,7 @@ export function AddFriendWrapper() {
                     )
                 })
             }
+          </section>
         </>
     )
 }

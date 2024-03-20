@@ -1,4 +1,5 @@
 import { fetchData, fetchDataWithImageUpload } from '../../helper/helperFunctions'
+import { ProfilePic } from '../ProfilePic/ProfilePic';
 import styles from "./UserProfileWrapper.module.css";
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
@@ -99,7 +100,8 @@ export function UserProfileWrapper() {
         <main>
 
           <h2>User Profile: {userData.username}</h2>
-          <img className={styles.profilePic} src={userData.profilePicURL} alt="" />
+          <ProfilePic imgPath={userData.profilePicURL}/>
+          {/* <img className={styles.profilePic} src={userData.profilePicURL} alt="" /> */}
           <p>Description: { userData.description }</p>
 
           {currentStatus === "editDescription" ? changeDescriptionForm : null }
