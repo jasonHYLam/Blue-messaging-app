@@ -10,13 +10,15 @@ flex direction row
 */
 .header {
   background-color: var(--foreground-color);
-
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
 }
 
 .profile {
   display: flex;
   flex-direction: row;
-
+  gap: 10px;
 }
 
 .profilePic {

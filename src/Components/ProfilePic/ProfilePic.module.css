@@ -1,6 +1,10 @@
-.profilePic {
+.profilePic, .defaultProfilePic {
   object-fit: cover;
   height: var(--icon-height-big);
   width: var(--icon-height-big);
   border-radius: 50%;
+}
+.defaultProfilePic {
+  background-color: var(--background-color-subdued);
+
 }
