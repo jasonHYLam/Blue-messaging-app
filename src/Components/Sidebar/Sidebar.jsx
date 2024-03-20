@@ -14,7 +14,7 @@ export function Sidebar({chatsList, isSidebarMinimised }) {
     const [ isLoaded, setIsLoaded ] = useState(false);
     const navigate = useNavigate();
 
-    const sidebarClass = isSidebarMinimised ? `${styles.sidebar} ${styles.closed}` : `${styles.sidebar} ${styles.open}` ;
+    const sidebarClass = `${styles.sidebar} ${styles.open}` ;
 
     // const [ allChats, setAllChats ] = useState([]);
 

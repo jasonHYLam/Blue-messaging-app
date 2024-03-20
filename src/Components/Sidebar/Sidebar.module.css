@@ -28,10 +28,6 @@
   }
 }
 
-/* .closed {
-    width: 3%;
-} */
-
 .chatPreviewList {
   display: flex;
   flex-direction: column;
