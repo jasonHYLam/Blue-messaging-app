@@ -1,8 +1,9 @@
 .container {
 }
 
-img {
+.profilePic {
   object-fit: cover;
-  height: var(--icon-height-small);
-  width: var(--icon-height-small);
+  height: var(--icon-height-big);
+  width: var(--icon-height-big);
+  border-radius: 50%;
 }
