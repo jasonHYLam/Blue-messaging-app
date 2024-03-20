@@ -1,6 +1,3 @@
-.container {
-}
-
 .profilePic {
   object-fit: cover;
   height: var(--icon-height-big);

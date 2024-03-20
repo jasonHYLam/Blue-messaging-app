@@ -1,5 +1,4 @@
 import styles from './ChatHeader.module.css';
-import { ViewFriendsModal } from '../ViewFriendsModal/ViewFriendsModal';
 
 export function ChatHeader({ chatName, setShowViewFriendsModal, showViewFriendsModal}) {
   return (
