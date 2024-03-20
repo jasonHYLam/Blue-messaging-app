@@ -70,9 +70,14 @@ export function CreateChatWrapper() {
         !isLoaded ? <p>Loading</p>  :
         <>
         <main>
-            <label> Name your chat
-                <input type="text" value={chatName} onChange={(e) => setChatName(e.target.value)}/>
-            </label>
+          <section className={styles.row}>
+                <input type="text" placeholder="Name your chat" value={chatName} onChange={(e) => setChatName(e.target.value)}/>
+
+                {!usersToAddToChat.length ? null : 
+                <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
+                }
+
+          </section>
             <p>Add to chat:</p>
             {usersNotAddedToChat.map(user => {
                 return (
@@ -105,9 +110,6 @@ export function CreateChatWrapper() {
                 )
             })}
 
-            {!usersToAddToChat.length ? null : 
-            <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
-            }
 
         </main>
         
