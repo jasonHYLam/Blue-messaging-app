@@ -1,6 +1,7 @@
 import styles from "./AddFriendWrapper.module.css";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form"
+import { ProfilePic } from "../ProfilePic/ProfilePic";
 
 export function AddFriendWrapper() {
 
@@ -50,7 +51,6 @@ export function AddFriendWrapper() {
             credentials: "include",
             headers: {
                 "Content-Type" : "application/json",
-                // "Accept" : "application/json",
                 "Access-Control-Allow-Credentials": true,
             },
         })
@@ -86,6 +86,8 @@ export function AddFriendWrapper() {
 
             {
                 allFriends.map(userData => {
+                  console.log('checking userData')
+                  console.log(userData)
                     return (
                         <>
                         <section>
@@ -99,6 +101,8 @@ export function AddFriendWrapper() {
             }
             {
                 allNonFriends.map(userData => {
+                  console.log('checking userData')
+                  console.log(userData)
                     return (
                         <>
                         <section className={styles.row}>
@@ -106,6 +110,7 @@ export function AddFriendWrapper() {
                                 await addFriend(userData);
                                 setIsChanging(true);
                             }}>Add user</button>
+                            <ProfilePic imgPath={userData.profilePicURL}/>
 
                             <p>{userData.username}</p>
                         </section>

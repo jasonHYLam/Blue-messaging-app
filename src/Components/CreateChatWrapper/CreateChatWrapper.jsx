@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import styles from "./CreateChatWrapper.module.css";
 import { fetchData } from "../../helper/helperFunctions";
+import { ProfilePic } from "../ProfilePic/ProfilePic";
 
 export function CreateChatWrapper() {
 
@@ -83,6 +84,8 @@ export function CreateChatWrapper() {
                         markUserToAddToChat(user);
                         }}>Add to chat</button>
 
+                        <ProfilePic imgPath={user.profilePicURL}/>
+
                     <p>{user.friendUser.username}</p>
                     </section>
                     </>
@@ -94,13 +97,13 @@ export function CreateChatWrapper() {
             {usersToAddToChat.map(user => {
                 return (
                     <>
-                    <p>{user.friendUser.username}</p>
+                    <section className={styles.row}>
+                      <ProfilePic imgPath={user.profilePicURL}/>
+                      <p>{user.friendUser.username}</p>
+                    </section>
                     </>
                 )
             })}
-
-            
-            {/* try and disable this if no users are added */}
 
             {!usersToAddToChat.length ? null : 
             <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
