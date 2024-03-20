@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { fetchData, fetchDataWithImageUpload } from '../../../helper/helperFunctions';
 
+const IMAGE_ICON_PATH = "../../../../image.svg";
+
 export function TypeBar( { 
   isUpdatePending,
   setIsUpdatePending, 
@@ -75,7 +77,11 @@ export function TypeBar( {
             }
 
             <form className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(postMessage)}>
-                <input type="file" onChange={selectImageToUpload} />
+              <label htmlFor="upload">
+              <img src={IMAGE_ICON_PATH} alt="" />
+                <input id='upload' type="file" onChange={selectImageToUpload} />
+              </label>
+
                 <input className={styles.textInput} type="text" {...register("message", {required: true})} />
                 <input type="submit" value="Send"/>
             </form>

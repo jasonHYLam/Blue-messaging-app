@@ -33,6 +33,10 @@
   --text-light: aliceblue;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: var(--foreground-color-light);
@@ -113,4 +117,9 @@ button:hover, input[type=submit]:hover {
   cursor: pointer;
   background-color: var(--foreground-color);
   color: var(--text-light);
+}
+
+input[type=file] {
+  width: 100px;
+  display: none;
 }

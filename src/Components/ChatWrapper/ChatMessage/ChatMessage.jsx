@@ -54,7 +54,6 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
                     
                     <section className={styles.messageOptions}>
                         <button onClick={() => setMessageToReplyTo(message)}>Reply</button>
-                        {/* <button>Add reaction</button> */}
                     </section>
                     }
 
