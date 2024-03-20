@@ -56,7 +56,11 @@ export function HomePage() {
 
         <>
         <main className={styles.homePage}>
-            < Header loggedInUser={loggedInUser} />
+            < Header 
+            loggedInUser={loggedInUser} 
+            setIsSidebarMinimised={setIsSideBarMinimised} 
+            isSidebarMinimised={isSidebarMinimised}
+            />
             <section className={styles.belowHeader}>
               <section className={styles.insideBelowHeader}>
 

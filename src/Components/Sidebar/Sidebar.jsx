@@ -38,12 +38,12 @@ export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised })
 
             <section className={sidebarClass}>
 
-              <section className={styles.sidebarTop}>
+              {/* <section className={styles.sidebarTop}>
                 <ToggleSidebar 
                 setIsSidebarMinimised={setIsSidebarMinimised} 
                 isSidebarMinimised={isSidebarMinimised}
                 />
-              </section>
+              </section> */}
 
 
 
