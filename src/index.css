@@ -94,10 +94,18 @@ ul {
   padding-left: 0px;
 }
 
-input, textarea {
+input[type=text], 
+input[type=password], 
+textarea {
   background-color: #0d1217;
   color: var(--text-light);
   padding: 10px;
   border: 1px solid var(--background-color-subdued);
   width: 100%;
+}
+
+input[type=submit] {
+  background-color: #0d1217;
+  color: var(--text-light);
+  border: 1px solid var(--background-color-subdued);
 }

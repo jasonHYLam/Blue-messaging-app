@@ -22,3 +22,8 @@ flex direction row
 .profilePic {
   height: var(--icon-height-medium);
 }
+
+.link {
+  color: var(--text-light);
+
+}
