@@ -4,12 +4,12 @@
     margin-bottom: 20px;
     position: relative;
   overflow-wrap: break-word;
-  width: 100%;
+  width: 50%;
 }
 
 .messageText {
   overflow-wrap: break-word;
-  max-width: 40%;
+  max-width: 100%;
 }
 
 .messageOptions {

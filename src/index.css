@@ -109,3 +109,9 @@ input[type=submit] {
   color: var(--text-light);
   border: 1px solid var(--background-color-subdued);
 }
+
+input[type=submit]:hover {
+  cursor: pointer;
+  background-color: var(--foreground-color);
+  color: var(--text-light);
+}

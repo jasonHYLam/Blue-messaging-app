@@ -76,7 +76,7 @@ export function TypeBar( {
             <form className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(postMessage)}>
                 <input type="file" onChange={selectImageToUpload} />
                 <input className={styles.textInput} type="text" {...register("message", {required: true})} />
-                {isUpdatePending ? <input disabled="true" type="submit"/> : <input type="submit"/> }
+                {isUpdatePending ? <input disabled="true" type="submit"/> : <input type="submit" value="Send"/> }
             </form>
         </section>
         </>
