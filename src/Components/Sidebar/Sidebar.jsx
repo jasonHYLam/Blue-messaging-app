@@ -9,7 +9,7 @@ import { ClickableIcon } from '../ClickableIcon/ClickableIcon';
 const ADD_FRIEND_ICON_PATH = "../../../user-add.svg";
 const CREATE_CHAT_ICON_PATH = "../../../comment.svg";
 
-export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised }) {
+export function Sidebar({chatsList, isSidebarMinimised }) {
 
     const [ isLoaded, setIsLoaded ] = useState(false);
     const navigate = useNavigate();
@@ -37,15 +37,6 @@ export function Sidebar({chatsList, setIsSidebarMinimised, isSidebarMinimised })
         <>
 
             <section className={sidebarClass}>
-
-              {/* <section className={styles.sidebarTop}>
-                <ToggleSidebar 
-                setIsSidebarMinimised={setIsSidebarMinimised} 
-                isSidebarMinimised={isSidebarMinimised}
-                />
-              </section> */}
-
-
 
               {isSidebarMinimised ? null :
               

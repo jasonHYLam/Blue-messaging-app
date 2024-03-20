@@ -8,10 +8,6 @@
     overflow-y: auto;
 }
 
-.sidebarTop {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
 
 .buttonsContainer {
   display: flex;
