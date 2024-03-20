@@ -52,7 +52,7 @@ export function ChatMessage( { message, setMessageToReplyTo }) {
                 </section>
 
                 <section >
-                  {message.imagePath ? <img className={styles.image} src={message.imagePath} alt=""/> : null}
+                  {message.imageURL ? <img className={styles.image} src={message.imageURL} alt=""/> : null}
                     <p className={styles.messageText}>{message.text}</p>
 
                     {!isHovered ? null : 

@@ -37,6 +37,8 @@ export function TypeBar( {
             data.append('messageToReplyTo', messageToReplyTo)
 
             const response = await fetchDataWithImageUpload(`home/chat/${chatId}/create_message_with_image`, "POST", data)
+            console.log('checking response')
+            console.log(response)
         }
 
         else {
@@ -55,7 +57,7 @@ export function TypeBar( {
         setIsUpdatePending(true);
         setUpdateChatsList(true);
 
-        setIsBeingSubmitted(true);
+        // setIsBeingSubmitted(true);
 
     }
 
