@@ -28,6 +28,8 @@ export function TypeBar( {
 
     async function postMessage(messageObject) {
 
+      // This prevents multiple uploads if the user decides to spam the send button.
+      if(isUpdatePending) return;
         // after this, probably need to reset imageToUpload to null
         if (imageToUpload) {
 
@@ -56,9 +58,6 @@ export function TypeBar( {
         reset();
         setIsUpdatePending(true);
         setUpdateChatsList(true);
-
-        // setIsBeingSubmitted(true);
-
     }
 
     return (
@@ -78,7 +77,7 @@ export function TypeBar( {
             <form className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(postMessage)}>
                 <input type="file" onChange={selectImageToUpload} />
                 <input className={styles.textInput} type="text" {...register("message", {required: true})} />
-                {isUpdatePending ? <input disabled="true" type="submit"/> : <input type="submit" value="Send"/> }
+                <input type="submit" value="Send"/>
             </form>
         </section>
         </>
