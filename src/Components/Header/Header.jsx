@@ -15,7 +15,6 @@ export function Header({loggedInUser}) {
                 <p className={styles.link}>{loggedInUser.username}</p>
               </section>
             </Link>
-
           </div>
         </header>
         </>

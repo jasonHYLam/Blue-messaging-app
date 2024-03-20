@@ -97,19 +97,26 @@ export function UserProfileWrapper() {
         !isLoaded ? <p>Loading</p> :
 
         <>
-        <main>
+        <main className={styles.wrapper}>
 
           <h2>User Profile: {userData.username}</h2>
-          <ProfilePic imgPath={userData.profilePicURL}/>
-          {/* <img className={styles.profilePic} src={userData.profilePicURL} alt="" /> */}
-          <p>Description: { userData.description }</p>
 
-          {currentStatus === "editDescription" ? changeDescriptionForm : null }
-          {isCurrentUser ? changeDescriptionButton : null}
+          <section className={styles.row}>
+            <ProfilePic imgPath={userData.profilePicURL}/>
+            {changeImageForm}
+          </section>
 
-          {changeImageForm}
-          {isCurrentUser ? <button onClick={() => {logout()}}>Logout</button> : null}
-          </main>
+          <section className={styles.row}>
+            <p>Description: { userData.description }</p>
+            {currentStatus === "editDescription" ? changeDescriptionForm : null }
+            {isCurrentUser ? changeDescriptionButton : null}
+          </section>
+
+          <section className={styles.row}>
+            {isCurrentUser ? <button onClick={() => {logout()}}>Logout</button> : null}
+          </section>
+
+        </main>
         
         </>
     )

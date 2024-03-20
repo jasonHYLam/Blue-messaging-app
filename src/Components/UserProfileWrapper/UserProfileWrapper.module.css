@@ -2,6 +2,16 @@
   width : var(--icon-height-big);
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+
+}
+
 
 .imageInput {
   /* display: none; */
