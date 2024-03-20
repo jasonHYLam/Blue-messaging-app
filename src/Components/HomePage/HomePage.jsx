@@ -63,12 +63,14 @@ export function HomePage() {
             />
             <section className={styles.belowHeader}>
               <section className={styles.insideBelowHeader}>
-
+                {isSidebarMinimised ? null : 
+                
                   < Sidebar 
                   chatsList={chatsList} 
-                  setIsSidebarMinimised={setIsSideBarMinimised} 
                   isSidebarMinimised={isSidebarMinimised}
                   />
+                }
+
                   <section className={styles.content}>
                     < Outlet context={[ setUpdateChatsList ]} />
                   </section>
