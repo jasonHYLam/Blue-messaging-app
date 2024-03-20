@@ -78,12 +78,14 @@ export function TypeBar( {
 
             <form className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(postMessage)}>
               <label htmlFor="upload">
-              <img src={IMAGE_ICON_PATH} alt="" />
+                <img src={IMAGE_ICON_PATH} alt="" />
                 <input id='upload' type="file" onChange={selectImageToUpload} />
               </label>
 
+              <section className={styles.textAndSubmit}>
                 <input className={styles.textInput} type="text" {...register("message", {required: true})} />
                 <input type="submit" value="Send"/>
+              </section>
             </form>
         </section>
         </>
