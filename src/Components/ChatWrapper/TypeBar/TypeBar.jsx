@@ -81,6 +81,10 @@ export function TypeBar({
           </>
         )}
 
+        {errors.message && errors.message.type === "maxLength" && (
+          <span>Max length exceeded (1000 characters)</span>
+        )}
+
         <form
           className={styles.form}
           encType="multipart/form-data"
@@ -99,9 +103,6 @@ export function TypeBar({
             />
             <input type="submit" value="Send" />
           </section>
-          {errors.message && errors.message.type === "maxLength" && (
-            <span>Max length exceeded (1000 characters)</span>
-          )}
         </form>
       </section>
     </>
