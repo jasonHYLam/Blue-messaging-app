@@ -97,6 +97,10 @@ ul {
   padding-left: 0px;
 }
 
+p {
+  margin: 0;
+}
+
 input[type=text], 
 input[type=password], 
 textarea {
