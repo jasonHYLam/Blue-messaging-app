@@ -16,8 +16,6 @@ export function HomePage() {
   const [isSidebarMinimised, setIsSideBarMinimised] = useState(false);
   const isMobileViewRef = useRef(false);
 
-  console.log("checking isMobileViewRef");
-  console.log(isMobileViewRef);
   // Creates fetch request for req.isAuthenticated. If req.isAuthenticated is false, then redirect.
 
   useEffect(() => {
@@ -54,6 +52,7 @@ export function HomePage() {
           loggedInUser={loggedInUser}
           setIsSidebarMinimised={setIsSideBarMinimised}
           isSidebarMinimised={isSidebarMinimised}
+          isMobileView={isMobileViewRef.current}
         />
         {/* vertical stretch */}
         <section className={styles.belowHeader}>
