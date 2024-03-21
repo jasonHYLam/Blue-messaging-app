@@ -32,3 +32,7 @@ export async function fetchDataWithImageUpload(backendURL, method, data) {
 
   return response;
 }
+
+export function checkIsMobileView() {
+  return window.screen.width < 400;
+}

@@ -1,6 +1,6 @@
 .typeBar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
     position: relative;
     height: 100px;
@@ -33,8 +33,23 @@
   flex: 1;
 }
 
+.replyContainer {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  word-break: break-word;
+}
+
+.messageToReplyTo {
+  overflow: auto;
+}
+
 .errorMessage {
   position: absolute;
   font-size: 0.6em;
   top: 0px;
+}
+
+.cancelReply {
+  min-width: 100px;
 }

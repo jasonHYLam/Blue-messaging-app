@@ -72,12 +72,17 @@ export function TypeBar({
       <section className={styles.typeBar}>
         {!messageToReplyTo ? null : (
           <>
-            <section>
-              <p>{messageToReplyTo.author.username}</p>
-              <p>{messageToReplyTo.text}</p>
-              <button onClick={() => setMessageToReplyTo(null)}>
-                Cancel reply
+            <section className={styles.replyContainer}>
+              <button
+                className={styles.cancelReply}
+                onClick={() => setMessageToReplyTo(null)}
+              >
+                Cancel
               </button>
+              <section className={styles.messageToReplyTo}>
+                <p>{messageToReplyTo.author.username}</p>
+                <p>{messageToReplyTo.text}</p>
+              </section>
             </section>
           </>
         )}
