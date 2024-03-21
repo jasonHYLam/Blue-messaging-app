@@ -3,9 +3,11 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import styles from "./CreateChatWrapper.module.css";
 import { fetchData } from "../../helper/helperFunctions";
 import { ProfilePic } from "../ProfilePic/ProfilePic";
+import { useForm } from "react-hook-form";
 
 export function CreateChatWrapper() {
 
+  const { register, handleSubmit, formState: {errors}} = useForm();
   const [ setUpdateChatsList ] = useOutletContext();
 
   const navigate = useNavigate();
@@ -70,12 +72,34 @@ export function CreateChatWrapper() {
         !isLoaded ? <p>Loading</p>  :
         <>
         <main>
-          <section className={styles.row}>
-                <input type="text" placeholder="Name your chat" value={chatName} onChange={(e) => setChatName(e.target.value)}/>
+
+          {/* <form onSubmit={handleSubmit(postToCreateChat)}>
+                <input 
+                type="text" 
+                placeholder="Name your chat" 
+                value={chatName} 
+                {...register("chatname", {required: true, })}
+                onChange={(e) => setChatName(e.target.value)}/>
+
+                {chatName.length > 30 ? <p>Chat name is too long (30 characters max)</p> : null}
 
                 {!usersToAddToChat.length ? null : 
                 <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
                 }
+          </form> */}
+
+
+          <section className={styles.row}>
+                <input type="text" placeholder="Name your chat" value={chatName} onChange={(e) => setChatName(e.target.value)}/>
+
+                {chatName.length > 30 ? <p>Chat name is too long (30 characters max)</p> : 
+
+                !usersToAddToChat.length ? null : 
+                <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
+                
+
+                }
+
 
           </section>
             <p>Add to chat:</p>

@@ -61,7 +61,9 @@ export function HomePage() {
             setIsSidebarMinimised={setIsSideBarMinimised} 
             isSidebarMinimised={isSidebarMinimised}
             />
-            <section className={styles.belowHeader}>
+            {/* vertical stretch */}
+            <section className={styles.belowHeader}> 
+            {/* horizontal stretch */}
               <section className={styles.insideBelowHeader}>
                 {isSidebarMinimised ? null : 
                 
