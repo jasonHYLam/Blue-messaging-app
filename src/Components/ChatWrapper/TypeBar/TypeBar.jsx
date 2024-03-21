@@ -92,7 +92,7 @@ export function TypeBar({
           encType="multipart/form-data"
           onSubmit={handleSubmit(postMessage)}
         >
-          <label htmlFor="upload">
+          <label className={styles.imageUpload} htmlFor="upload">
             <img src={IMAGE_ICON_PATH} alt="" />
             <input id="upload" type="file" onChange={selectImageToUpload} />
           </label>
