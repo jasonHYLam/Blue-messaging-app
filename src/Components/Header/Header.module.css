@@ -1,13 +1,3 @@
-/* 
-height of 100px, 
-fixed position
-
-left padding right padding
-
-flex direction row
-
-
-*/
 .header {
   background-color: var(--foreground-color);
   padding-top: 5px;

@@ -5,13 +5,12 @@ import { useNavigate } from "react-router-dom";
 export function Logout() {
   const navigate = useNavigate();
   useEffect(() => {
-
     async function logout() {
-      await fetchData(`logout`, 'DELETE')
+      await fetchData(`logout`, "DELETE");
     }
 
-    logout()
-    navigate('/login')
-  }, [])
-  return
+    logout();
+    navigate("/login");
+  }, []);
+  return;
 }

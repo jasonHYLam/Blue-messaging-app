@@ -50,7 +50,6 @@ body {
   margin: 0;
   place-items: center;
   min-width: 320px;
-  /* height: 100svh; */
   height: 100%;
   width: 100svw;
 }
