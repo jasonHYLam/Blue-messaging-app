@@ -22,7 +22,6 @@
   --icon-height-medium: 50px;
   --icon-height-small: 40px;
 
-
   --dark-hover: #1e2834;
   --light-hover: #646cff;
 
@@ -69,12 +68,12 @@ button {
   font-family: inherit;
   max-width: 150px;
   transition: border-color 0.25s;
-
 }
 
 button > p {
   size: 1rem;
 }
+
 button:hover {
   border-color: #646cff;
   background-color: var(--foreground-color);
@@ -87,7 +86,6 @@ button:focus-visible {
 
 #root {
   display: flex;
-  /* flex-direction: column; */
   height: 100svh;
   width: 100svw;
 }
