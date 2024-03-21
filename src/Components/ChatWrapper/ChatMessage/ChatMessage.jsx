@@ -43,7 +43,7 @@ export function ChatMessage({ message, setMessageToReplyTo }) {
             <p>{message.timeStampFormatted}</p>
           </section>
 
-          <section>
+          <section className={styles.messageContents}>
             {message.imageURL ? (
               <img className={styles.image} src={message.imageURL} alt="" />
             ) : null}
