@@ -82,7 +82,9 @@ export function TypeBar({
         )}
 
         {errors.message && errors.message.type === "maxLength" && (
-          <span>Max length exceeded (1000 characters)</span>
+          <span className={styles.errorMessage}>
+            Max length exceeded (1000 characters)
+          </span>
         )}
 
         <form
