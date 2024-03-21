@@ -31,9 +31,6 @@ export function TypeBar({
     setImageToUpload(e.target.files[0]);
   }
 
-  console.log("checking errors");
-  console.log(errors);
-
   async function postMessage(messageObject) {
     // This prevents multiple uploads if the user decides to spam the send button.
     if (isUpdatePending) return;
