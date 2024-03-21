@@ -9,6 +9,7 @@ import {
 } from "../../../helper/helperFunctions";
 
 const IMAGE_ICON_PATH = "../../../../image.svg";
+const MESSAGE_MAX_LENGTH = 1000;
 
 export function TypeBar({
   isUpdatePending,
@@ -101,7 +102,10 @@ export function TypeBar({
             <input
               className={styles.textInput}
               type="text"
-              {...register("message", { required: true, maxLength: 10 })}
+              {...register("message", {
+                required: true,
+                maxLength: MESSAGE_MAX_LENGTH,
+              })}
             />
             <input type="submit" value="Send" />
           </section>
