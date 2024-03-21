@@ -63,6 +63,8 @@ export function HomePage() {
               <Sidebar
                 chatsList={chatsList}
                 isSidebarMinimised={isSidebarMinimised}
+                setIsSidebarMinimised={setIsSideBarMinimised}
+                isMobileView={isMobileViewRef.current}
               />
             )}
 

@@ -8,7 +8,12 @@ const ADD_FRIEND_ICON_PATH = "../../../user-add.svg";
 const CREATE_CHAT_ICON_PATH = "../../../comment.svg";
 
 // When a new chat or new chat message is created, this will be updated.
-export function Sidebar({ chatsList, isSidebarMinimised }) {
+export function Sidebar({
+  chatsList,
+  isSidebarMinimised,
+  setIsSidebarMinimised,
+  isMobileView,
+}) {
   const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
 
@@ -26,14 +31,35 @@ export function Sidebar({ chatsList, isSidebarMinimised }) {
         {isSidebarMinimised ? null : (
           <>
             <section className={styles.buttonsContainer}>
-              <ClickableIcon
-                onClick={() => navigate(`/home/add_friend`)}
-                imgPath={ADD_FRIEND_ICON_PATH}
-              />
-              <ClickableIcon
-                onClick={() => navigate(`create_chat`)}
-                imgPath={CREATE_CHAT_ICON_PATH}
-              />
+              {isMobileView ? (
+                <>
+                  <ClickableIcon
+                    onClick={() => {
+                      navigate(`/home/add_friend`);
+                      setIsSidebarMinimised(true);
+                    }}
+                    imgPath={ADD_FRIEND_ICON_PATH}
+                  />
+                  <ClickableIcon
+                    onClick={() => {
+                      navigate(`create_chat`);
+                      setIsSidebarMinimised(true);
+                    }}
+                    imgPath={CREATE_CHAT_ICON_PATH}
+                  />
+                </>
+              ) : (
+                <>
+                  <ClickableIcon
+                    onClick={() => navigate(`/home/add_friend`)}
+                    imgPath={ADD_FRIEND_ICON_PATH}
+                  />
+                  <ClickableIcon
+                    onClick={() => navigate(`create_chat`)}
+                    imgPath={CREATE_CHAT_ICON_PATH}
+                  />
+                </>
+              )}
             </section>
 
             <p>Chats:</p>
@@ -43,7 +69,11 @@ export function Sidebar({ chatsList, isSidebarMinimised }) {
             ) : (
               <ul className={styles.chatPreviewList}>
                 {chatsList.map((chat) => (
-                  <ChatPreview chat={chat} />
+                  <ChatPreview
+                    chat={chat}
+                    isMobileView={isMobileView}
+                    setIsSidebarMinimised={setIsSidebarMinimised}
+                  />
                 ))}
               </ul>
             )}
