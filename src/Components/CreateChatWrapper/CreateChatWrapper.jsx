@@ -6,137 +6,133 @@ import { ProfilePic } from "../ProfilePic/ProfilePic";
 import { useForm } from "react-hook-form";
 
 export function CreateChatWrapper() {
-
-  const { register, handleSubmit, formState: {errors}} = useForm();
-  const [ setUpdateChatsList ] = useOutletContext();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [setUpdateChatsList] = useOutletContext();
 
   const navigate = useNavigate();
 
-    const [ isLoaded, setIsLoaded ] = useState(false);
-    // optional
-    const [ chatName, setChatName ] = useState('');
-    // users to add (at least one)
-    const [ usersNotAddedToChat, setUsersNotAddedToChat ] = useState([]);
-    const [ usersToAddToChat, setUsersToAddToChat ] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  // optional
+  const [chatName, setChatName] = useState("");
+  // users to add (at least one)
+  const [usersNotAddedToChat, setUsersNotAddedToChat] = useState([]);
+  const [usersToAddToChat, setUsersToAddToChat] = useState([]);
 
-    async function postToCreateChat() {
+  async function postToCreateChat() {
+    const addToChatUserIds = usersToAddToChat.map(
+      (userFriendRelation) => userFriendRelation.friendUser._id,
+    );
+    const dataToPost = {
+      chatName,
+      // this is a wrapper that contains friendId (in friendUser)
+      addToChatUserIds: addToChatUserIds,
+    };
 
-        const addToChatUserIds = usersToAddToChat.map(userFriendRelation => userFriendRelation.friendUser._id)
-        const dataToPost = {
-            chatName,
-            // this is a wrapper that contains friendId (in friendUser)
-            addToChatUserIds: addToChatUserIds,
-        }
+    const response = await fetchData(
+      `home/create_new_chat`,
+      "POST",
+      JSON.stringify(dataToPost),
+    );
+    const data = await response.json();
+    setUpdateChatsList(true);
+    navigate(`/home/chats/${data.chatid}`);
+  }
 
-        const response = await fetchData(`home/create_new_chat`, "POST", JSON.stringify(dataToPost))
-        const data = await response.json();
-        setUpdateChatsList(true);
-        navigate(`/home/chats/${data.chatid}`)
+  async function getAndSetFriendsDataOnMount() {
+    const response = await fetchData(
+      `home/show_friends_for_initial_chat_creation`,
+      "GET",
+    );
+    const fetchedData = await response.json();
+    setUsersNotAddedToChat(fetchedData.friends);
+  }
+
+  function markUserToAddToChat(user) {
+    setUsersToAddToChat([...usersToAddToChat, user]);
+  }
+
+  function removeUserFromNotAddedToChat(userToRemove) {
+    const usersNotAdded = usersNotAddedToChat.filter((user) => {
+      return user._id !== userToRemove._id;
+    });
+    setUsersNotAddedToChat(usersNotAdded);
+  }
+
+  // useEffect hook to:
+  // enable component to be loaded via state variable isLoaded.
+  // fetch data on first load
+  useEffect(() => {
+    setIsLoaded(true);
+
+    async function getAndSetDataOnLoad() {
+      await getAndSetFriendsDataOnMount();
     }
+    getAndSetDataOnLoad();
+  }, [isLoaded]);
 
-    async function getAndSetFriendsDataOnMount() {
+  return !isLoaded ? (
+    <p>Loading</p>
+  ) : (
+    <>
+      <main>
+        <section className={styles.row}>
+          <input
+            type="text"
+            placeholder="Name your chat"
+            value={chatName}
+            onChange={(e) => setChatName(e.target.value)}
+          />
 
-        const response = await fetchData(`home/show_friends_for_initial_chat_creation`, "GET")
-        const fetchedData = await response.json();
-        setUsersNotAddedToChat(fetchedData.friends)
-    }
+          {chatName.length > 30 ? (
+            <p>Chat name is too long (30 characters max)</p>
+          ) : !usersToAddToChat.length ? null : (
+            <button
+              onClick={async () => {
+                await postToCreateChat();
+              }}
+            >
+              Start Talking
+            </button>
+          )}
+        </section>
+        <p>Add to chat:</p>
+        {usersNotAddedToChat.map((user) => {
+          return (
+            <>
+              <section className={styles.row}>
+                <button
+                  onClick={() => {
+                    removeUserFromNotAddedToChat(user);
+                    markUserToAddToChat(user);
+                  }}
+                >
+                  Add to chat
+                </button>
 
-    function markUserToAddToChat(user) {
-        setUsersToAddToChat([
-            ...usersToAddToChat,
-            user
-        ])
-    }
+                <ProfilePic imgPath={user.profilePicURL} />
 
+                <p>{user.friendUser.username}</p>
+              </section>
+            </>
+          );
+        })}
 
-    function removeUserFromNotAddedToChat(userToRemove) {
-        const usersNotAdded = usersNotAddedToChat.filter(user => {
-            return user._id !== userToRemove._id
-        })
-        setUsersNotAddedToChat(usersNotAdded)
-    }
-
-    // useEffect hook to: 
-    // enable component to be loaded via state variable isLoaded.
-    // fetch data on first load
-    useEffect(() => {
-        setIsLoaded(true)
-
-        async function getAndSetDataOnLoad () {
-            await getAndSetFriendsDataOnMount()
-        }
-        getAndSetDataOnLoad();
-    },[isLoaded])
-    
-    return (
-        !isLoaded ? <p>Loading</p>  :
-        <>
-        <main>
-
-          {/* <form onSubmit={handleSubmit(postToCreateChat)}>
-                <input 
-                type="text" 
-                placeholder="Name your chat" 
-                value={chatName} 
-                {...register("chatname", {required: true, })}
-                onChange={(e) => setChatName(e.target.value)}/>
-
-                {chatName.length > 30 ? <p>Chat name is too long (30 characters max)</p> : null}
-
-                {!usersToAddToChat.length ? null : 
-                <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
-                }
-          </form> */}
-
-
-          <section className={styles.row}>
-                <input type="text" placeholder="Name your chat" value={chatName} onChange={(e) => setChatName(e.target.value)}/>
-
-                {chatName.length > 30 ? <p>Chat name is too long (30 characters max)</p> : 
-
-                !usersToAddToChat.length ? null : 
-                <button onClick={async() => {await postToCreateChat()}}>Start Talking</button>
-                
-
-                }
-
-
-          </section>
-            <p>Add to chat:</p>
-            {usersNotAddedToChat.map(user => {
-                return (
-                    <>
-                    <section className={styles.row}>
-
-                    <button onClick={() => {
-                        removeUserFromNotAddedToChat(user);
-                        markUserToAddToChat(user);
-                        }}>Add to chat</button>
-
-                        <ProfilePic imgPath={user.profilePicURL}/>
-
-                    <p>{user.friendUser.username}</p>
-                    </section>
-                    </>
-                )
-                
-            })}
-
-            <p>Added to chat:</p>
-            {usersToAddToChat.map(user => {
-                return (
-                    <>
-                    <section className={styles.row}>
-                      <ProfilePic imgPath={user.profilePicURL}/>
-                      <p>{user.friendUser.username}</p>
-                    </section>
-                    </>
-                )
-            })}
-
-
-        </main>
-        
-        </>
-    )
+        <p>Added to chat:</p>
+        {usersToAddToChat.map((user) => {
+          return (
+            <>
+              <section className={styles.row}>
+                <ProfilePic imgPath={user.profilePicURL} />
+                <p>{user.friendUser.username}</p>
+              </section>
+            </>
+          );
+        })}
+      </main>
+    </>
+  );
 }

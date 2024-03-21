@@ -31,6 +31,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-style: italic;
+  font-size: 0.7em;
 }
 
 
@@ -38,6 +40,7 @@
   width: 100%;
   background-color: var(--foreground-color);
   color: var(--text-light);
+  padding: 10px;
 }
 
 .submit:hover {
