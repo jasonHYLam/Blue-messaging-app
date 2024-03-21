@@ -3,18 +3,16 @@
     flex-direction: row;
     margin-bottom: 20px;
     position: relative;
-  overflow-wrap: break-word;
-  width: 50%;
+    word-break: break-word;
+    width: 50%;
 }
 
 .messageContents {
-  max-width: 100%;
+  /* max-width: 100%; */
 
 }
 
 .messageText {
-  overflow-wrap: break-word;
-  max-width: 100%;
 }
 
 .messageOptions {
