@@ -36,7 +36,6 @@
 .replyContainer {
   display: flex;
   flex-direction: row;
-  overflow: auto;
   word-break: break-word;
 }
 

@@ -1,7 +1,7 @@
 import styles from "./HomePage.module.css";
-import { fetchData } from "../../helper/helperFunctions";
+import { fetchData, checkIsMobileView } from "../../helper/helperFunctions";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import { Sidebar } from "../Sidebar/Sidebar";
@@ -14,8 +14,11 @@ export function HomePage() {
   const [updateChatsList, setUpdateChatsList] = useState(true);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isSidebarMinimised, setIsSideBarMinimised] = useState(false);
+  const isMobileViewRef = useRef(false);
 
-  // create fetch request for req.isAuthenticated. If req.isAuthenticated is false, then redirect.
+  console.log("checking isMobileViewRef");
+  console.log(isMobileViewRef);
+  // Creates fetch request for req.isAuthenticated. If req.isAuthenticated is false, then redirect.
 
   useEffect(() => {
     async function fetchChats() {
@@ -37,6 +40,10 @@ export function HomePage() {
 
     if (chatsList && loggedInUser) setIsLoaded(true);
   }, [updateChatsList, isLoaded, chatsList, loggedInUser]);
+
+  useEffect(() => {
+    isMobileViewRef.current = checkIsMobileView();
+  }, []);
 
   return !isLoaded ? (
     <p>Loading</p>
