@@ -1,4 +1,6 @@
 export async function fetchData(backendURL, method, data) {
+  console.log("checking backend URL");
+  console.log(`${import.meta.env.VITE_BACKEND_URL}`);
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/${backendURL}`,
     {
