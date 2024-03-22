@@ -30,7 +30,7 @@ export function ChatWrapper() {
   // need a button to add image file.
   const navigate = useNavigate();
   const { chatId } = useParams();
-  const [setUpdateChatsList] = useOutletContext();
+  const { setUpdateChatsList } = useOutletContext();
 
   const [isUpdatePending, setIsUpdatePending] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);

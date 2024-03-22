@@ -13,10 +13,14 @@ export function HomePage() {
   const [chatsList, setChatsList] = useState([]);
   const [updateChatsList, setUpdateChatsList] = useState(true);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [isGuest, setIsGuest] = useState(false);
+  // const isGuestRef = useRef(false);
   const [isSidebarMinimised, setIsSideBarMinimised] = useState(false);
   const isMobileViewRef = useRef(false);
 
-  // Creates fetch request for req.isAuthenticated. If req.isAuthenticated is false, then redirect.
+  // Fetches chats and logged in user data.
+  // Chat fetch request checks req.isAuthenticated. If req.isAuthenticated is false, then redirect.
+  // Logged in user data additionally checks if user is a guest, which restricts changing profile.
 
   useEffect(() => {
     async function fetchChats() {
@@ -30,7 +34,11 @@ export function HomePage() {
     async function fetchLoggedInUserData() {
       const response = await fetchData(`home/get_logged_in_user`, "GET");
       const fetchedData = await response.json();
+      // console.log("cjecking fetchedData");
+      // console.log(fetchedData);
       setLoggedInUser(fetchedData.loggedInUser);
+      setIsGuest(fetchedData.isGuest);
+      // isGuestRef.current = fetchedData.isGuest;
     }
 
     if (updateChatsList) fetchChats();
@@ -68,7 +76,7 @@ export function HomePage() {
             )}
 
             <section className={styles.content}>
-              <Outlet context={[setUpdateChatsList]} />
+              <Outlet context={{ setUpdateChatsList, isGuest }} />
             </section>
           </section>
         </section>

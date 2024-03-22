@@ -5,7 +5,7 @@ import {
 import { ProfilePic } from "../ProfilePic/ProfilePic";
 import styles from "./UserProfileWrapper.module.css";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export function UserProfileWrapper() {
@@ -17,6 +17,10 @@ export function UserProfileWrapper() {
   const [userData, setUserData] = useState({});
   const { userId } = useParams();
   const [imageToUpload, setImageToUpload] = useState(null);
+  const { isGuest } = useOutletContext();
+
+  console.log("checking isGuest");
+  console.log(isGuest);
 
   // currentStatus takes the following values: "editDescription"
   const [currentStatus, setCurrentStatus] = useState("");
@@ -116,13 +120,22 @@ export function UserProfileWrapper() {
 
         <section className={styles.row}>
           <ProfilePic imgPath={userData.profilePicURL} />
-          {changeImageForm}
+          {isGuest ? (
+            <p>Guest users cannot edit profile picture</p>
+          ) : (
+            { changeImageForm }
+          )}
         </section>
 
         <section className={styles.row}>
           <p>Description: {userData.description}</p>
-          {currentStatus === "editDescription" ? changeDescriptionForm : null}
-          {isCurrentUser ? changeDescriptionButton : null}
+          {isGuest ? (
+            <p>Guest users cannot edit description</p>
+          ) : currentStatus === "editDescription" ? (
+            changeDescriptionForm
+          ) : isCurrentUser ? (
+            changeDescriptionButton
+          ) : null}
         </section>
 
         <section className={styles.row}>

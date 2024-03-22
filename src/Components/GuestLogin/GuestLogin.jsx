@@ -10,7 +10,6 @@ export function GuestLogin() {
   });
 
   async function loginToGuestAccount() {
-    console.log(guestLoginDetails);
     const response = await fetchData("login", "POST", guestLoginDetails);
     navigate("/home");
   }
