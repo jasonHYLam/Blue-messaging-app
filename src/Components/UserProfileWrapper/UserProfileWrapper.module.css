@@ -8,6 +8,10 @@
   gap: 20px;
 }
 
+.preventEdit {
+  font-style: italic;
+}
+
 .row {
 
 }
