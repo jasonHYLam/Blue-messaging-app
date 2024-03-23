@@ -30,8 +30,8 @@ export function LoginPage() {
       const fetchedData = await response.json();
       console.log(fetchedData);
 
-      // if (fetchedData) navigate("/home");
-      if (fetchedData) console.log("okay y");
+      if (fetchedData) navigate("/home");
+      // if (fetchedData) console.log("okay y");
     } catch (err) {
       console.log("checking err");
       console.log(err);
@@ -41,7 +41,7 @@ export function LoginPage() {
 
   return (
     <>
-      <p>Savoy truffle</p>
+      <p>Savoy</p>
       <section className={styles.page}>
         <section className={styles.wrapper}>
           <h1>Login</h1>
