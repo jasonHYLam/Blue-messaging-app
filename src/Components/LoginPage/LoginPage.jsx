@@ -27,8 +27,10 @@ export function LoginPage() {
         setBackendErrors("Incorrect username/password");
         return;
       }
+      const fetchedData = await response.json();
+      console.log(fetchedData);
 
-      navigate("/home");
+      if (fetchedData) navigate("/home");
     } catch (err) {
       console.log("checking err");
       console.log(err);
