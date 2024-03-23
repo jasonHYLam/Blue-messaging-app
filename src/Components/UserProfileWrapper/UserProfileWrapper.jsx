@@ -125,7 +125,8 @@ export function UserProfileWrapper() {
               Guest users cannot edit profile picture
             </p>
           ) : (
-            { changeImageForm }
+            // { changeImageForm }
+            changeImageForm
           )}
         </section>
 
