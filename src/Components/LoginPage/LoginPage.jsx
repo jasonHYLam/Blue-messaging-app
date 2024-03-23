@@ -28,7 +28,7 @@ export function LoginPage() {
         return;
       }
 
-      // navigate("/home");
+      navigate("/home");
     } catch (err) {}
   }
 
