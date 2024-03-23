@@ -19,6 +19,8 @@ export function LoginPage() {
 
   async function onSubmit(data) {
     const dataToSubmit = JSON.stringify(data);
+    console.log("checking dataToSubmit");
+    console.log(dataToSubmit);
 
     try {
       const response = await fetchData(`login`, "POST", dataToSubmit);
