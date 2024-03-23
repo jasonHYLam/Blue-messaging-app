@@ -30,7 +30,8 @@ export function LoginPage() {
       const fetchedData = await response.json();
       console.log(fetchedData);
 
-      if (fetchedData) navigate("/home");
+      // if (fetchedData) navigate("/home");
+      if (fetchedData) console.log("okay y");
     } catch (err) {
       console.log("checking err");
       console.log(err);
