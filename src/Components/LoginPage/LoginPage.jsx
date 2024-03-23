@@ -30,6 +30,7 @@ export function LoginPage() {
         return;
       }
       const fetchedData = await response.json();
+      console.log("please let me see fetchedData");
       console.log(fetchedData);
 
       if (fetchedData) navigate("/home");
