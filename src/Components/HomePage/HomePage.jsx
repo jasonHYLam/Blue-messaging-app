@@ -29,6 +29,7 @@ export function HomePage() {
         // if (response.status === 401) navigate("/login");
         // if (response.status === 401) navigate("/login");
         const fetchedData = await response.json();
+        console.log("checking fetchedData");
         console.log(fetchedData);
         setChatsList(fetchedData.allChats);
         setUpdateChatsList(false);
