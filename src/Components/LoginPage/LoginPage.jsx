@@ -30,7 +30,9 @@ export function LoginPage() {
 
       navigate("/home");
     } catch (err) {
-      navigate("/error");
+      console.log("checking err");
+      console.log(err);
+      // navigate("/error");
     }
   }
 
