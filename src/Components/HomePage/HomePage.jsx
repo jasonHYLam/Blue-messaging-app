@@ -24,11 +24,18 @@ export function HomePage() {
 
   useEffect(() => {
     async function fetchChats() {
-      const response = await fetchData(`home/get_chats_for_user`, "GET");
-      if (response.status === 401) navigate("/login");
-      const fetchedData = await response.json();
-      setChatsList(fetchedData.allChats);
-      setUpdateChatsList(false);
+      try {
+        const response = await fetchData(`home/get_chats_for_user`, "GET");
+        // if (response.status === 401) navigate("/login");
+        // if (response.status === 401) navigate("/login");
+        const fetchedData = await response.json();
+        console.log(fetchedData);
+        setChatsList(fetchedData.allChats);
+        setUpdateChatsList(false);
+      } catch (err) {
+        console.log("checking err");
+        console.log(err);
+      }
     }
 
     async function fetchLoggedInUserData() {
