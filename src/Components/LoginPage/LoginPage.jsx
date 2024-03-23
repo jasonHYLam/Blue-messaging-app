@@ -29,7 +29,9 @@ export function LoginPage() {
       }
 
       navigate("/home");
-    } catch (err) {}
+    } catch (err) {
+      navigate("/error");
+    }
   }
 
   return (
