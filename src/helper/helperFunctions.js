@@ -2,7 +2,8 @@ export async function fetchData(backendURL, method, data) {
   console.log("checking backend URL");
   console.log(`${import.meta.env.VITE_BACKEND_URL}`);
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND_URL}/${backendURL}`,
+    // Domain has trailing /, so no need to include / between domain and backend URL.
+    `${import.meta.env.VITE_BACKEND_URL}${backendURL}`,
     {
       method: method,
       mode: "cors",
