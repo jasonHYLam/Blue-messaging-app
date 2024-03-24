@@ -5,12 +5,6 @@ import { Link } from "react-router-dom";
 export function ChatMessage({ message, setMessageToReplyTo }) {
   const DEFAULT_PROFILE_PIC_PATH = "../../../../defaultProfilePic";
 
-  // message author username and profile image.
-  // message text
-  // sent when (few minutes ago, a day ago)
-  // if the message is a reply, then one line of the message that it is replying to, above.
-  // if hovering, then buttons to allow reply.
-
   const profilePicPath = message.author.profilePicURL
     ? message.author.profilePicURL
     : DEFAULT_PROFILE_PIC_PATH;
