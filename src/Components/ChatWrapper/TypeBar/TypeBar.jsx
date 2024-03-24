@@ -2,7 +2,7 @@ import styles from "./TypeBar.module.css";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   fetchData,
   fetchDataWithImageUpload,
@@ -18,6 +18,7 @@ export function TypeBar({
   setMessageToReplyTo,
   setUpdateChatsList,
 }) {
+  const navigate = useNavigate;
   const { chatId } = useParams();
   const [imageToUpload, setImageToUpload] = useState(null);
 
@@ -42,11 +43,16 @@ export function TypeBar({
       data.append("message", messageObject.message);
       data.append("messageToReplyTo", messageToReplyTo);
 
-      const response = await fetchDataWithImageUpload(
-        `home/chat/${chatId}/create_message_with_image`,
-        "POST",
-        data,
-      );
+      try {
+        const response = await fetchDataWithImageUpload(
+          `home/chat/${chatId}/create_message_with_image`,
+          "POST",
+          data,
+        );
+        if (!response.ok) navigate("error");
+      } catch {
+        if (err) navigate("error");
+      }
     } else {
       const modifiedMessageObject = {
         message: messageObject.message,
@@ -55,11 +61,16 @@ export function TypeBar({
 
       const dataToSubmit = JSON.stringify(modifiedMessageObject);
 
-      const response = await fetchData(
-        `home/chat/${chatId}/create_message`,
-        "POST",
-        dataToSubmit,
-      );
+      try {
+        const response = await fetchData(
+          `home/chat/${chatId}/create_message`,
+          "POST",
+          dataToSubmit,
+        );
+        if (!response.ok) navigate("error");
+      } catch (err) {
+        if (err) navigate("error");
+      }
     }
 
     reset();
