@@ -30,15 +30,10 @@ export function LoginPage() {
         return;
       }
       const fetchedData = await response.json();
-      console.log("please let me see fetchedData");
-      console.log(fetchedData);
 
       if (fetchedData) navigate("/home");
-      // if (fetchedData) console.log("okay y");
     } catch (err) {
-      console.log("checking err");
-      console.log(err);
-      // navigate("/error");
+      if (err) navigate("/error");
     }
   }
 
