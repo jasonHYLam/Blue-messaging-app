@@ -14,7 +14,6 @@ export function HomePage() {
   const [updateChatsList, setUpdateChatsList] = useState(true);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isGuest, setIsGuest] = useState(false);
-  // const isGuestRef = useRef(false);
   const [isSidebarMinimised, setIsSideBarMinimised] = useState(false);
   const isMobileViewRef = useRef(false);
 
@@ -26,27 +25,29 @@ export function HomePage() {
     async function fetchChats() {
       try {
         const response = await fetchData(`home/get_chats_for_user`, "GET");
-        // if (response.status === 401) navigate("/login");
-        // if (response.status === 401) navigate("/login");
-        const fetchedData = await response.json();
-        console.log("checking fetchedData");
-        console.log(fetchedData);
-        setChatsList(fetchedData.allChats);
-        setUpdateChatsList(false);
+        if (response.status === 401) {
+          navigate("/login");
+        } else if (!response.ok) {
+          navigate("error");
+        } else {
+          const fetchedData = await response.json();
+          setChatsList(fetchedData.allChats);
+          setUpdateChatsList(false);
+        }
       } catch (err) {
-        console.log("checking err");
-        console.log(err);
+        navigate(err);
       }
     }
 
     async function fetchLoggedInUserData() {
-      const response = await fetchData(`home/get_logged_in_user`, "GET");
-      const fetchedData = await response.json();
-      // console.log("cjecking fetchedData");
-      // console.log(fetchedData);
-      setLoggedInUser(fetchedData.loggedInUser);
-      setIsGuest(fetchedData.isGuest);
-      // isGuestRef.current = fetchedData.isGuest;
+      try {
+        const response = await fetchData(`home/get_logged_in_user`, "GET");
+        const fetchedData = await response.json();
+        setLoggedInUser(fetchedData.loggedInUser);
+        setIsGuest(fetchedData.isGuest);
+      } catch (err) {
+        navigate("error");
+      }
     }
 
     if (updateChatsList) fetchChats();
