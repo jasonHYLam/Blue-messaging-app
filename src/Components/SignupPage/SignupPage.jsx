@@ -23,12 +23,13 @@ export function SignupPage() {
 
     try {
       const response = await fetchData(`signup`, "POST", dataToSubmit);
-
       if (!response.ok) {
-        return;
+        navigate("error");
       }
       navigate("/login");
-    } catch (err) {}
+    } catch (err) {
+      if (err) navigate("error");
+    }
   }
 
   return (
