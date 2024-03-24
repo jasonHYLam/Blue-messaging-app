@@ -34,7 +34,7 @@ export function ViewFriendsModal({
               : DEFAULT_PROFILE_PIC_PATH;
             return (
               <>
-                <article className={styles.row}>
+                <article className={styles.row} key={friend.id}>
                   <img
                     className={styles.profilePicIcon}
                     src={profilePicPath}

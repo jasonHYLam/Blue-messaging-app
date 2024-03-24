@@ -103,7 +103,7 @@ export function CreateChatWrapper() {
         {usersNotAddedToChat.map((user) => {
           return (
             <>
-              <section className={styles.row}>
+              <section className={styles.row} key={user.id}>
                 <button
                   onClick={() => {
                     removeUserFromNotAddedToChat(user);
@@ -125,7 +125,7 @@ export function CreateChatWrapper() {
         {usersToAddToChat.map((user) => {
           return (
             <>
-              <section className={styles.row}>
+              <section className={styles.row} key={user.id}>
                 <ProfilePic imgPath={user.profilePicURL} />
                 <p>{user.username}</p>
               </section>

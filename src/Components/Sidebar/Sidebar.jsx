@@ -70,6 +70,7 @@ export function Sidebar({
               <ul className={styles.chatPreviewList}>
                 {chatsList.map((chat) => (
                   <ChatPreview
+                    key={chat.id}
                     chat={chat}
                     isMobileView={isMobileView}
                     setIsSidebarMinimised={setIsSidebarMinimised}
