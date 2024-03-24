@@ -10,8 +10,13 @@ export function GuestLogin() {
   });
 
   async function loginToGuestAccount() {
-    const response = await fetchData("login", "POST", guestLoginDetails);
-    navigate("/home");
+    try {
+      const response = await fetchData("login", "POST", guestLoginDetails);
+      if (!response.ok) navigate("error");
+      navigate("/home");
+    } catch (err) {
+      if (err) navigate("error");
+    }
   }
 
   return (
