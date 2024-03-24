@@ -14,20 +14,6 @@ import {
 import { fetchData } from "../../helper/helperFunctions";
 
 export function ChatWrapper() {
-  // rendered in HomePage component
-  // needs to make fetch request, requires .env variable and credentials.
-  // should return list of messages, that are ordered by time sent regardless of sender.
-
-  // so, the mongoose query should be:
-  // find the comments that match the chat ID. sort them by time.
-
-  // this'll return a list of message objects.
-  // perhaps limit this to the 50 most recent comments.
-  // Need to convert these into chatMessage Components
-  // perhaps on each message, there are several options that I can do, for example reply to it or react.
-
-  // need a input component. perhaps make it not overflow.
-  // need a button to add image file.
   const navigate = useNavigate();
   const { chatId } = useParams();
   const { setUpdateChatsList } = useOutletContext();
@@ -43,25 +29,34 @@ export function ChatWrapper() {
 
   useEffect(() => {
     async function fetchMessages() {
-      const response = await fetchData(`home/chat/${chatId}`, "GET");
-      if (!response.ok) navigate("/error");
-      const fetchedData = await response.json();
+      try {
+        const response = await fetchData(`home/chat/${chatId}`, "GET");
+        if (!response.ok) navigate("/error");
+        const fetchedData = await response.json();
 
-      setChatMessages(fetchedData.chat.chatMessages);
+        setChatMessages(fetchedData.chat.chatMessages);
 
-      if (chatName !== fetchedData.chat.name) {
-        setChatName(fetchedData.chat.name);
+        if (chatName !== fetchedData.chat.name) {
+          setChatName(fetchedData.chat.name);
+        }
+      } catch (err) {
+        navigate("error");
       }
     }
 
     async function fetchFriends() {
-      const response = await fetchData(
-        `home/chat/${chatId}/show_friends_in_chat`,
-        "GET",
-      );
-      const fetchedData = await response.json();
-      setAllUsersInChat(fetchedData.allUsersInChat);
-      setFriendsNotInChat(fetchedData.friendsNotAddedToChat);
+      try {
+        const response = await fetchData(
+          `home/chat/${chatId}/show_friends_in_chat`,
+          "GET",
+        );
+        if (!response.ok) navigate("/error");
+        const fetchedData = await response.json();
+        setAllUsersInChat(fetchedData.allUsersInChat);
+        setFriendsNotInChat(fetchedData.friendsNotAddedToChat);
+      } catch (err) {
+        navigate("error");
+      }
     }
 
     fetchMessages();
