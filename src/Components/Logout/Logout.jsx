@@ -6,7 +6,12 @@ export function Logout() {
   const navigate = useNavigate();
   useEffect(() => {
     async function logout() {
-      await fetchData(`logout`, "DELETE");
+      try {
+        const response = await fetchData(`logout`, "DELETE");
+        if (!response.ok) navigate("error");
+      } catch (err) {
+        if (err) navigate("error");
+      }
     }
 
     logout();
