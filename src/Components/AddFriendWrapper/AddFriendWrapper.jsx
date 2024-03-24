@@ -55,6 +55,7 @@ export function AddFriendWrapper() {
             <>
               <section>
                 <p>{userData.username}</p>
+                <ProfilePic imgPath={userData.profilePicURL} />
                 <p>Added</p>
               </section>
             </>

@@ -3,14 +3,14 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import styles from "./CreateChatWrapper.module.css";
 import { fetchData } from "../../helper/helperFunctions";
 import { ProfilePic } from "../ProfilePic/ProfilePic";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 
 export function CreateChatWrapper() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
   const { setUpdateChatsList } = useOutletContext();
 
   const navigate = useNavigate();
