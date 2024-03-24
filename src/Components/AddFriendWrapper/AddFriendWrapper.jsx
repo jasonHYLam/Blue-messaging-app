@@ -64,7 +64,7 @@ export function AddFriendWrapper() {
         {allFriends.map((userData) => {
           return (
             <>
-              <section className={styles.row}>
+              <section className={styles.row} key={userData.id}>
                 <p>{userData.username}</p>
                 <ProfilePic imgPath={userData.profilePicURL} />
                 <p>Added</p>
