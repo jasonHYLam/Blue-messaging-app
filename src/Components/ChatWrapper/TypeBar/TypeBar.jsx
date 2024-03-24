@@ -50,7 +50,7 @@ export function TypeBar({
           data,
         );
         if (!response.ok) navigate("error");
-      } catch {
+      } catch (err) {
         if (err) navigate("error");
       }
     } else {

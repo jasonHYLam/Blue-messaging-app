@@ -19,7 +19,7 @@ export async function fetchData(backendURL, method, data) {
 
 export async function fetchDataWithImageUpload(backendURL, method, data) {
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND_URL}/${backendURL}`,
+    `${import.meta.env.VITE_BACKEND_DOMAIN}${backendURL}`,
     {
       method: method,
       mode: "cors",
