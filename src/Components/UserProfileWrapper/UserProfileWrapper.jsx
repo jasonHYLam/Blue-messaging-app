@@ -19,18 +19,20 @@ export function UserProfileWrapper() {
   const [imageToUpload, setImageToUpload] = useState(null);
   const { isGuest } = useOutletContext();
 
-  console.log("checking isGuest");
-  console.log(isGuest);
-
   // currentStatus takes the following values: "editDescription"
   const [currentStatus, setCurrentStatus] = useState("");
 
   useEffect(() => {
     async function fetchUserData() {
-      const response = await fetchData(`home/user_profile/${userId}`, "GET");
-      const fetchedData = await response.json();
-      setUserData(fetchedData.matchingUser);
-      setIsCurrentUser(fetchedData.isCurrentUserProfile);
+      try {
+        const response = await fetchData(`home/user_profile/${userId}`, "GET");
+        if (!response.ok) navigate("error");
+        const fetchedData = await response.json();
+        setUserData(fetchedData.matchingUser);
+        setIsCurrentUser(fetchedData.isCurrentUserProfile);
+      } catch (err) {
+        if (err) navigate("error");
+      }
     }
 
     fetchUserData();
@@ -45,10 +47,15 @@ export function UserProfileWrapper() {
     const fetchURL = `home/personal_profile/${endRoute}`;
     const dataToSubmit = JSON.stringify(data);
 
-    const response = await fetchData(`${fetchURL}`, "PUT", dataToSubmit);
+    try {
+      const response = await fetchData(`${fetchURL}`, "PUT", dataToSubmit);
+      if (!response.ok) navigate("error");
 
-    setIsUpdatePending(true);
-    setCurrentStatus("");
+      setIsUpdatePending(true);
+      setCurrentStatus("");
+    } catch (err) {
+      if (err) navigate("error");
+    }
   }
 
   const cancelChangeButton = (
@@ -81,11 +88,16 @@ export function UserProfileWrapper() {
     const data = new FormData();
     data.append("profilePic", imageToUpload);
 
-    const response = await fetchDataWithImageUpload(
-      `home/personal_profile/change_image`,
-      "PUT",
-      data,
-    );
+    try {
+      const response = await fetchDataWithImageUpload(
+        `home/personal_profile/change_image`,
+        "PUT",
+        data,
+      );
+      if (!response.ok) navigate("error");
+    } catch (err) {
+      if (err) navigate("error");
+    }
   }
 
   const changeImageForm = (
