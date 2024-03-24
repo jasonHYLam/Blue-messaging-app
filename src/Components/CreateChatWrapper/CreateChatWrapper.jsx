@@ -3,18 +3,10 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import styles from "./CreateChatWrapper.module.css";
 import { fetchData } from "../../helper/helperFunctions";
 import { ProfilePic } from "../ProfilePic/ProfilePic";
-// import { useForm } from "react-hook-form";
 
 export function CreateChatWrapper() {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm();
   const { setUpdateChatsList } = useOutletContext();
-
   const navigate = useNavigate();
-
   const [isLoaded, setIsLoaded] = useState(false);
   // optional
   const [chatName, setChatName] = useState("");
@@ -22,14 +14,10 @@ export function CreateChatWrapper() {
   const [usersNotAddedToChat, setUsersNotAddedToChat] = useState([]);
   const [usersToAddToChat, setUsersToAddToChat] = useState([]);
 
-  console.log("checking usersNotAddedToChat");
-  console.log(usersNotAddedToChat);
-
   async function postToCreateChat() {
     const addToChatUserIds = usersToAddToChat.map((user) => user._id);
     const dataToPost = {
       chatName,
-      // this is a wrapper that contains friendId (in friendUser)
       addToChatUserIds: addToChatUserIds,
     };
 
