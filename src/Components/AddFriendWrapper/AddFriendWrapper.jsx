@@ -2,8 +2,10 @@ import styles from "./AddFriendWrapper.module.css";
 import { fetchData } from "../../helper/helperFunctions";
 import { useEffect, useState } from "react";
 import { ProfilePic } from "../ProfilePic/ProfilePic";
+import { useNavigate } from "react-router-dom";
 
 export function AddFriendWrapper() {
+  const navigate = useNavigate();
   const [isChanging, setIsChanging] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [allFriends, setAllFriends] = useState([]);
@@ -13,20 +15,29 @@ export function AddFriendWrapper() {
     if (searchQuery === "") return;
     const dataToSubmit = JSON.stringify({ searchQuery });
 
-    const response = await fetchData(
-      `home/user_profile/search`,
-      "POST",
-      dataToSubmit,
-    );
+    try {
+      const response = await fetchData(
+        `home/user_profile/search`,
+        "POST",
+        dataToSubmit,
+      );
+      if (!response.ok) navigate("error");
 
-    const returnedData = await response.json();
-    setAllFriends(returnedData.friends);
-    setAllNonFriends(returnedData.nonFriends);
+      const returnedData = await response.json();
+      setAllFriends(returnedData.friends);
+      setAllNonFriends(returnedData.nonFriends);
+    } catch (err) {
+      if (err) navigate("error");
+    }
   }
 
   async function addFriend(user) {
-    const response = await fetchData(`home/user_profile/${user.id}`, "POST");
-    const returnedData = await response.json();
+    try {
+      const response = await fetchData(`home/user_profile/${user.id}`, "POST");
+      if (!response.ok) navigate("error");
+    } catch (err) {
+      if (err) navigate("error");
+    }
   }
 
   useEffect(() => {
