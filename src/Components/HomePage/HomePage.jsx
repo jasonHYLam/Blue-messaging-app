@@ -17,6 +17,9 @@ export function HomePage() {
   const [isSidebarMinimised, setIsSideBarMinimised] = useState(false);
   const isMobileViewRef = useRef(false);
 
+  console.log("checking isSidebarMinimised");
+  console.log(isSidebarMinimised);
+
   // Fetches chats and logged in user data.
   // Chat fetch request checks req.isAuthenticated. If req.isAuthenticated is false, then redirect.
   // Logged in user data additionally checks if user is a guest, which restricts changing profile.
