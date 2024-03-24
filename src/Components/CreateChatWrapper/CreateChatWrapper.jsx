@@ -26,9 +26,7 @@ export function CreateChatWrapper() {
   console.log(usersNotAddedToChat);
 
   async function postToCreateChat() {
-    const addToChatUserIds = usersToAddToChat.map(
-      (userFriendRelation) => userFriendRelation.friendUser._id,
-    );
+    const addToChatUserIds = usersToAddToChat.map((user) => user._id);
     const dataToPost = {
       chatName,
       // this is a wrapper that contains friendId (in friendUser)
