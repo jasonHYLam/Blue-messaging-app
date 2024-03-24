@@ -37,7 +37,6 @@ export function LoginPage() {
 
   return (
     <>
-      <p>Savoy</p>
       <section className={styles.page}>
         <section className={styles.wrapper}>
           <h1>Login</h1>
