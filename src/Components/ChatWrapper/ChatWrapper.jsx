@@ -91,6 +91,7 @@ export function ChatWrapper() {
               {chatMessages.map((message) => {
                 return (
                   <ChatMessage
+                    key={message.id}
                     message={message}
                     setMessageToReplyTo={setMessageToReplyTo}
                   />
