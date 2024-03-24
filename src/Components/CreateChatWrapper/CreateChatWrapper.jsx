@@ -21,23 +21,34 @@ export function CreateChatWrapper() {
       addToChatUserIds: addToChatUserIds,
     };
 
-    const response = await fetchData(
-      `home/create_new_chat`,
-      "POST",
-      JSON.stringify(dataToPost),
-    );
-    const data = await response.json();
-    setUpdateChatsList(true);
-    navigate(`/home/chats/${data.chatid}`);
+    try {
+      const response = await fetchData(
+        `home/create_new_chat`,
+        "POST",
+        JSON.stringify(dataToPost),
+      );
+      if (!response.ok) navigate("error");
+      const data = await response.json();
+      setUpdateChatsList(true);
+      navigate(`/home/chats/${data.chatid}`);
+    } catch (err) {
+      if (err) navigate("error");
+    }
   }
 
   async function getAndSetFriendsDataOnMount() {
-    const response = await fetchData(
-      `home/show_friends_for_initial_chat_creation`,
-      "GET",
-    );
-    const fetchedData = await response.json();
-    setUsersNotAddedToChat(fetchedData.friends);
+    try {
+      const response = await fetchData(
+        `home/show_friends_for_initial_chat_creation`,
+        "GET",
+      );
+
+      if (!response.ok) navigate("error");
+      const fetchedData = await response.json();
+      setUsersNotAddedToChat(fetchedData.friends);
+    } catch (err) {
+      if (err) navigate("error");
+    }
   }
 
   function markUserToAddToChat(user) {
