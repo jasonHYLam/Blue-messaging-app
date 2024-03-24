@@ -22,6 +22,9 @@ export function CreateChatWrapper() {
   const [usersNotAddedToChat, setUsersNotAddedToChat] = useState([]);
   const [usersToAddToChat, setUsersToAddToChat] = useState([]);
 
+  console.log("checking usersNotAddedToChat");
+  console.log(usersNotAddedToChat);
+
   async function postToCreateChat() {
     const addToChatUserIds = usersToAddToChat.map(
       (userFriendRelation) => userFriendRelation.friendUser._id,
@@ -115,7 +118,7 @@ export function CreateChatWrapper() {
 
                 <ProfilePic imgPath={user.profilePicURL} />
 
-                <p>{user.friendUser.username}</p>
+                <p>{user.username}</p>
               </section>
             </>
           );
@@ -127,7 +130,7 @@ export function CreateChatWrapper() {
             <>
               <section className={styles.row}>
                 <ProfilePic imgPath={user.profilePicURL} />
-                <p>{user.friendUser.username}</p>
+                <p>{user.username}</p>
               </section>
             </>
           );
