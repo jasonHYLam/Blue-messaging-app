@@ -11,7 +11,7 @@ export function CreateChatWrapper() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [setUpdateChatsList] = useOutletContext();
+  const { setUpdateChatsList } = useOutletContext();
 
   const navigate = useNavigate();
 
