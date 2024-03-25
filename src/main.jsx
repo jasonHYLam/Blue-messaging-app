@@ -22,22 +22,11 @@ const router = createBrowserRouter([
     path: "/",
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "error",
-        element: <ErrorPage />,
-      },
-      {
-        path: "login",
-        element: <LoginPage />,
-      },
-      {
-        path: "signup",
-        element: <SignupPage />,
-      },
-      {
-        path: "logout",
-        element: <Logout />,
-      },
+      { index: true, element: <Navigate replace to="home" /> },
+      { path: "error", element: <ErrorPage /> },
+      { path: "login", element: <LoginPage /> },
+      { path: "signup", element: <SignupPage /> },
+      { path: "logout", element: <Logout /> },
       {
         path: "home",
         element: <HomePage />,
@@ -46,22 +35,10 @@ const router = createBrowserRouter([
             index: true,
             element: <Navigate replace={true} to={`add_friend`} />,
           },
-          {
-            path: "chats/:chatId",
-            element: <ChatWrapper />,
-          },
-          {
-            path: "user_profile/:userId",
-            element: <UserProfileWrapper />,
-          },
-          {
-            path: "add_friend",
-            element: <AddFriendWrapper />,
-          },
-          {
-            path: "create_chat",
-            element: <CreateChatWrapper />,
-          },
+          { path: "chats/:chatId", element: <ChatWrapper /> },
+          { path: "user_profile/:userId", element: <UserProfileWrapper /> },
+          { path: "add_friend", element: <AddFriendWrapper /> },
+          { path: "create_chat", element: <CreateChatWrapper /> },
         ],
       },
     ],

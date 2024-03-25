@@ -44,9 +44,15 @@ export function HomePage() {
     async function fetchLoggedInUserData() {
       try {
         const response = await fetchData(`home/get_logged_in_user`, "GET");
-        const fetchedData = await response.json();
-        setLoggedInUser(fetchedData.loggedInUser);
-        setIsGuest(fetchedData.isGuest);
+        if (response.status === 401) {
+          navigate("/login");
+        } else if (!response.ok) {
+          navigate("error");
+        } else {
+          const fetchedData = await response.json();
+          setLoggedInUser(fetchedData.loggedInUser);
+          setIsGuest(fetchedData.isGuest);
+        }
       } catch (err) {
         navigate("error");
       }
