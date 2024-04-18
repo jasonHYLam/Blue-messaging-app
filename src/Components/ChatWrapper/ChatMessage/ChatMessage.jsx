@@ -3,7 +3,9 @@ import styles from "./ChatMessage.module.css";
 
 import { Link } from "react-router-dom";
 export function ChatMessage({ message, setMessageToReplyTo }) {
-  const DEFAULT_PROFILE_PIC_PATH = "../../../../defaultProfilePic";
+  const DEFAULT_PROFILE_PIC_PATH = "../../../../defaultProfilePic.svg";
+  console.log("checking DEFAULTPROFILPICPATH");
+  console.log(DEFAULT_PROFILE_PIC_PATH);
 
   const profilePicPath = message.author.profilePicURL
     ? message.author.profilePicURL
