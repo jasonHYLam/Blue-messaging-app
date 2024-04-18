@@ -5,16 +5,27 @@
     position: relative;
     word-break: break-word;
     width: 50%;
+    gap: 10px;
 }
 
 @media screen and (max-width: 400px){
   .messageWrapper {
-    width: 80%;
+    width: 100%;
+  }
+
+  .message {
+    flex: 1;
   }
 }
 
+
 .messageOptions {
     position: absolute;
+}
+
+
+.messageText {
+  flex: 1;
 }
 
 .profilePic {

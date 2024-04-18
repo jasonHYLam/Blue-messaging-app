@@ -24,6 +24,7 @@ export function ChatMessage({ message, setMessageToReplyTo }) {
         <section
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          className={styles.message}
         >
           {!message.messageReplyingTo ? null : (
             <section>
