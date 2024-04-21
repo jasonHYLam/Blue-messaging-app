@@ -36,6 +36,7 @@ export function TypeBar({
   async function postMessage(messageObject) {
     // This prevents multiple uploads if the user decides to spam the send button.
     if (isUpdatePending) return;
+    setIsUpdatePending(true);
     // after this, probably need to reset imageToUpload to null
     if (imageToUpload) {
       const data = new FormData();
@@ -74,7 +75,7 @@ export function TypeBar({
     }
 
     reset();
-    setIsUpdatePending(true);
+    setIsUpdatePending(false);
     setUpdateChatsList(true);
   }
 
