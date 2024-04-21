@@ -1,6 +1,7 @@
 import styles from "./ViewFriendsModal.module.css";
 import { fetchData } from "../../../helper/helperFunctions";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function ViewFriendsModal({
   chatid,
@@ -11,13 +12,21 @@ export function ViewFriendsModal({
   const DEFAULT_PROFILE_PIC_PATH = "../../../../defaultProfilePic.svg";
   const navigate = useNavigate();
 
+  const [isAddingFriend, setIsAddingFriend] = useState(false);
+
   async function addFriendToChat(chatid, userid) {
+    if (isAddingFriend) return;
     try {
       const response = await fetchData(
         `home/chat/${chatid}/add_user/${userid}`,
         "POST",
       );
-      if (!response.ok) navigate("error");
+      setIsAddingFriend(true);
+      if (!response.ok) {
+        navigate("error");
+      } else {
+        setIsAddingFriend(false);
+      }
     } catch (err) {
       if (err) navigate("error");
     }
