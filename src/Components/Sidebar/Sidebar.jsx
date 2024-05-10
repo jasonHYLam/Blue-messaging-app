@@ -33,20 +33,26 @@ export function Sidebar({
             <section className={styles.buttonsContainer}>
               {isMobileView ? (
                 <>
-                  <ClickableIcon
-                    onClick={() => {
-                      navigate(`/home/add_friend`);
-                      setIsSidebarMinimised(true);
-                    }}
-                    imgPath={ADD_FRIEND_ICON_PATH}
-                  />
-                  <ClickableIcon
-                    onClick={() => {
-                      navigate(`create_chat`);
-                      setIsSidebarMinimised(true);
-                    }}
-                    imgPath={CREATE_CHAT_ICON_PATH}
-                  />
+                  <article className={styles.sidebarAction}>
+                    <ClickableIcon
+                      onClick={() => {
+                        navigate(`/home/add_friend`);
+                        setIsSidebarMinimised(true);
+                      }}
+                      imgPath={ADD_FRIEND_ICON_PATH}
+                    />
+                    <p>Add friend</p>
+                  </article>
+                  <article className={styles.sidebarAction}>
+                    <ClickableIcon
+                      onClick={() => {
+                        navigate(`create_chat`);
+                        setIsSidebarMinimised(true);
+                      }}
+                      imgPath={CREATE_CHAT_ICON_PATH}
+                    />
+                    <p>Create chat</p>
+                  </article>
                 </>
               ) : (
                 <>

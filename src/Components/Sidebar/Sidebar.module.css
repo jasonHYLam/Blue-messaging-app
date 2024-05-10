@@ -3,16 +3,27 @@
     flex-direction: column;
     height: 100%;
     background-color: var(--background-color-dark);
-    padding-left: 1%;
-    padding-right: 1%;
+    padding-top: 20px;
+    padding-inline: 1%;
     overflow-y: auto;
 }
 
 
 .buttonsContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 20px;
+}
+
+.sidebarAction {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.sidebarAction:hover {
+  background-color: var(--light-hover);
+
 }
 
 @media (max-width: 400px) {
