@@ -19,7 +19,9 @@ export function ChatPreview({ chat, isMobileView, setIsSidebarMinimised }) {
       <Link to={`chats/${chat.id}`}>
         <section>
           <p className={styles.title}>{chat.name}</p>
-          <p className={styles.lastUpdated}>{chat.lastUpdatedFormatted}</p>
+          <p className={`${styles.lastUpdated} ${styles.subText}`}>
+            {chat.lastUpdatedFormatted}
+          </p>
         </section>
       </Link>
     </article>

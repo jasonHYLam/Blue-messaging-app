@@ -30,6 +30,8 @@
 
 .profilePic {
     height: 50px;
+    width: 50px;
+    border-radius: 50%;
 }
 
 .profilePic:hover {
@@ -45,4 +47,9 @@
 
 .image {
   max-width: min(400px, 100%);
+}
+
+.subText {
+  font-size: 90%;
+  color: var(--sub-text-color);
 }

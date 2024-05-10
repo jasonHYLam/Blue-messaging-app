@@ -11,3 +11,8 @@
 .preventEdit {
   font-style: italic;
 }
+
+.subText {
+  font-size: 90%;
+  color: var(--sub-text-color);
+}

@@ -1,14 +1,12 @@
 import { useState } from "react";
 import styles from "./ChatMessage.module.css";
-
 import { Link } from "react-router-dom";
+
 export function ChatMessage({ message, setMessageToReplyTo }) {
   const DEFAULT_PROFILE_PIC_PATH = "../../../../defaultProfilePic.svg";
-
   const profilePicPath = message.author.profilePicURL
     ? message.author.profilePicURL
     : DEFAULT_PROFILE_PIC_PATH;
-
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -35,7 +33,7 @@ export function ChatMessage({ message, setMessageToReplyTo }) {
 
           <section className={styles.top}>
             <p>{message.author.username}</p>
-            <p>{message.timeStampFormatted}</p>
+            <p className={styles.subText}>{message.timeStampFormatted}</p>
           </section>
 
           <section className={styles.messageContents}>

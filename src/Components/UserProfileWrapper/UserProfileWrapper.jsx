@@ -134,7 +134,7 @@ export function UserProfileWrapper() {
         <section className={styles.row}>
           <ProfilePic imgPath={userData.profilePicURL} />
           {isGuest ? (
-            <p className={styles.preventEdit}>
+            <p className={`${styles.preventEdit} ${styles.subText}`}>
               Guest users cannot edit profile picture
             </p>
           ) : (
@@ -145,7 +145,7 @@ export function UserProfileWrapper() {
         <section className={styles.row}>
           <p>Description: {userData.description}</p>
           {isGuest ? (
-            <p className={styles.preventEdit}>
+            <p className={`${styles.preventEdit} ${styles.subText}`}>
               Guest users cannot edit description
             </p>
           ) : currentStatus === "editDescription" ? (
