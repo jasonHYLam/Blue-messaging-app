@@ -18,7 +18,7 @@ export function HomePage() {
   const isMobileViewRef = useRef(false);
 
   if (isMobileViewRef.current === true) {
-    console.log(`isSidebarMinimised: ${isSidebarMinimised}`);
+    // console.log(`isSidebarMinimised: ${isSidebarMinimised}`);
   }
 
   // Fetches chats and logged in user data.
@@ -64,7 +64,7 @@ export function HomePage() {
     if (!loggedInUser) fetchLoggedInUserData();
 
     if (chatsList && loggedInUser) setIsLoaded(true);
-  }, [updateChatsList, isLoaded, chatsList, loggedInUser]);
+  }, [updateChatsList, isLoaded, chatsList, loggedInUser, navigate]);
 
   useEffect(() => {
     isMobileViewRef.current = checkIsMobileView();
