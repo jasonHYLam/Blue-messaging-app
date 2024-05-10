@@ -3,6 +3,7 @@ import {
   fetchDataWithImageUpload,
 } from "../../helper/helperFunctions";
 import { ProfilePic } from "../ProfilePic/ProfilePic";
+import { Loading } from "../Loading/Loading";
 import styles from "./UserProfileWrapper.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
@@ -39,7 +40,7 @@ export function UserProfileWrapper() {
 
     if (!isLoaded) setIsLoaded(true);
     if (isUpdatePending) setIsUpdatePending(false);
-  }, [isUpdatePending]);
+  }, [isUpdatePending, navigate, userId]);
 
   async function submitChange(data) {
     const endRoute =
@@ -124,7 +125,7 @@ export function UserProfileWrapper() {
   }
 
   return !isLoaded ? (
-    <p>Loading</p>
+    <Loading />
   ) : (
     <>
       <main className={styles.wrapper}>
@@ -137,7 +138,6 @@ export function UserProfileWrapper() {
               Guest users cannot edit profile picture
             </p>
           ) : (
-            // { changeImageForm }
             changeImageForm
           )}
         </section>

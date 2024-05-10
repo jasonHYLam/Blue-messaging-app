@@ -5,6 +5,7 @@ import { ChatHeader } from "./ChatHeader/ChatHeader";
 import { TypeBar } from "./TypeBar/TypeBar";
 import { ChatMessage } from "./ChatMessage/ChatMessage";
 import { ViewFriendsModal } from "./ViewFriendsModal/ViewFriendsModal";
+import { Loading } from "../Loading/Loading";
 import {
   useParams,
   Link,
@@ -65,10 +66,10 @@ export function ChatWrapper() {
     if (!isLoaded) setIsLoaded(true);
 
     setIsUpdatePending(false);
-  }, [isUpdatePending, isLoaded, chatId]);
+  }, [isUpdatePending, isLoaded, chatId, chatName, navigate]);
 
   return !isLoaded ? (
-    <p>Loading</p>
+    <Loading />
   ) : (
     <>
       <section className={styles.chatWrapper}>

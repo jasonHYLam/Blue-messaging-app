@@ -1,11 +1,10 @@
 import styles from "./HomePage.module.css";
 import { fetchData, checkIsMobileView } from "../../helper/helperFunctions";
-
 import { useEffect, useState, useRef } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-
 import { Sidebar } from "../Sidebar/Sidebar";
 import { Header } from "../Header/Header";
+import { Loading } from "../Loading/Loading";
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -71,7 +70,7 @@ export function HomePage() {
   }, []);
 
   return !isLoaded ? (
-    <p>Loading</p>
+    <Loading />
   ) : (
     <>
       <main className={styles.homePage}>
