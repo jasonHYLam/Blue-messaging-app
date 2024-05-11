@@ -36,6 +36,7 @@ export function TypeBar({
   }
 
   async function postMessage(messageObject) {
+    if (isUpdatePending) return;
     reset();
     setIsUpdatePending(true);
     // after this, probably need to reset imageToUpload to null
@@ -127,7 +128,6 @@ export function TypeBar({
             })}
             placeholder="Write a message"
           />
-          <input type="submit" value="Post" disabled={isUpdatePending} />
         </form>
       </section>
     </>
