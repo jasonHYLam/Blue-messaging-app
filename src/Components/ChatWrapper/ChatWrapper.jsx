@@ -6,12 +6,7 @@ import { TypeBar } from "./TypeBar/TypeBar";
 import { ChatMessage } from "./ChatMessage/ChatMessage";
 import { ViewFriendsModal } from "./ViewFriendsModal/ViewFriendsModal";
 import { Loading } from "../Loading/Loading";
-import {
-  useParams,
-  Link,
-  useOutletContext,
-  useNavigate,
-} from "react-router-dom";
+import { useParams, useOutletContext, useNavigate } from "react-router-dom";
 import { fetchData } from "../../helper/helperFunctions";
 
 export function ChatWrapper() {
@@ -74,7 +69,8 @@ export function ChatWrapper() {
     if (!isLoaded) setIsLoaded(true);
 
     setIsUpdatePending(false);
-  }, [isUpdatePending, isLoaded, chatId, chatName, navigate]);
+    // }, [isUpdatePending, isLoaded, chatId, chatName, navigate]);
+  }, [isLoaded, chatId, chatName, navigate]);
 
   return !isLoaded ? (
     <Loading />
@@ -115,6 +111,8 @@ export function ChatWrapper() {
               messageToReplyTo={messageToReplyTo}
               setMessageToReplyTo={setMessageToReplyTo}
               setUpdateChatsList={setUpdateChatsList}
+              chatMessages={chatMessages}
+              setChatMessages={setChatMessages}
             />
           </>
         )}

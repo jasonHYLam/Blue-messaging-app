@@ -17,6 +17,8 @@ export function TypeBar({
   messageToReplyTo,
   setMessageToReplyTo,
   setUpdateChatsList,
+  chatMessages,
+  setChatMessages,
 }) {
   const navigate = useNavigate;
   const { chatId } = useParams();
@@ -34,9 +36,11 @@ export function TypeBar({
   }
 
   async function postMessage(messageObject) {
+    console.log("call not calling?");
+    console.log("check call");
     // This prevents multiple uploads if the user decides to spam the send button.
-    if (isUpdatePending) return;
-    setIsUpdatePending(true);
+    // if (isUpdatePending) return;
+    // setIsUpdatePending(true);
     // after this, probably need to reset imageToUpload to null
     if (imageToUpload) {
       const data = new FormData();
@@ -69,6 +73,10 @@ export function TypeBar({
           dataToSubmit,
         );
         if (!response.ok) navigate("error");
+
+        const { newMessage } = await response.json();
+
+        setChatMessages([...chatMessages, newMessage]);
       } catch (err) {
         if (err) navigate("error");
       }
@@ -124,6 +132,7 @@ export function TypeBar({
             })}
             placeholder="Write a message"
           />
+          <input type="submit" value="Post" disabled={isUpdatePending} />
         </form>
       </section>
     </>
