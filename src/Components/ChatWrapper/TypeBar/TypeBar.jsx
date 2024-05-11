@@ -36,11 +36,7 @@ export function TypeBar({
   }
 
   async function postMessage(messageObject) {
-    console.log("call not calling?");
-    console.log("check call");
-    // This prevents multiple uploads if the user decides to spam the send button.
-    // if (isUpdatePending) return;
-    // setIsUpdatePending(true);
+    setIsUpdatePending(true);
     // after this, probably need to reset imageToUpload to null
     if (imageToUpload) {
       const data = new FormData();
