@@ -1,6 +1,6 @@
 import styles from "./ChatWrapper.module.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChatHeader } from "./ChatHeader/ChatHeader";
 import { TypeBar } from "./TypeBar/TypeBar";
 import { ChatMessage } from "./ChatMessage/ChatMessage";
@@ -27,6 +27,11 @@ export function ChatWrapper() {
   const [allUsersInChat, setAllUsersInChat] = useState([]);
   const [friendsNotInChat, setFriendsNotInChat] = useState([]);
   const [showViewFriendsModal, setShowViewFriendsModal] = useState(false);
+
+  const chatWrapperRef = useRef(null);
+  // useEffect(() => {
+  //   chatWrapperRef.current
+  // })
 
   useEffect(() => {
     async function fetchMessages() {
@@ -72,7 +77,7 @@ export function ChatWrapper() {
     <Loading />
   ) : (
     <>
-      <section className={styles.chatWrapper}>
+      <section className={styles.chatWrapper} ref={chatWrapperRef}>
         <ChatHeader
           chatName={chatName}
           setShowViewFriendsModal={setShowViewFriendsModal}

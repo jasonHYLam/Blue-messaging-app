@@ -30,7 +30,10 @@ export function Header({
           <div>
             <Link to={`/home/user_profile/${loggedInUser.id}`}>
               <section className={styles.profile}>
-                <ProfilePic imgPath={loggedInUser.profilePicURL} />
+                <ProfilePic
+                  imgPath={loggedInUser.profilePicURL}
+                  size={"small"}
+                />
                 <p className={styles.link}>{loggedInUser.username}</p>
               </section>
             </Link>

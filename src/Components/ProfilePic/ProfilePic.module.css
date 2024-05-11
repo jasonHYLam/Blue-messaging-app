@@ -6,5 +6,9 @@
 }
 .defaultProfilePic {
   background-color: var(--background-color-subdued);
+}
 
+.small {
+  height: var(--icon-height-small);
+  width: var(--icon-height-small);
 }

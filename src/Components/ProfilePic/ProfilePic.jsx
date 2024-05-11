@@ -2,7 +2,8 @@ import styles from "./ProfilePic.module.css";
 
 const DEFAULT_PROFILE_PIC_PATH = "../../../defaultProfilePic.svg";
 
-export function ProfilePic({ imgPath }) {
+export function ProfilePic({ imgPath, size }) {
+  const cssSize = size;
   return (
     <>
       {!imgPath ? (
@@ -12,7 +13,11 @@ export function ProfilePic({ imgPath }) {
           alt=""
         />
       ) : (
-        <img className={styles.profilePic} src={imgPath} alt="" />
+        <img
+          className={`${styles.profilePic} ${styles[cssSize]} `}
+          src={imgPath}
+          alt=""
+        />
       )}
     </>
   );
