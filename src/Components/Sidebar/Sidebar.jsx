@@ -65,11 +65,6 @@ export function Sidebar({
                     chat={chat}
                     isMobileView={isMobileView}
                     setIsSidebarMinimised={setIsSidebarMinimised}
-                    // onClick={() => {
-                    //   console.log("checking isMobileView");
-                    //   console.log(isMobileView);
-                    //   if (isMobileView) setIsSidebarMinimised(true);
-                    // }}
                   />
                 ))}
               </ul>
