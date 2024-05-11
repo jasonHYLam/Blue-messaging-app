@@ -3,12 +3,11 @@
     flex-direction: column;
     flex: 1;
     position: relative;
-    height: 100px;
+    height: 60px;
     background-color: var(--background-color-subdued);
-    /* padding: 30px; */
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-block: 20px;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .form {
@@ -26,11 +25,11 @@
 .textInput {
   flex: 1;
   width: 90%;
+  border-radius: 10px;
 }
 
 .textAndSubmit {
   display: flex;
-  flex: 1;
 }
 
 .replyContainer {

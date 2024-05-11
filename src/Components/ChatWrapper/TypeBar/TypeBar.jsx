@@ -106,7 +106,7 @@ export function TypeBar({
         )}
 
         <form
-          className={styles.form}
+          className={`${styles.form} ${styles.textAndSubmit}`}
           encType="multipart/form-data"
           onSubmit={handleSubmit(postMessage)}
         >
@@ -115,17 +115,15 @@ export function TypeBar({
             <input id="upload" type="file" onChange={selectImageToUpload} />
           </label>
 
-          <section className={styles.textAndSubmit}>
-            <input
-              className={styles.textInput}
-              type="text"
-              {...register("message", {
-                required: true,
-                maxLength: MESSAGE_MAX_LENGTH,
-              })}
-            />
-            <input type="submit" value="Send" />
-          </section>
+          <input
+            className={styles.textInput}
+            type="text"
+            {...register("message", {
+              required: true,
+              maxLength: MESSAGE_MAX_LENGTH,
+            })}
+            placeholder="Write a message"
+          />
         </form>
       </section>
     </>
