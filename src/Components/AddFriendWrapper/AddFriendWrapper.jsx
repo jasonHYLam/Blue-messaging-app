@@ -63,32 +63,29 @@ export function AddFriendWrapper() {
 
         {allFriends.map((userData) => {
           return (
-            <>
-              <section className={styles.row} key={userData.id}>
-                <p>{userData.username}</p>
-                <ProfilePic imgPath={userData.profilePicURL} />
-                <p>Added</p>
-              </section>
-            </>
+            <section className={styles.row} key={userData.id} id={userData.id}>
+              <p>{userData.username}</p>
+              <ProfilePic imgPath={userData.profilePicURL} />
+              <p>Added</p>
+            </section>
           );
         })}
 
         {allNonFriends.map((userData) => {
           return (
-            <>
-              <section className={styles.row}>
-                <button
-                  onClick={async () => {
-                    await addFriend(userData);
-                    setIsChanging(true);
-                  }}
-                >
-                  Add user
-                </button>
-                <ProfilePic imgPath={userData.profilePicURL} />
-                <p>{userData.username}</p>
-              </section>
-            </>
+            <section className={styles.row} key={userData.id}>
+              <button
+                disabled={isChanging}
+                onClick={async () => {
+                  await addFriend(userData);
+                  setIsChanging(true);
+                }}
+              >
+                Add user
+              </button>
+              <ProfilePic imgPath={userData.profilePicURL} />
+              <p>{userData.username}</p>
+            </section>
           );
         })}
       </section>
