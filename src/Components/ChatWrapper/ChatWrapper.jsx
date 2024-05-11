@@ -12,7 +12,8 @@ import { fetchData } from "../../helper/helperFunctions";
 export function ChatWrapper() {
   const navigate = useNavigate();
   const { chatId } = useParams();
-  const { setUpdateChatsList } = useOutletContext();
+  const { setUpdateChatsList, isSidebarMinimised, isMobileViewRef } =
+    useOutletContext();
 
   const [isUpdatePending, setIsUpdatePending] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,11 +26,13 @@ export function ChatWrapper() {
 
   const messagesEndRef = useRef(null);
   useEffect(() => {
+    if (!isSidebarMinimised && isMobileViewRef.current) return;
+
     messagesEndRef.current?.scrollIntoView({
       behaviour: "smooth",
       block: "end",
     });
-  }, [chatMessages]);
+  }, [chatMessages, isSidebarMinimised, isMobileViewRef]);
 
   useEffect(() => {
     async function fetchMessages() {

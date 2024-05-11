@@ -17,7 +17,7 @@ export function HomePage() {
   const isMobileViewRef = useRef(false);
 
   if (isMobileViewRef.current === true) {
-    // console.log(`isSidebarMinimised: ${isSidebarMinimised}`);
+    console.log(`isSidebarMinimised: ${isSidebarMinimised}`);
   }
 
   // Fetches chats and logged in user data.
@@ -94,7 +94,14 @@ export function HomePage() {
             )}
 
             <section className={styles.content}>
-              <Outlet context={{ setUpdateChatsList, isGuest }} />
+              <Outlet
+                context={{
+                  setUpdateChatsList,
+                  isGuest,
+                  isMobileViewRef,
+                  isSidebarMinimised,
+                }}
+              />
             </section>
           </section>
         </section>
