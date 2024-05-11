@@ -36,6 +36,7 @@ export function TypeBar({
   }
 
   async function postMessage(messageObject) {
+    reset();
     setIsUpdatePending(true);
     // after this, probably need to reset imageToUpload to null
     if (imageToUpload) {
@@ -73,14 +74,12 @@ export function TypeBar({
         const { newMessage } = await response.json();
 
         setChatMessages([...chatMessages, newMessage]);
+        setIsUpdatePending(false);
+        setUpdateChatsList(true);
       } catch (err) {
         if (err) navigate("error");
       }
     }
-
-    reset();
-    setIsUpdatePending(false);
-    setUpdateChatsList(true);
   }
 
   return (
