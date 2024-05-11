@@ -28,10 +28,13 @@ export function ChatWrapper() {
   const [friendsNotInChat, setFriendsNotInChat] = useState([]);
   const [showViewFriendsModal, setShowViewFriendsModal] = useState(false);
 
-  const chatWrapperRef = useRef(null);
-  // useEffect(() => {
-  //   chatWrapperRef.current
-  // })
+  const messagesEndRef = useRef(null);
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behaviour: "smooth",
+      block: "end",
+    });
+  }, [chatMessages]);
 
   useEffect(() => {
     async function fetchMessages() {
@@ -77,7 +80,7 @@ export function ChatWrapper() {
     <Loading />
   ) : (
     <>
-      <section className={styles.chatWrapper} ref={chatWrapperRef}>
+      <section className={styles.chatWrapper}>
         <ChatHeader
           chatName={chatName}
           setShowViewFriendsModal={setShowViewFriendsModal}
@@ -103,6 +106,7 @@ export function ChatWrapper() {
                   />
                 );
               })}
+              <div ref={messagesEndRef} />
             </section>
 
             <TypeBar
