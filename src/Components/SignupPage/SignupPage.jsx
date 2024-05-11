@@ -98,8 +98,8 @@ export function SignupPage() {
           </form>
 
           <section className={styles.links}>
-            <Link to={"/login"}>Got an account? Login</Link>
             <GuestLogin />
+            <Link to={"/login"}>Got an account? Login</Link>
           </section>
         </section>
       </section>

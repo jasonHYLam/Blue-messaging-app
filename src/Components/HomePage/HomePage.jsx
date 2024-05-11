@@ -1,10 +1,11 @@
 import styles from "./HomePage.module.css";
-import { fetchData, checkIsMobileView } from "../../helper/helperFunctions";
-import { useEffect, useState, useRef } from "react";
+import { fetchData } from "../../helper/helperFunctions";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Sidebar } from "../Sidebar/Sidebar";
 import { Header } from "../Header/Header";
 import { Loading } from "../Loading/Loading";
+import { useMobileView } from "../../helper/hooks";
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -14,11 +15,7 @@ export function HomePage() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isGuest, setIsGuest] = useState(false);
   const [isSidebarMinimised, setIsSideBarMinimised] = useState(false);
-  const isMobileViewRef = useRef(false);
-
-  if (isMobileViewRef.current === true) {
-    console.log(`isSidebarMinimised: ${isSidebarMinimised}`);
-  }
+  const { isMobileView } = useMobileView();
 
   // Fetches chats and logged in user data.
   // Chat fetch request checks req.isAuthenticated. If req.isAuthenticated is false, then redirect.
@@ -65,10 +62,6 @@ export function HomePage() {
     if (chatsList && loggedInUser) setIsLoaded(true);
   }, [updateChatsList, isLoaded, chatsList, loggedInUser, navigate]);
 
-  useEffect(() => {
-    isMobileViewRef.current = checkIsMobileView();
-  }, []);
-
   return !isLoaded ? (
     <Loading />
   ) : (
@@ -78,7 +71,7 @@ export function HomePage() {
           loggedInUser={loggedInUser}
           setIsSidebarMinimised={setIsSideBarMinimised}
           isSidebarMinimised={isSidebarMinimised}
-          isMobileView={isMobileViewRef.current}
+          isMobileView={isMobileView}
         />
         {/* vertical stretch */}
         <section className={styles.belowHeader}>
@@ -89,7 +82,7 @@ export function HomePage() {
                 chatsList={chatsList}
                 isSidebarMinimised={isSidebarMinimised}
                 setIsSidebarMinimised={setIsSideBarMinimised}
-                isMobileView={isMobileViewRef.current}
+                isMobileView={isMobileView}
               />
             )}
 
@@ -98,8 +91,8 @@ export function HomePage() {
                 context={{
                   setUpdateChatsList,
                   isGuest,
-                  isMobileViewRef,
                   isSidebarMinimised,
+                  isMobileView,
                 }}
               />
             </section>

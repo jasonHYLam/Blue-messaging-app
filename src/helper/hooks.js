@@ -11,5 +11,5 @@ export function useMobileView() {
       window.removeEventListener("resize", handleWindowSizeChange);
     };
   }, []);
-  return;
+  return { isMobileView };
 }

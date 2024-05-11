@@ -70,8 +70,8 @@ export function LoginPage() {
             <input className={styles.submit} type="submit" value="Login" />
           </form>
           <section className={styles.links}>
-            <Link to={"/signup"}>New here? Signup</Link>
             <GuestLogin />
+            <Link to={"/signup"}>New here? Signup</Link>
           </section>
         </section>
       </section>
