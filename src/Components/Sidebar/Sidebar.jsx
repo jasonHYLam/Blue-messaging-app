@@ -31,22 +31,28 @@ export function Sidebar({
         {isSidebarMinimised ? null : (
           <>
             <section className={styles.buttonsContainer}>
-              <article className={styles.sidebarAction}>
+              <article
+                className={styles.sidebarAction}
+                onClick={() => {
+                  navigate(`/home/add_friend`);
+                  if (isMobileView) setIsSidebarMinimised(true);
+                }}
+              >
                 <ClickableIcon
-                  onClick={() => {
-                    navigate(`/home/add_friend`);
-                    if (isMobileView) setIsSidebarMinimised(true);
-                  }}
+                  onClick={() => {}}
                   imgPath={ADD_FRIEND_ICON_PATH}
                 />
                 <p>Add friend</p>
               </article>
-              <article className={styles.sidebarAction}>
+              <article
+                className={styles.sidebarAction}
+                onClick={() => {
+                  navigate(`create_chat`);
+                  if (isMobileView) setIsSidebarMinimised(true);
+                }}
+              >
                 <ClickableIcon
-                  onClick={() => {
-                    navigate(`create_chat`);
-                    if (isMobileView) setIsSidebarMinimised(true);
-                  }}
+                  onClick={() => {}}
                   imgPath={CREATE_CHAT_ICON_PATH}
                 />
                 <p>Create chat</p>
