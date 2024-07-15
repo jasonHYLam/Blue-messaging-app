@@ -31,41 +31,32 @@ export function Sidebar({
         {isSidebarMinimised ? null : (
           <>
             <section className={styles.buttonsContainer}>
-              {isMobileView ? (
-                <>
-                  <article className={styles.sidebarAction}>
-                    <ClickableIcon
-                      onClick={() => {
-                        navigate(`/home/add_friend`);
-                        setIsSidebarMinimised(true);
-                      }}
-                      imgPath={ADD_FRIEND_ICON_PATH}
-                    />
-                    <p>Add friend</p>
-                  </article>
-                  <article className={styles.sidebarAction}>
-                    <ClickableIcon
-                      onClick={() => {
-                        navigate(`create_chat`);
-                        setIsSidebarMinimised(true);
-                      }}
-                      imgPath={CREATE_CHAT_ICON_PATH}
-                    />
-                    <p>Create chat</p>
-                  </article>
-                </>
-              ) : (
-                <>
-                  <ClickableIcon
-                    onClick={() => navigate(`/home/add_friend`)}
-                    imgPath={ADD_FRIEND_ICON_PATH}
-                  />
-                  <ClickableIcon
-                    onClick={() => navigate(`create_chat`)}
-                    imgPath={CREATE_CHAT_ICON_PATH}
-                  />
-                </>
-              )}
+              <article
+                className={styles.sidebarAction}
+                onClick={() => {
+                  navigate(`/home/add_friend`);
+                  if (isMobileView) setIsSidebarMinimised(true);
+                }}
+              >
+                <ClickableIcon
+                  onClick={() => {}}
+                  imgPath={ADD_FRIEND_ICON_PATH}
+                />
+                <p>Add friend</p>
+              </article>
+              <article
+                className={styles.sidebarAction}
+                onClick={() => {
+                  navigate(`create_chat`);
+                  if (isMobileView) setIsSidebarMinimised(true);
+                }}
+              >
+                <ClickableIcon
+                  onClick={() => {}}
+                  imgPath={CREATE_CHAT_ICON_PATH}
+                />
+                <p>Create chat</p>
+              </article>
             </section>
 
             <p>Chats:</p>
