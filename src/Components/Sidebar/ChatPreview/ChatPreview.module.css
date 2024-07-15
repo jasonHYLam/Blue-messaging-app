@@ -7,6 +7,7 @@
 
 .chatPreview:hover {
   background-color: var(--light-hover);
+  color: white;
 }
 
 .title {
@@ -17,4 +18,8 @@
 .lastUpdated {
   margin: 0;
   font-size: 90%;
+}
+
+.link {
+  color: var(--chat-preview-color);
 }

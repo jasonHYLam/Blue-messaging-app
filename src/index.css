@@ -32,6 +32,8 @@
   --icon-text-hover: red;
 
   --text-light: aliceblue;
+
+  --chat-preview-color: rgb(107, 178, 255);
 }
 
 * {

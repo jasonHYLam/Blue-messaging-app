@@ -9,7 +9,7 @@ export function ChatPreview({ chat, isMobileView, setIsSidebarMinimised }) {
         if (isMobileView) setIsSidebarMinimised(true);
       }}
     >
-      <Link to={`chats/${chat.id}`}>
+      <Link to={`chats/${chat.id}`} className={styles.link}>
         <section>
           <p className={styles.title}>{chat.name}</p>
           <p className={`${styles.lastUpdated}`}>{chat.lastUpdatedFormatted}</p>
