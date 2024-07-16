@@ -40,7 +40,7 @@ export function LoginPage() {
     <>
       <section className={styles.page}>
         <section className={styles.wrapper}>
-          <h1>Blue</h1>
+          <h1 className={styles.title}>Blue</h1>
           <Logo />
           <h2>Login</h2>
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

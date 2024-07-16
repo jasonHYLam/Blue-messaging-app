@@ -36,7 +36,7 @@ export function SignupPage() {
   return (
     <>
       <section className={styles.page}>
-        <h1>Blue</h1>
+        <h1 className={styles.title}>Blue</h1>
         <Logo />
         <h2>Signup</h2>
         <section className={styles.wrapper}>

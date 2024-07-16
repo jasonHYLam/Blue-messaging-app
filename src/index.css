@@ -60,6 +60,11 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin-block: 0;
+}
+
+h2 {
+  margin-block: 0;
 }
 
 button {
