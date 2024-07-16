@@ -40,9 +40,8 @@ export function LoginPage() {
     <>
       <section className={styles.page}>
         <section className={styles.wrapper}>
-          <h1 className={styles.title}>Blue</h1>
           <Logo />
-          <h2>Login</h2>
+          <h1 className={styles.title}>Blue | login</h1>
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <section className={styles.row}>
               <input
