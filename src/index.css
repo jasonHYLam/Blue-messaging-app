@@ -42,7 +42,7 @@
 
 a {
   font-weight: 500;
-  color: var(--foreground-color-light);
+  color: var(--chat-preview-color);
   text-decoration: inherit;
 }
 a:hover {

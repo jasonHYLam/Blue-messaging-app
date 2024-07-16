@@ -1,6 +1,7 @@
 .link {
-  color: var(--foreground-color-light);
+  color: var(--chat-preview-color);
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .link:hover {
