@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { GuestLogin } from "../GuestLogin/GuestLogin";
+import { Logo } from "../Logo/Logo";
 
 export function SignupPage() {
   const USERNAME_MAX_LENGTH = 20;
@@ -35,7 +36,9 @@ export function SignupPage() {
   return (
     <>
       <section className={styles.page}>
-        <h1>Signup</h1>
+        <h1>Blue</h1>
+        <Logo />
+        <h2>Signup</h2>
         <section className={styles.wrapper}>
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <section className={styles.row}>

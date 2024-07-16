@@ -1,9 +1,9 @@
-import blueMessagingAppIcon from "../../assets/blueMessagingAppIcon.png";
+import blueMessagingAppLogo from "../../assets/blueMessagingAppLogo.png";
 export function Logo() {
   return (
     <>
       <div>
-        <img src={blueMessagingAppIcon} alt="" />
+        <img src={blueMessagingAppLogo} alt="" />
       </div>
     </>
   );
